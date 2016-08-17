@@ -3,6 +3,7 @@ var express = require('express');
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
+var historyApiFallback = require('connect-history-api-fallback');
 var config = require('./webpack.config.js');
 
 var port = process.env.PORT || 3000;
@@ -12,9 +13,16 @@ app.use(express.static(__dirname + '/dist'));
 
 var compiler = webpack(config);
 
+app.use(historyApiFallback({
+  verbose: false
+}));
+
 app.use(webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
   contentBase: 'src',
+  hot: true,
+  quiet: false,
+  noInfo: false,
   stats: {
     colors: true,
     hash: false,
@@ -26,11 +34,6 @@ app.use(webpackMiddleware(compiler, {
 }));
 
 app.use(webpackHotMiddleware(compiler));
-
-
-app.get('/', function response(req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
 
 app.listen(port, function onStart(err) {
   if (err)

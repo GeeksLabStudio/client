@@ -1,6 +1,12 @@
 import React from 'react';
+import { Router, Route, Link, browserHistory } from 'react-router'
 
-import Nav from './components/Nav';
+// main layout
+import Layout from './components/Pages/Layout'
+// pages
+import About from './components/Pages/About'
+import Users from './components/Pages/Users'
+import User from './components/Pages/User'
 
 export default class Application extends React.Component {
     constructor(props){
@@ -8,13 +14,13 @@ export default class Application extends React.Component {
     }
 
     render() {
-        return <div>
-                <Nav />
-
-                <div>
-                    <i className='fa fa-cog' />
-                    Core Application Component
-                </div>
-            </div>
+        return <Router history={browserHistory}>
+            <Route path='/' component={Layout}>
+                <Route path='about' component={About}/>
+                <Route path='users' component={Users}>
+                    <Route path="/user/:userId" component={User}/>
+                </Route>
+            </Route>
+        </Router>
     }
 }
