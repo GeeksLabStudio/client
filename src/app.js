@@ -2,11 +2,12 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router'
 
 // main layout
-import Layout from './components/Pages/Layout'
+import Layout from './pages/Layout'
 // pages
-import About from './components/Pages/About'
-import Users from './components/Pages/Users'
-import User from './components/Pages/User'
+import About from './pages/About'
+import Users from './pages/Users'
+import User from './pages/User'
+import NotFound from './pages/PageNotFound'
 
 export default class Application extends React.Component {
     constructor(props){
@@ -20,6 +21,8 @@ export default class Application extends React.Component {
                 <Route path='users' component={Users}>
                     <Route path="/user/:userId" component={User}/>
                 </Route>
+
+                <Route path='*' component={NotFound}/>
             </Route>
         </Router>
     }
