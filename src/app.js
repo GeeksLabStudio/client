@@ -1,14 +1,16 @@
 import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router'
 
-// main layout
-import Layout from './pages/Layout'
-// pages
-import About from './pages/About'
-import Users from './pages/Users'
-import User from './pages/User'
-import NotFound from './pages/PageNotFound'
+// Pages
+import {
+    Layout, // main layout
+    About,
+    Users,
+    User,
+    NotFound
+} from './pages';
 
+// Application class
 export default class Application extends React.Component {
     constructor(props){
         super(props);
