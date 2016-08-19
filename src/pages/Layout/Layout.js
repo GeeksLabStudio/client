@@ -5,10 +5,38 @@ import {
     Nav
 } from '../../components';
 
+import AppStore from '../../stores/AppStore';
+import AppAction from '../../actions/AppAction';
+
 export default class ApplicationLayout extends React.Component{
+    state = {
+        sidebar: {
+            show: false
+        }
+    }
+
+    componentDidMount(){
+        AppStore.on('sidebar:toggle', ::this._sidebarToggleHandler)
+    }
+
+    _sidebarToggleHandler(){
+        let sidebar = this.state.sidebar;
+        sidebar.show = !sidebar.show;
+
+        this.setState({
+            sidebar
+        })
+    }
+
     render(){
+        let sidebar = (this.state.sidebar.show) ? <div>ETO EPTA SIDEBAR!!!!!!!!</div> : null;
+
         return <div>
                 <Nav>
+                    <a onClick={AppAction.toggleSidebar}>
+                        {this.state.sidebar.show ? 'Close' : 'Open'}
+                    </a>
+
                     <Link to={'users'}>
                         Users
                     </Link>
@@ -17,6 +45,8 @@ export default class ApplicationLayout extends React.Component{
                         About
                     </Link>
                 </Nav>
+
+                {sidebar}
 
                 <div>
                     <i className='fa fa-cog' />
