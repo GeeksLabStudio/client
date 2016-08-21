@@ -6,12 +6,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    './src/index'
-  ],
+  entry: {
+    app: './src/index',
+    vendor: ['react', 'react-dom', 'lodash']
+  }
+  ,
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/'
   },
   plugins: [
@@ -35,7 +37,8 @@ module.exports = {
       template: 'src/templates/index.html',
       inject: 'body',
       filename: 'index.html'
-    })
+    }),
+     new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.app.js")
   ],
   module: {
     loaders: [{
