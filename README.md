@@ -1,6 +1,8 @@
 Client Side Boilerplate
 =====================
 
+<img src="/src/assets/images/logo.png" height="150"/>
+
 The minimal dev environment.
 
 * [Installation and builds](#installation)
