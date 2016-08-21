@@ -9,7 +9,7 @@ The minimal dev environment.
 * [Glossary](#glossary)
 
 ## Installation
-##### Development env
+#### Development env
 Debug App build 
 ```
 npm start
@@ -20,7 +20,7 @@ Storybook
 npm run storybook
 open http://localhost:9001
 ```
-##### Production env
+#### Production env
 Build dist
 ```
 npm run build
