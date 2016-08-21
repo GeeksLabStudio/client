@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
@@ -26,7 +26,7 @@ module.exports = {
         warnings: false
       }
     }),
-    new ExtractTextPlugin('app.css', {
+    new ExtractTextPlugin('styles/app.css',{
       allChunks: true
     })
   ],
@@ -44,13 +44,13 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
     }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=30000&minetype=application/font-woff'
+        loader: 'url-loader?limit=30000&minetype=application/font-woff&name=fonts/[name].[ext]'
     }, {
         test: /\.svg$/,
-        loader: 'svg-inline'
+        loader: 'svg-inline?name=images/[name].[ext]'
     }, {
         test: /\.(png|jpg|gif)$/,
-        loader: "url-loader?limit=10000&mimetype=image/png"
+        loader: "url-loader?limit=10000&mimetype=image/png&name=images/[name].[ext]"
     }]
   }
 };
