@@ -6,15 +6,18 @@ The minimal dev environment.
 
 ### Usage
 ##### Build
+Generate dist
 ```
-npm install
+npm run build
+```
+##### Development
+Dev app build 
+```
 npm start
 open http://localhost:3000
 ```
-##### Development
-Storybook
+Starting storybook
 ```
-npm install (opt)
 npm run storybook
 open http://localhost:9001
 ```
