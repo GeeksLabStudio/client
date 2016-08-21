@@ -1,1 +1,2 @@
-export Nav from './Nav';
+export NavBar from './NavBar';
+export SideBar from './SideBar';
