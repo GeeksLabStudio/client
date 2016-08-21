@@ -1,0 +1,47 @@
+@side-bar-width: 300px;
+
+.side-bar {
+  background: #333;
+  width: @side-bar-width;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  color: #fff;
+  display: none;
+  border-right: 1px solid #fff;
+  
+  &.active {
+    display: block;
+  }
+
+  a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 5px 10px;
+    border-bottom: 1px solid #fff;
+
+    &:before {
+      margin-right: 5px;
+    }
+  }
+
+  .top-bar {
+    text-align: right;
+
+    .fa-bars {
+      margin-right: 15px;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  }
+
+  .logo {
+    height: 80px;
+    vertical-align: top;
+  }
+}

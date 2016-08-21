@@ -1,0 +1,38 @@
+@navbar-height: 60px;
+
+.navbar {
+  height: @navbar-height;
+  padding: 0 10px;
+  line-height: @navbar-height;
+  background-color: #333;
+  color: white;
+  text-align: center;
+
+  .logo {
+    height: 50px;
+    margin-top: 5px;
+  }
+
+  .fa-bars {
+    float: left;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .navbar-links {
+    float: right;
+    color: #fff;
+
+    a {
+      padding: 0 4px;
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: capitalize;
+
+      &:before {
+        margin-right: 5px;
+      }
+    }
+  }
+}
