@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -28,6 +30,11 @@ module.exports = {
     }),
     new ExtractTextPlugin('styles/app.css',{
       allChunks: true
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/templates/index.html',
+      inject: 'body',
+      filename: 'index.html'
     })
   ],
   module: {
