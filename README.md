@@ -1,23 +1,33 @@
-
 Client Side Boilerplate
 =====================
 
+<img src="/src/assets/images/logo.png" height="150"/>
+
 The minimal dev environment.
 
-### Usage
-##### Build
-Generate dist
-```
-npm run build
-```
-##### Development
-Dev app build 
+* [Installation and builds](#installation)
+* [Usage](#usage)
+* [Customization](#customization)
+* [Glossary](#glossary)
+
+## Installation
+#### Development env
+Debug App build 
 ```
 npm start
 open http://localhost:3000
 ```
-Starting storybook
+Storybook
 ```
 npm run storybook
 open http://localhost:9001
 ```
+#### Production env
+Build dist
+```
+npm run build
+```
+
+## Usage
+## Customization
+## Glossary
