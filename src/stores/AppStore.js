@@ -1,15 +1,15 @@
 import Store from './Store';
 
-class AppStore extends Store{
-    data = {
-        sidebar: false
-    }
+class AppStore extends Store {
+  data = {
+    sidebar: false
+  }
 
-    toggleSidebar(){
-        this.data.sidebar = !this.data.sidebar;
+  toggleSidebar() {
+    this.data.sidebar = !this.data.sidebar;
 
-        this.emit('sidebar:toggle');
-    }
+    this.emit('sidebar:toggle');
+  }
 }
 
 const $appStore = new AppStore();

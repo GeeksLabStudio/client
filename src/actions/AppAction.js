@@ -1,14 +1,14 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
 class AppAction {
+	
+  toggleSidebar() {
+    let action = 'TOGGLE_SIDEBAR';
 
-    toggleSidebar(){
-        let action = 'TOGGLE_SIDEBAR';
-
-        AppDispatcher.dispatch({
-            action
-        })
-    }
+    AppDispatcher.dispatch({
+      action
+    })
+  }
 }
 
 const $appAction = new AppAction();

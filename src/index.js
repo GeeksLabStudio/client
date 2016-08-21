@@ -11,4 +11,4 @@ require('./assets/app.global.less');
 global.config = config;
 
 // Rendering Application container
-ReactDOM.render(<Application />, document.getElementById('approot'));
+ReactDOM.render(<Application/>, document.getElementById('approot'));

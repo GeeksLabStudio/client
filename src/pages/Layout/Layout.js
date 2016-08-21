@@ -25,7 +25,7 @@ export default class ApplicationLayout extends React.Component {
       {this._sideBar}
 
       <div className="page-content">
-          {this.props.children}
+        {this.props.children}
       </div>
     </div>
   }
