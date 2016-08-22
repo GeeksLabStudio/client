@@ -20,7 +20,7 @@ const config = {
   pages: {
     home: {
       name: 'home',
-      path: '/home',
+      path: '/',
       icon: 'fa-home',
       isActive: true
     },

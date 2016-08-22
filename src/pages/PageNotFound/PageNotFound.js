@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ApplicationLayout extends React.Component {
+export default class PageNotFound extends React.Component {
   render() {
   	console.log('123');
     return <div>
