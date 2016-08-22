@@ -22,7 +22,7 @@ export default class UsersPage extends React.Component {
         }
     ]
   }
-  
+
   render() {
     return <div>
       UserPage
@@ -30,7 +30,7 @@ export default class UsersPage extends React.Component {
       <ul>
         {this.state.users.map(user => (
           <li key={user.id}>
-            <Link to={`/user/${user.name}`}>
+            <Link to={`/users/${user.name}`}>
               {user.name}
             </Link>
           </li>

@@ -8,7 +8,7 @@ export default class NavBar extends React.Component {
     links: React.PropTypes.object.isRequired,
     sideBar: React.PropTypes.bool.isRequired
   }
-  
+
   get sideBarIcon() {
     if (this.props.sideBar) {
       return <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>;
@@ -16,21 +16,18 @@ export default class NavBar extends React.Component {
   }
 
   get _links() {
-    let _links = [];
+    let _keys = Object.keys(this.props.links);
+    return _keys.map((key) => {
+      let _link = this.props.links[key];
 
-    for (let i in this.props.links) {
-      let _link = this.props.links[i];
-      
-      if (_link.isActive) {
-        let _icon = _link.icon ? 'fa ' + _link.icon : '';
-
-        _links.push(<Link to={_link.path} key={i} className={_icon}>
-          {_link.name}
-        </Link>)
-      }
-    }
-
-    return _links;
+      if (_link.isActive)
+        return <Link to={_link.path}
+                key={key}
+                activeClassName='active'
+                className={_link.icon ? 'fa ' + _link.icon : ''}>
+                  {_link.name}
+             </Link>
+    })
   }
 
   render() {

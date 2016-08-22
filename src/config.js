@@ -19,9 +19,9 @@ const config = {
   },
   pages: {
     home: {
-      name: 'home',
-      path: '/',
-      icon: 'fa-home',
+      name: 'users',
+      path: '/users',
+      icon: 'fa-user',
       isActive: true
     },
     about: {
