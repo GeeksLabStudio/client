@@ -8,7 +8,7 @@ The minimal dev environment.
 * [Installation and builds](#installation)
 * [Usage](#usage)
 * [Customization](#customization)
-* [Glossary](#glossary)
+* [Architecture](#architecture)
 
 ## Installation
 #### Development env
@@ -30,4 +30,5 @@ npm run build
 
 ## Usage
 ## Customization
-## Glossary
+## Architecture
+<img src="/docs/images/react-flux-app-arch.png" height="300"/>
