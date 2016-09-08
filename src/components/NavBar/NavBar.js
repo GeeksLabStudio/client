@@ -4,41 +4,58 @@ import AppAction from '../../actions/AppAction';
 let _logoPath = require('../../assets/images/logo.png');
 
 export default class NavBar extends React.Component {
-  static propTypes = {
-    links: React.PropTypes.object.isRequired,
-    sideBar: React.PropTypes.bool.isRequired
-  }
+  static propTypes = {}
 
   get sideBarIcon() {
-    if (this.props.sideBar) {
+    if (config.components.sidebar.enable) {
       return <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>;
     }
   }
 
-  get _links() {
-    let _keys = Object.keys(this.props.links);
-    return _keys.map((key) => {
-      let _link = this.props.links[key];
+  get _headerLinks() {
+    if (config.components.navbar.links) {
+      return (
+        <div className="navbar-links">
+          {this._links}
+        </div>
+      )
+    }
+  }
 
-      if (_link.isActive)
-        return <Link to={_link.path}
-                key={key}
-                activeClassName='active'
-                className={_link.icon ? 'fa ' + _link.icon : ''}>
-                  {_link.name}
-             </Link>
+  get _links() {
+    let _links = config.pages;
+
+    return Object.keys(_links).map((key, i) => {
+      let _link = _links[key];
+
+      if (_link.header) {
+        let _icon = _link.icon ? 'fa ' + _link.icon : '';
+
+        return (
+          <Link 
+            to={_link.path}
+            key={key}
+            activeClassName='active'
+            className={_icon}
+          >
+            {_link.name}
+          </Link>
+        )
+      }
     })
   }
 
   render() {
-    return <div className='navbar clear'>
-      {this.sideBarIcon}
+    return (
+      <div className='navbar clear'>
+        {this.sideBarIcon}
 
-      <img src={_logoPath} className="logo" />
+        <Link to="/" className="logo">
+          <img src={_logoPath} />
+        </Link>
 
-      <div className="navbar-links">
-        {this._links}
+        {this._headerLinks}
       </div>
-    </div>
+    )
   }
 }

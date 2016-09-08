@@ -1,2 +1,2 @@
-require('./SideBar.less');
+require('./style.less');
 export default from './SideBar';

@@ -1,3 +1,8 @@
+/* ==========================================================================
+  Name: reset.less
+  Desc: reset all browser's styles
+========================================================================== */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -15,7 +20,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font-family: inherit;
   // vertical-align: baseline;
 }
-body { line-height:1em; background-color:#fff; }
+body { line-height:1em; background-color:#fff; color: #333 }
 ol, ul { list-style: none; }
 *:first-child+html ul li { zoom:1; } /* hasLayout-Fix for IE7 */
 *:first-child+html input[type='submit'] { overflow: visible; width:auto; }
@@ -37,7 +42,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* additional styles */
 a:focus { outline:1px dotted #000; text-decoration:underline; }
 a img { vertical-align: sub; border: none; } /* remove gab below linked image; IE < 9 Bug */
-a:visited {text-decoration: none; color: #ffffff}
+a:visited {text-decoration: none; color: inherit;}
 
 .float--left { float:left; }
 .float--right { float:right; }

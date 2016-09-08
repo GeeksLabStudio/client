@@ -4,10 +4,7 @@ import AppStore from '../../stores/AppStore';
 import AppAction from '../../actions/AppAction';
 
 export default class SideBar extends React.Component {
-  static propTypes = {
-    links: React.PropTypes.object,
-    show: React.PropTypes.bool
-  }
+  static propTypes = {}
 
   state = {
     show: false
@@ -26,34 +23,41 @@ export default class SideBar extends React.Component {
     })
   }
 
-  get _sideBarItems() {
-    let _links = [];
+  get _links() {
+    let _links = config.pages;
 
-    for (let i in this.props.links) {
-      let _link = this.props.links[i];
-      
-      if (_link.isActive) {
+    return Object.keys(_links).map((key, i) => {
+      let _link = _links[key];
+
+      if (_link.sideBar) {
         let _icon = _link.icon ? 'fa ' + _link.icon : '';
 
-        _links.push(
-          <Link to={_link.path} key={i} className={_icon}>
+        return (
+          <Link 
+            to={_link.path} 
+            key={i} 
+            className={_icon} 
+            activeClassName='active'
+            onClick={AppAction.toggleSidebar}
+          >
             {_link.name}
-          </Link>)
+          </Link>
+        )
       }
-    }
-
-    return _links;      
+    })   
   }
 
   render() {
     let _className = this.state.show || this.props.show ? 'side-bar active' : 'side-bar';
     
-    return <div className={_className}>
-      <div className="top-bar">
-        <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>
-      </div>
+    return (
+      <div className={_className}>
+        <div className="top-bar">
+          <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>
+        </div>
 
-      {this._sideBarItems}
-    </div>
+        {this._links}
+      </div>
+    )
   }
 }

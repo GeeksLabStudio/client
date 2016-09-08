@@ -1,2 +1,2 @@
-require('./NavBar.less');
+require('./style.less');
 export default from './NavBar';

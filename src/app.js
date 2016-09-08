@@ -1,9 +1,10 @@
 import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Pages
 import {
-  Layout, // main layout
+  Layout,
+  Home,
   About,
   Users,
   User,
@@ -17,15 +18,20 @@ export default class Application extends React.Component {
   }
 
   render() {
-    return <Router history={browserHistory}>
-      <Route path='/' component={Layout}>
-        <Route path='about' component={About}/>
-        <Route path='users' component={Users}>
-          <Route path=":userId" component={User}/>
-        </Route>
+    return (
+      <Router history={browserHistory}>
+        <Route path='/' component={Layout}>
+          <IndexRoute component={Home}/>
 
-        <Route path='*' component={PageNotFound}/>
-      </Route>
-    </Router>
+          <Route path={config.pages.about.path} component={About}/>
+
+          <Route path={config.pages.users.path} component={Users}>
+            <Route path={config.pages.user.path} component={User}/>
+          </Route>
+
+          <Route path='*' component={PageNotFound}/>
+        </Route>
+      </Router>
+    )
   }
 }
