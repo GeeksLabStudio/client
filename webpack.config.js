@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var assetsPath = path.join(__dirname, 'src/assets')
+
 module.exports = {
     devtool: '#eval-source-map',
     entry: [
@@ -31,6 +33,12 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
+    resolve: {
+        modulesDirectories: [
+            "node_modules",
+            "assets"
+        ]
+    },
     module: {
         loaders: [{
             test: /\.js?$/,
@@ -42,7 +50,12 @@ module.exports = {
             loader: 'json'
         }, {
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+            // loader: 'style!css?minimize=false!less?{"includePath":"' + assetsPath +'"}',
+            loaders: [
+                'style-loader',
+                'css-loader?minimize=false',
+                `less-loader?sourceMan&paths[]=${assetsPath}`
+            ]
         }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'url-loader?limit=30000&minetype=application/font-woff'
