@@ -31,23 +31,23 @@ export default class SideBar extends React.Component {
 
     for (let i in this.props.links) {
       let _link = this.props.links[i];
-      
+
       if (_link.isActive) {
         let _icon = _link.icon ? 'fa ' + _link.icon : '';
 
         _links.push(
-          <Link to={_link.path} key={i} className={_icon}>
+          <Link to={_link.path} key={i} className={_icon} activeClassName='active'>
             {_link.name}
           </Link>)
       }
     }
 
-    return _links;      
+    return _links;
   }
 
   render() {
     let _className = this.state.show || this.props.show ? 'side-bar active' : 'side-bar';
-    
+
     return <div className={_className}>
       <div className="top-bar">
         <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>

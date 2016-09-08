@@ -14,6 +14,12 @@ const config = {
         path: '/search',
         icon: 'fa-search',
         isActive: true
+      },
+      login: {
+        name: 'login',
+        path: '/login',
+        icon: 'fa-sign-in',
+        isActive: true
       }
     }
   },

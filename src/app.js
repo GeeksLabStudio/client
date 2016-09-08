@@ -7,6 +7,7 @@ import {
   About,
   Users,
   User,
+  Login,
   PageNotFound
 } from './pages';
 
@@ -24,6 +25,7 @@ export default class Application extends React.Component {
           <Route path=":userId" component={User}/>
         </Route>
 
+        <Route path='login' component={Login}/>
         <Route path='*' component={PageNotFound}/>
       </Route>
     </Router>
