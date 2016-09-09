@@ -25,9 +25,9 @@ module.exports = {
 		// create story.js
 		file(fsPath, 'story.js', story);
 		// register in index.js
-		registerIndex(componentPath + 'index.js', capitalize(result.class));
+		registerIndex(componentPath + 'index.js', capitalize(result.class), name);
 		// register in storybook.config
-		registerStory(capitalize(result.class))
+		registerStory(capitalize(result.class), name)
 	}
 }
 
@@ -54,14 +54,14 @@ function file(fsPath, fileName, text) {
 	console.log('created file: ' + colors.green(fsPath + fileName));
 }
 // register class
-function registerIndex(path, className) {
-	fs.appendFileSync(path, '\r\nexport ' + className + ' from \'./' + className + '\';');
+function registerIndex(path, className, folder) {
+	fs.appendFileSync(path, '\r\nexport ' + className + ' from \'./' + folder + '\';');
 	console.log('registered class: ' + colors.green(className) + ' -> ' + colors.green(path));
 }
 // register story
-function registerStory(className) {
+function registerStory(className, folder) {
 	var text = />>>INCLUDE<<</g;
-	var newStory = 'require(\'../' + componentPath + className + '/story.js\');';
+	var newStory = 'require(\'../' + componentPath + folder + '/story.js\');';
 	var replace = '>>>INCLUDE<<<\r\n\t' + newStory;
 	var storybook = readFile(storybookConfig).replace(text, replace);
 	fs.writeFileSync(storybookConfig, storybook);
