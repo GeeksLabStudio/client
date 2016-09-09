@@ -11,7 +11,7 @@ module.exports = {
 		var name = capitalize(result.name);
 		var fsPath = componentPath + name + '/';
 		// file templates
-		var less = readFile(templatesPath + 'style.less');
+		var less = readFile(templatesPath + 'style.less') + '\r\n\r\n.' + result.css + ' {\r\n\r\n}';
 		var index = readFile(templatesPath + 'component.js').replace(/>>>CLASS<<</g, capitalize(result.class)).replace('>>>CSS<<<', result.css);
 		var story = readFile(templatesPath + 'story.js').replace(/>>>CLASS<<</g, capitalize(result.class));
 
