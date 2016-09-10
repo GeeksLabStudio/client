@@ -1,15 +1,18 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import {pages} from './configs';
 
 // Pages
 import {
   Layout,
   Home,
-  About,
-  Users,
-  User,
-  PageNotFound
+  PageNotFound,
+  // >>>CLASS<<<
 } from './pages';
+
+const routes = [
+  // >>>ROUTES<<<
+];
 
 // Application class
 export default class Application extends React.Component {
@@ -22,14 +25,7 @@ export default class Application extends React.Component {
       <Router history={browserHistory}>
         <Route path='/' component={Layout}>
           <IndexRoute component={Home}/>
-
-          <Route path={config.pages.about.path} component={About}/>
-
-          <Route path={config.pages.users.path} component={Users}>
-            <Route path={config.pages.user.path} component={User}/>
-          </Route>
-
-          <Route path='*' component={PageNotFound}/>
+          {routes}
         </Route>
       </Router>
     )

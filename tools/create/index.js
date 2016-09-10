@@ -1,22 +1,25 @@
 var prompt = require('prompt');
-var schema = require('./schema.js');
+var schemas = require('./schema.js');
 var controller = require('./controller.js');
 var colors = require('colors');
 
 prompt.start();
 
-prompt.get(schema, function (err, result) {
+prompt.get(schemas.type, function (err, result) {
   switch(result.type) {
     case 1:
-      console.log(colors.green('------------------------------------------------------\r\n'));
-      var finish = controller.component(result);
-      console.log(colors.green('\r\n------------------------------------------------------'));
+        prompt.get(schemas.component, function (err, result) {
+          controller.component(result);
+        })
       break;
     case 2:
-
+      prompt.get(schemas.page, function (err, result) {
+        controller.page(result);
+      })
       break;
     case 3:
-
       break;
   }
 });
+// console.log(colors.green('------------------------------------------------------\r\n'));
+// console.log(colors.green('\r\n------------------------------------------------------'));

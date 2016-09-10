@@ -1,28 +1,62 @@
-const schema = [
-  {
+const schemas = {
+  type: {
     name: 'type',
-    description: "\r\n What to create? (type of the file) \r\n 1.Component  \r\n 2.Page(not implemented yet) \r\n 3.Theme(not implemented yet) \r\n",
+    description: "\r\nType of the file \r\n 1.Component\r\n 2.Page\r\n 3.Theme(not implemented yet)\r\n",
     required: true,
     type: 'integer'
   },
-  {
-    name: 'name',
-    description: '\r\n Enter a folder name',
-    required: true,
-    type: 'string'
-  },
-  {
-    name: 'css',
-    description: '\r\n Enter a css class name',
-    required: true,
-    type: 'string'
-  },
-  {
-    name: 'class',
-    description: '\r\n Enter a Class',
-    required: true,
-    type: 'string'
-  },
-]
+  component: [
+    {
+      name: 'name',
+      description: '\r\nComponent name',
+      required: true,
+      type: 'string'
+    },
+    {
+      name: 'css',
+      description: '\r\nCss class',
+      required: true,
+      type: 'string'
+    },
+    {
+      name: 'class',
+      description: '\r\nClass',
+      required: true,
+      type: 'string'
+    }
+  ],
+  page: [
+    {
+      name: 'name',
+      description: '\r\nPage name (without spaces)',
+      required: true,
+      type: 'string'
+    },
+    {
+      name: 'path',
+      description: '\r\nRoute(path)',
+      required: true,
+      type: 'string'
+    },
+    {
+      name: 'class',
+      description: '\r\nClass',
+      required: true,
+      type: 'string'
+    },
+    {
+      name: 'header',
+      description: '\r\nInclude link in header?',
+      required: true,
+      type: 'boolean'
+    },
+    {
+      name: 'sidebar',
+      description: '\r\nInclude link in sidebar?',
+      required: true,
+      type: 'boolean'
+    },
+  ]
+}
 
-module.exports = schema;
+module.exports = schemas;
