@@ -6,12 +6,13 @@ import {pages} from './configs';
 import {
   Layout,
   Home,
-  PageNotFound,
   // >>>CLASS<<<
+	Login,
 } from './pages';
 
 const routes = [
   // >>>ROUTES<<<
+	<Route path={pages.login.path} component={Login}/>,
 ];
 
 // Application class
