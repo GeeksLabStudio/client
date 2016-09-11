@@ -14,10 +14,25 @@ export default class NavBar extends React.Component {
     links: AppStore.getAvailablePages()
   }
 
+  componentDidMount(){
+    this.__onUiUpdate = ::this.UIupdate
+    AppStore.on('ui:update', this.__onUiUpdate);
+  }
+
+  componentWillUnmount(){
+    AppStore.removeListener('ui:update', this.__onUiUpdate)
+  }
+
+  UIupdate(){
+    let links = AppStore.getAvailablePages();
+
+    this.setState({
+      links
+    })
+  }
+
   get sideBarIcon() {
-    if (config.components.sidebar.enable) {
-      return <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>;
-    }
+    return <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>;
   }
 
   get _headerLinks() {

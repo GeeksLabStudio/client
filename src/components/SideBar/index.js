@@ -12,17 +12,25 @@ export default class SideBar extends React.Component {
     links: AppStore.getAvailablePages()
   }
 
-  componentDidMount() {
+  componentDidMount(){
+    this.__onUiUpdate = ::this.UIupdate;
     this.__sidebarToggleHandler = ::this.sidebarToggleHandler;
-    this.__navigationUpdate = ::this.navigationUpdateHandler;
 
+    AppStore.on('ui:update', this.__onUiUpdate);
     AppStore.on('sidebar:toggle', this.__sidebarToggleHandler)
-    AppStore.on('nav:update', this.__navigationUpdate)
   }
 
   componentWillUnmount(){
+    AppStore.removeListener('ui:update', this.__onUiUpdate)
     AppStore.removeListener('sidebar:toggle', this.__sidebarToggleHandler)
-    AppStore.removeListener('nav:update', this.__navigationUpdate)
+  }
+
+  UIupdate(){
+    let links = AppStore.getAvailablePages();
+
+    this.setState({
+      links
+    })
   }
 
   sidebarToggleHandler() {
@@ -33,15 +41,6 @@ export default class SideBar extends React.Component {
       show
     })
   }
-
-  navigationUpdateHandler() {
-    let links = AppStore.getAvailablePages();
-
-    this.setState({
-      links
-    })
-  }
-
 
   get _links() {
     return this.state.links.map(_link => {
