@@ -46,7 +46,6 @@ export default class NavBar extends React.Component {
   }
 
   get _links() {
-
     return this.state.links.map(_link => {
       return <Link
           to={_link.path}

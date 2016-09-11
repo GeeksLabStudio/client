@@ -1,19 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import {pages} from './configs';
-
-// Pages
-import {
-  Layout,
-  Home,
-  // >>>CLASS<<<
-	Login,
-} from './pages';
-
-const routes = [
-  // >>>ROUTES<<<
-	<Route path={pages.login.path} key={pages.login.name} component={Login}/>,
-];
+import {pages as pageConfig} from './configs';
+import * as pages from './pages';
 
 // Application class
 export default class Application extends React.Component {
@@ -21,12 +9,19 @@ export default class Application extends React.Component {
     super(props);
   }
 
+  get routes() {
+    return Object.keys(pageConfig).map(key => {
+      let page = pageConfig[key];
+      return <Route path={page.path} key={page.name} component={pages[page.folder]}/>
+    })
+  }
+
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Home}/>
-          {routes}
+        <Route path='/' component={pages.Layout}>
+          <IndexRoute component={pages.Home}/>
+          {this.routes}
         </Route>
       </Router>
     )

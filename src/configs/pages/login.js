@@ -6,8 +6,7 @@ export default {
   layout: '1-col',
   header: true,
   sideBar: true,
-  // position: [
-  //   app.ui.ControlPosition.NAVBAR,
-  //   app.ui.ControlPosition.SIDEBAR,
-  // ]
+  disable: false,
+  register: true,
+  folder: 'Login'
 };

@@ -1,5 +1,5 @@
 import Store from './Store';
-import pages from '../configs/pages'
+import * as pages from '../configs/pages';
 
 import _ from 'lodash';
 
@@ -31,10 +31,7 @@ class AppStore extends Store {
   }
 
   getAvailablePages(){
-
     let pages = Object.keys(this.data.navigation);
-
-    console.log('available pages', this.data.navigation, pages)
 
     return pages.map(key => {
         let page = this.data.navigation[key];

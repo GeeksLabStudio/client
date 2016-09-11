@@ -1,11 +1,2 @@
-const config = {
-  sidebar: {
-  	enable: true
-  },
-	navbar: {
-	  links: true,
-	  sticky: false
-	}
-}
-
-export default config;
+export navbar from './navBar';
+export sidebar from './sideBar';

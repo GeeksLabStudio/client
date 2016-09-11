@@ -5,5 +5,8 @@ export default {
 	icon: 'fa-home',
 	layout: '1-col',
 	header: >>>HEADER<<<,
-	sideBar: >>>SIDEBAR<<<
+	sideBar: >>>SIDEBAR<<<,
+	disable: >>>DISABLE<<<,
+	register: >>>REGISTER<<<,
+	folder: >>>FOLDER<<<
 };
