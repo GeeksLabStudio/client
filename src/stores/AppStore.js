@@ -7,17 +7,7 @@ class AppStore extends Store {
   data = {
     sidebar: false,
     navigation: {
-      ...pages,
-      profile: {
-        name: 'profile',
-        class: 'profile-page',
-        path: '/profile',
-        icon: 'fa-user',
-        layout: '1-col',
-        header: false,
-        sideBar: true,
-        disable: true
-      }
+      ...pages
     }
   }
 
