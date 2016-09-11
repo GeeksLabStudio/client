@@ -1,11 +1,9 @@
-// >>>IMPORT<<<
-import login from './Login';
-import home from './Home';
+import login from './login';
+import home from './home';
 
-const config = {
-  // >>>INCLUDE<<<
-	login,
-  home,
+const pages = {
+  login,
+  home
 }
 
-export default config;
+export default pages

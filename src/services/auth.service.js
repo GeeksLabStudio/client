@@ -28,19 +28,36 @@ class AuthService{
     } = options;
 
     return new Promise((resolve,reject) => {
-      request
-        .post(this.serverUrl+'/login')
-        .send({
-          username,
-          password
-        })
-        .end((err,res) => {
-          if (err || !res.ok)
-            reject(err)
-          else
-            resolve(res.body)
-        })
-    })
+    // will be enabled with server
+    //   request
+    //     .post(this.serverUrl+'/login')
+    //     .send({
+    //       username,
+    //       password
+    //     })
+    //     .end((err,res) => {
+    //       if (err || !res.ok)
+    //         reject(err)
+    //       else
+    //         resolve(res.body)
+    //     })
+    // })
+
+    // for testing
+    // -----------------------
+      setTimeout(() => {
+        resolve({
+          status: 200,
+          message: "You logged in",
+          auth: {
+            username,
+            token: 'TEST'
+          }
+        });
+
+      });
+    // -----------------------
+    });
   }
 
   removeAuthorization(){

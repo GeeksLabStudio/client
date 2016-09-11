@@ -8,14 +8,24 @@ export default class SideBar extends React.Component {
   static propTypes = {}
 
   state = {
-    show: false
+    show: false,
+    links: AppStore.getAvailablePages()
   }
 
   componentDidMount() {
-    AppStore.on('sidebar:toggle', ::this._sidebarToggleHandler)
+    this.__sidebarToggleHandler = ::this.sidebarToggleHandler;
+    this.__navigationUpdate = ::this.navigationUpdateHandler;
+
+    AppStore.on('sidebar:toggle', this.__sidebarToggleHandler)
+    AppStore.on('nav:update', this.__navigationUpdate)
   }
 
-  _sidebarToggleHandler() {
+  componentWillUnmount(){
+    AppStore.removeListener('sidebar:toggle', this.__sidebarToggleHandler)
+    AppStore.removeListener('nav:update', this.__navigationUpdate)
+  }
+
+  sidebarToggleHandler() {
     let show = this.state.show;
     show = !show;
 
@@ -24,28 +34,28 @@ export default class SideBar extends React.Component {
     })
   }
 
+  navigationUpdateHandler() {
+    let links = AppStore.getAvailablePages();
+
+    this.setState({
+      links
+    })
+  }
+
+
   get _links() {
-    let _links = config.pages;
+    return this.state.links.map(_link => {
 
-    return Object.keys(_links).map((key, i) => {
-      let _link = _links[key];
-
-      if (_link.sideBar) {
-        let _icon = _link.icon ? 'fa ' + _link.icon : '';
-
-        return (
-          <Link
+        return <Link
             to={_link.path}
-            key={i}
-            className={_icon}
+            key={_link.name}
+            className={_link.icon}
             activeClassName='active'
             onClick={AppAction.toggleSidebar}
-            onlyActiveOnIndex={_link.path == '/'}
-          >
-            {_link.name}
-          </Link>
-        )
-      }
+            onlyActiveOnIndex={_link.path == '/'}>
+          {_link.name}
+        </Link>
+
     })
   }
 

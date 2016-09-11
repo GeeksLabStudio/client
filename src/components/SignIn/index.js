@@ -1,7 +1,6 @@
 import React from 'react';
 require('./style.less');
 
-import AuthStore from '../../stores/auth.store';
 import AuthAction from '../../actions/auth.action'
 
 export default class SignIn extends React.Component {
@@ -14,32 +13,13 @@ export default class SignIn extends React.Component {
       username: '',
       password: '',
       remember: true
-    },
-    message: null
+    }
   }
 
   formSubmitHandler(e) {
     AuthAction.login(this.state.form);
     e.preventDefault();
   }
-
-  componentDidMount(){
-    this.__errorHandler = ::this.handleError;
-    AuthStore.on('auth:error', this.__errorHandler)
-  }
-
-  componentWillUnmount(){
-    AuthStore.removeListener('auth:error', this.__errorHandler)
-  }
-
-  handleError(error) {
-    let message = error.message;
-
-    this.setState({
-      message
-    })
-  }
-
 
   getFormValue(key) {
     return this.state.form[key]
@@ -59,12 +39,14 @@ export default class SignIn extends React.Component {
   }
 
   get messages(){
-    if (!this.state.message)
+    if (!this.props.error)
       return
+
+    let err = JSON.stringify(this.props.error, false, 2);
 
     return (
       <pre>
-        {this.state.message}
+        {err}
       </pre>
     )
   }

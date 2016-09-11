@@ -5,20 +5,33 @@ class AuthStore extends Store {
 
   token = null;
 
+  profile = {
+    username: null
+  }
+
   updateToken(options) {
     let {
-      token
-    } = options;
+      token,
+      username
+    } = options.auth;
 
-    this.token = token;
+    this.profile.username = username;
 
-    this.emit('auth:login')
+    this.__setToken(token);
   }
 
   cleanToken(options) {
-    this.token = null;
+    this.__setToken(null);
+  }
 
-    this.emit('auth:logout')
+  __setToken(token){
+    if (token){
+      this.__token = token;
+      this.emit('auth:login');
+    } else {
+      this.__token = null;
+      this.emit('auth:logout');
+    }
   }
 
   handleError(error){
@@ -26,6 +39,7 @@ class AuthStore extends Store {
 
     this.emit('auth:error', error)
   }
+
 }
 
 const $authStore = new AuthStore();

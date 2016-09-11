@@ -2,10 +2,17 @@ import React from 'react';
 import {Link} from 'react-router';
 import AppAction from '../../actions/AppAction';
 let _logoPath = require('../../assets/images/logo.png');
+
+import AppStore from '../../stores/AppStore';
+
 require('./style.less');
 
 export default class NavBar extends React.Component {
   static propTypes = {}
+
+  state = {
+    links: AppStore.getAvailablePages()
+  }
 
   get sideBarIcon() {
     if (config.components.sidebar.enable) {
@@ -21,29 +28,21 @@ export default class NavBar extends React.Component {
         </div>
       )
     }
-  } 
+  }
 
   get _links() {
-    let _links = config.pages;
 
-    return Object.keys(_links).map((key, i) => {
-      let _link = _links[key];
-
-      if (_link.header) {
-        let _icon = _link.icon ? 'fa ' + _link.icon : '';
-
-        return (
-          <Link 
-            to={_link.path}
-            key={key}
-            activeClassName='active'
-            className={_icon}
-          >
-            {_link.name}
-          </Link>
-        )
-      }
+    return this.state.links.map(_link => {
+      return <Link
+          to={_link.path}
+          key={_link.name}
+          activeClassName='active'
+          onlyActiveOnIndex={_link.path == '/'}
+          className={_link.icon}>
+        {_link.name}
+      </Link>
     })
+
   }
 
   render() {
