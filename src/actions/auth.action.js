@@ -1,4 +1,5 @@
 import AuthDispatcher from '../dispatchers/auth.dispatcher';
+import AuthService from '../services/auth.service';
 
 class AuthAction {
 

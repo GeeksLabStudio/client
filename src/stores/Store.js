@@ -4,4 +4,7 @@ export default class Store extends EventEmitter {
   unknownAction() {
     this.emit('unknown')
   }
+
+  handleError(error) {
+  }
 }
