@@ -34,23 +34,24 @@ export default class SideBar extends React.Component {
         let _icon = _link.icon ? 'fa ' + _link.icon : '';
 
         return (
-          <Link 
-            to={_link.path} 
-            key={i} 
-            className={_icon} 
+          <Link
+            to={_link.path}
+            key={i}
+            className={_icon}
             activeClassName='active'
             onClick={AppAction.toggleSidebar}
+            onlyActiveOnIndex={_link.path == '/'}
           >
             {_link.name}
           </Link>
         )
       }
-    })   
+    })
   }
 
   render() {
     let _className = this.state.show || this.props.show ? 'side-bar active' : 'side-bar';
-    
+
     return (
       <div className={_className}>
         <div className="top-bar">

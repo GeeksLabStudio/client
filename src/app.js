@@ -12,7 +12,7 @@ import {
 
 const routes = [
   // >>>ROUTES<<<
-	<Route path={pages.login.path} component={Login}/>,
+	<Route path={pages.login.path} key={pages.login.name} component={Login}/>,
 ];
 
 // Application class
