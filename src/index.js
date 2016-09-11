@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Application from './app';
+import {debug, layout, pages, components} from './configs';
 
-import config from './config';
+// Importing app less
+require('./assets/app.less');
 
-// Importing global less
-require('./assets/app.global.less');
-
-// Globals here
-global.config = config;
+// Globals config
+global.config = {
+	debug,
+  layout,
+  pages,
+  components
+};
 
 // Rendering Application container
 ReactDOM.render(<Application/>, document.getElementById('approot'));

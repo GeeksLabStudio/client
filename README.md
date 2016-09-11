@@ -1,7 +1,7 @@
 Client Side Boilerplate
 =====================
 
-<img src="/src/assets/images/logo.png" height="150"/>
+<img src="/src/assets/images/logo.png" height="85"/>
 
 The minimal dev environment.
 

@@ -1,15 +1,19 @@
 import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import {pages} from './configs';
 
 // Pages
 import {
-  Layout, // main layout
-  About,
-  Users,
-  User,
-  Login,
-  PageNotFound
+  Layout,
+  Home,
+  // >>>CLASS<<<
+	Login,
 } from './pages';
+
+const routes = [
+  // >>>ROUTES<<<
+	<Route path={pages.login.path} component={Login}/>,
+];
 
 // Application class
 export default class Application extends React.Component {
@@ -18,16 +22,13 @@ export default class Application extends React.Component {
   }
 
   render() {
-    return <Router history={browserHistory}>
-      <Route path='/' component={Layout}>
-        <Route path='about' component={About}/>
-        <Route path='users' component={Users}>
-          <Route path=":userId" component={User}/>
+    return (
+      <Router history={browserHistory}>
+        <Route path='/' component={Layout}>
+          <IndexRoute component={Home}/>
+          {routes}
         </Route>
-
-        <Route path='login' component={Login}/>
-        <Route path='*' component={PageNotFound}/>
-      </Route>
-    </Router>
+      </Router>
+    )
   }
 }
