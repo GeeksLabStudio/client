@@ -55,7 +55,9 @@ module.exports = {
 								 .replace(/>>>CSS<<</g, lowerName + '-page')
 								 .replace(/>>>PATH<<</g, result.path)
 								 .replace(/>>>HEADER<<</g, result.header)
-								 .replace(/>>>SIDEBAR<<</g, result.sidebar);
+								 .replace(/>>>SIDEBAR<<</g, result.sidebar)
+								 .replace(/>>>REGISTER<<</g, result.register)
+								 .replace(/>>>FOLDER<<</g, name)
 		// Actions
 		// create folder
 		folder(fsPath);
@@ -65,13 +67,10 @@ module.exports = {
 		file(fsPath, 'index.js', index);
 		// register in index.js
 		registerIndex(pagePath + 'index.js', name, name);
-		// register route
-		registerRoute(appPath, name, lowerName);
 		// create config file
-		folder(configPath + 'pages/' + name + '/');
-		file(configPath + 'pages/' + name + '/', 'index.js', config);
+		file(configPath + 'pages/', lowerName +'.js', config);
 		// register config
-		registerConfig(lowerName, name)
+		registerIndex(configPath + 'pages/index.js', lowerName, lowerName)
 	}
 }
 
@@ -112,22 +111,22 @@ function registerStory(className, folder) {
 	console.log('registered story: ' + colors.green(className) + ' -> ' + colors.green(storybookConfig));
 }
 
-function registerRoute(path, className, lowerName) {
-	var newClass = '>>>CLASS<<<\r\n\t' + className + ',';
-	var route = '>>>ROUTES<<<\r\n\t<Route path={pages.'+ lowerName +'.path} component={'+ className +'}/>,';
-	var app = readFile(path)
-						.replace(/>>>CLASS<<</g, newClass)
-						.replace(/>>>ROUTES<<</g, route);
-	fs.writeFileSync(path, app);
-	console.log('registered route: -> ' + colors.green(path));
-}
+// function registerConfig(lowerName, folderName) {
+// 	var newImport = '>>>IMPORT<<<\r\nimport '+ lowerName +' from \'./'+ folderName +'\';';
+// 	var newInclude = '>>>IMPORT<<<\r\n\t' + lowerName + ',';
+// 	var configfile = readFile(configPath + 'pages/index.js')
+// 									 .replace(/>>>IMPORT<<</g, newImport)
+// 									 .replace(/>>>INCLUDE<<</g, newInclude);
+// 	fs.writeFileSync(configPath + 'pages/index.js', configfile);
+// 	console.log('registered config: -> ' + colors.green(configPath + 'pages/index.js'));
+// }
 
-function registerConfig(lowerName, folderName) {
-	var newImport = '>>>IMPORT<<<\r\nimport '+ lowerName +' from \'./'+ folderName +'\';';
-	var newInclude = '>>>IMPORT<<<\r\n\t' + lowerName + ',';
-	var configfile = readFile(configPath + 'pages/index.js')
-									 .replace(/>>>IMPORT<<</g, newImport)
-									 .replace(/>>>INCLUDE<<</g, newInclude);
-	fs.writeFileSync(configPath + 'pages/index.js', configfile);
-	console.log('registered config: -> ' + colors.green(configPath + 'pages/index.js'));
-}
+// function registerRoute(path, className, lowerName) {
+// 	var newClass = '>>>CLASS<<<\r\n\t' + className + ',';
+// 	var route = '>>>ROUTES<<<\r\n\t<Route path={pages.'+ lowerName +'.path} component={'+ className +'}/>,';
+// 	var app = readFile(path)
+// 						.replace(/>>>CLASS<<</g, newClass)
+// 						.replace(/>>>ROUTES<<</g, route);
+// 	fs.writeFileSync(path, app);
+// 	console.log('registered route: -> ' + colors.green(path));
+// }

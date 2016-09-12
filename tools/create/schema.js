@@ -56,6 +56,12 @@ const schemas = {
       required: true,
       type: 'boolean'
     },
+    {
+      name: 'register',
+      description: '\r\nRegister in routes config? (app.js)',
+      required: true,
+      type: 'boolean'
+    }
   ]
 }
 

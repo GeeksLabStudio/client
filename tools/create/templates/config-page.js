@@ -6,7 +6,7 @@ export default {
 	layout: '1-col',
 	header: >>>HEADER<<<,
 	sideBar: >>>SIDEBAR<<<,
-	disable: >>>DISABLE<<<,
+	disable: false,
 	register: >>>REGISTER<<<,
-	folder: >>>FOLDER<<<
+	folder: '>>>FOLDER<<<'
 };
