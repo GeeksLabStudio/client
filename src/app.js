@@ -12,7 +12,9 @@ export default class Application extends React.Component {
   get routes() {
     return Object.keys(pageConfig).map(key => {
       let page = pageConfig[key];
-      return <Route path={page.path} key={page.name} component={pages[page.folder]}/>
+
+      if (page.register) 
+        return <Route path={page.path} key={page.name} component={pages[page.folder]}/>
     })
   }
 
