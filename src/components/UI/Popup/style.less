@@ -1,0 +1,77 @@
+@import '~var';
+@import '~tools/mixins';
+
+.popup-container {
+	.overlay;
+	display: none;
+
+	&.active {
+		display: block;
+	}
+
+	&.close .popup{
+		animation: 0.5s popup-out forwards;
+	}
+}
+
+.popup {
+	width: @popup-width;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	max-width: 100%;
+	overflow-y: auto; 
+	transform: translate(-50%, -50%);
+	background: @popup-background;
+	color: @popup-font-color;
+	box-shadow: @base-shadow;
+	border-radius: @popup-border-radius;
+	animation: 0.5s popup-in forwards;
+
+	.title {
+		padding: @popup-title-padding;
+		font-size: @popup-title-font-size;
+		border-bottom: 1px solid @popup-border-color;
+		color: @popup-title-color;
+		font-weight: @popup-title-font-weight;
+	}
+
+	.body {
+		min-height: @popup-body-min-height;
+		padding: @popup-body-padding;
+	}
+
+	.actions {
+		padding: @popup-actions-padding;
+		border-top: 1px solid @popup-border-color;
+		text-align: right;
+
+		.submit {
+			margin-right: @popup-actions-margin;
+		}
+	}
+}
+
+@keyframes popup-in {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -100%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@keyframes popup-out {
+	from {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	to {
+		opacity: 0;
+		transform: translate(-50%, -100%);
+	}
+}

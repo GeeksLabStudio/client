@@ -13,6 +13,9 @@ $appDispatcher.register(function(payload) {
     case 'TOGGLE_SIDEBAR':
       AppStore.toggleSidebar();
       break;
+    case 'TOGGLE_POPUP':
+      AppStore.togglePopup();
+      break;
     default:
       AppStore.unknownAction();
   }

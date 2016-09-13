@@ -32,7 +32,7 @@ export default class NavBar extends React.Component {
   }
 
   get sideBarIcon() {
-    return <span onClick={AppAction.toggleSidebar} className="fa fa-bars"></span>;
+    return config.components.sidebar.enable? <span onClick={AppAction.toggleSidebar} className="menu fa fa-bars"></span> : null;
   }
 
   get _headerLinks() {
@@ -52,7 +52,8 @@ export default class NavBar extends React.Component {
           key={_link.name}
           activeClassName='active'
           onlyActiveOnIndex={_link.path == '/'}
-          className={_link.icon}>
+        >
+        <i className={_link.icon}/>
         {_link.name}
       </Link>
     })

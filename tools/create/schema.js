@@ -7,6 +7,11 @@ const schemas = {
   },
   component: [
     {
+      name: 'path',
+      description: '\r\nPath(in "components" dir; example: "Navbar" or "Navbar/Test", etc). Leave it empty if it\'s global component',
+      type: 'string'
+    },
+    {
       name: 'name',
       description: '\r\nComponent name',
       required: true,
@@ -23,6 +28,12 @@ const schemas = {
       description: '\r\nClass',
       required: true,
       type: 'string'
+    },
+    {
+      name: 'storybook',
+      description: '\r\nCreate storybook story?',
+      required: true,
+      type: 'boolean'
     }
   ],
   page: [

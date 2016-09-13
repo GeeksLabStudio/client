@@ -12,7 +12,7 @@ module.exports = {
 	component: (result) => {
 		// variables
 		var name = capitalize(result.name);
-		var fsPath = componentPath + name + '/';
+		var fsPath = result.path ? (componentPath + result.path + '/' + name + '/'): (componentPath + name + '/');
 		// file templates
 		// style
 		var less = readFile(templatesPath + 'style.less') + '\r\n\r\n.' + result.css + ' {\r\n\r\n}';
@@ -30,12 +30,15 @@ module.exports = {
 		file(fsPath, 'style.less', less);
 		// create index.js
 		file(fsPath, 'index.js', index);
-		// create story.js
-		file(fsPath, 'story.js', story);
 		// register in index.js
-		registerIndex(componentPath + 'index.js', capitalize(result.class), name);
-		// register in storybook.config
-		registerStory(capitalize(result.class), name)
+		result.path ? registerIndex(componentPath + result.path + '/index.js', capitalize(result.class), name) : registerIndex(componentPath + 'index.js', capitalize(result.class), name);
+		// create stories
+		if (result.storybook) {
+			// create story.js
+			file(fsPath, 'story.js', story);
+			// register in storybook.config
+			registerStory(capitalize(result.class), result.path ? result.path + name : name)
+		}
 	},
 	page: (result) => {
 		// variables

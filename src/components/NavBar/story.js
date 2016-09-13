@@ -27,6 +27,3 @@ storiesOf('NavBar', module)
   .add('default', () => (
     <NavBar links={_links} sideBar={true}/>
   ))
-  .add('without navigation bar', () => (
-    <NavBar links={_links} sideBar={false}/>
-  ))

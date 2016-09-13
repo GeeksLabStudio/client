@@ -6,6 +6,7 @@ import _ from 'lodash';
 class AppStore extends Store {
   data = {
     sidebar: false,
+    popup: false,
     navigation: {
       ...pages
     }
@@ -15,6 +16,12 @@ class AppStore extends Store {
     this.data.sidebar = !this.data.sidebar;
 
     this.emit('sidebar:toggle');
+  }
+
+  togglePopup() {
+    this.data.popup = !this.data.popup;
+
+    this.emit('popup:toggle');
   }
 
   updateNavigation(navigation){

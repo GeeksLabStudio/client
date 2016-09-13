@@ -3,6 +3,12 @@ import {
   NavBar,
   SideBar
 } from '../../components';
+
+import {
+  Popup,
+  Notification
+} from '../../components/UI';
+
 require('./style.less');
 
 export default class ApplicationLayout extends React.Component {
@@ -16,6 +22,8 @@ export default class ApplicationLayout extends React.Component {
         <div className="page-content">
           {this.props.children}
         </div>
+
+        <Popup />
       </div>
     )
   }

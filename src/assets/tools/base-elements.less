@@ -1,0 +1,57 @@
+/* ==========================================================================
+	Name: base-elements.less
+	Desc: styles for base elements
+========================================================================== */
+body {
+	font-family: @font-family-base;
+	color: @font-color-base;
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+/* ==========================================================================
+	Forms
+========================================================================== */
+// buttons
+.btn {
+	padding: 10px 15px;
+	background: #fff;
+	outline: none;
+	border: none;
+	color: @body-text-color;
+	box-shadow: @small-shadow;
+	cursor: pointer;
+	border-radius: 2px;
+	text-transform: uppercase;
+	.transition-base;
+
+	&:hover {
+		background: darken(#fff, 10%);
+	}
+
+	&.btn-primary {
+		background: @blue;
+		color: #fff;
+
+		&:hover {
+			background: darken(@blue, 10%);
+		}
+	}
+
+	&.btn-danger {
+		background: @red;
+		color: #fff;
+
+		&:hover {
+			background: darken(@red, 10%);
+		}
+	}
+
+	&:disabled {
+		cursor: default;
+		pointer-events: none;
+		opacity: 0.4;
+	}
+}

@@ -9,6 +9,14 @@ class AppAction {
       action
     })
   }
+
+  togglePopup() {
+  	let action = 'TOGGLE_POPUP';
+
+  	AppDispatcher.dispatch({
+      action
+    })
+  }
 }
 
 const $appAction = new AppAction();
