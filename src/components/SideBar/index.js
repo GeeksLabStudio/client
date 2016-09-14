@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import AppStore from '../../stores/AppStore';
-import AppAction from '../../actions/AppAction';
 require('./style.less');
+
+import AppStore from '../../stores/app.store';
+import AppAction from '../../actions/app.action';
 
 export default class SideBar extends React.Component {
   static propTypes = {}

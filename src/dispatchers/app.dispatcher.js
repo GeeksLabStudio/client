@@ -2,12 +2,16 @@ import {
   Dispatcher
 } from 'flux';
 
-import AppStore from '../stores/AppStore';
+import AppStore from '../stores/app.store';
 
 const $appDispatcher = new Dispatcher();
 
 $appDispatcher.register(function(payload) {
-  var action = payload.action;
+  let {
+    action
+  } = payload;
+
+  app.utils.log.debug('app:dispatcher', payload);
 
   switch(action){
     case 'TOGGLE_SIDEBAR':

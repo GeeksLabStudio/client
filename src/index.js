@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Application from './app';
-import {debug, layout, pages, components} from './configs';
+import {debug, layout, pages, components} from './config';
+
+import log from 'loglevel';
+
+/*
+  for debugging
+  to see all the logs
+*/
+log.setLevel('trace')
 
 // Importing app less
 require('./assets/app.less');
@@ -31,6 +39,10 @@ global.app = {
       SIDEBAR: 'sidebar',
       FOOTER: 'footer'
     }
+  },
+
+  utils: {
+    log
   }
 }
 

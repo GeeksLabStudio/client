@@ -1,15 +1,39 @@
 import Store from './Store';
-import * as pages from '../configs/pages';
+import AuthStore from './auth.store';
+
+import {
+  pages
+} from '../config'
 
 import _ from 'lodash';
+
 
 class AppStore extends Store {
   data = {
     sidebar: false,
     popup: false,
-    navigation: {
+  }
+
+  constructor(){
+    super();
+
+    this.navigation = {
       ...pages
-    }
+    };
+
+
+    // if profile exist
+    // updating navigation
+    if (AuthStore.profile)
+      _.merge(this.navigation,{
+        login: {
+          disable: true
+        },
+        profile: {
+          disable: false
+        }
+      });
+
   }
 
   toggleSidebar() {
@@ -25,23 +49,24 @@ class AppStore extends Store {
   }
 
   updateNavigation(navigation){
-    // this.data.navigation = {
-    //   ...this.data.navigation,
-    //   ...navigation
-    // };
-
-    _.merge(this.data.navigation, navigation)
+    _.merge(this.navigation, navigation)
 
     // this will trigers components they own methods
     // and update there state
     this.emit('ui:update');
   }
 
+  /*
+    @desc Method for geting navigation available for user
+    for Sidebar,Navbar components
+
+    @return Pages[]
+  */
   getAvailablePages(){
-    let pages = Object.keys(this.data.navigation);
+    let pages = Object.keys(this.navigation);
 
     return pages.map(key => {
-        let page = this.data.navigation[key];
+        let page = this.navigation[key];
 
         // if (page.icon)
         //   page.icon = `fa${page.icon}`;

@@ -1,17 +1,18 @@
 import React from 'react';
 require('./style.less');
 
-import SignIn from '../../components/SignIn';
-import AuthStore from '../../stores/auth.store';
+import AuthAction from '../../actions/auth.action'
 import AuthService from '../../services/auth.service';
+import AuthStore from '../../stores/auth.store';
 
-export default class LoginPage extends React.Component {
+export default class ProfilePage extends React.Component {
   static propTypes = {
 
   }
 
   state = {
-    error: null
+    error: null,
+    profile: AuthStore.getProfile()
   }
 
   handleError(error) {
@@ -27,7 +28,12 @@ export default class LoginPage extends React.Component {
   }
 
   profileUpdateHandler(){
-    AuthService.goto('/')
+    if (AuthStore.isAuthenticated){
+      // if profile updated and you on ProfilePage
+      // here we must fetch new profile data
+    }
+    else
+      AuthService.goto('/') // go to homepage
   }
 
   componentDidMount(){
@@ -44,14 +50,21 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    return <div className={config.pages.login.class}>
-      {this.messages}
+    console.log('test',this.state.profile)
+    return (
+      <div className={config.pages.profile.class}>
+        <h2> Profile </h2>
 
-      <h2>Sign In</h2>
-      <SignIn
-        error={this.state.error}
-      />
-    </div>
+        <p>
+          username: <span style={{color: '#65a992'}}>{this.state.profile.username}</span>
+        </p>
+
+
+        <button onClick={AuthAction.logout}>
+          LOGOUT
+        </button>
+
+      </div>
+    )
   }
-
 }
