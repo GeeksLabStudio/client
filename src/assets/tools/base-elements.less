@@ -11,9 +11,24 @@ body * {
 	box-sizing: border-box;
 }
 
+[class*="-page"] {
+   .container;
+   padding: 40px 0;
+}
+
 /* ==========================================================================
 	Forms
 ========================================================================== */
+// container
+.form-group {
+	position: relative;
+	margin-top: 15px;
+
+	input[type="checkbox"] + label {
+		margin-left: 5px;
+	}
+}
+
 // buttons
 .btn {
 	padding: 10px 15px;
@@ -53,5 +68,26 @@ body * {
 		cursor: default;
 		pointer-events: none;
 		opacity: 0.4;
+	}
+}
+
+// inputs
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+	outline: none;
+	border: none;
+	border-bottom: 1px solid @border-color-base;
+	height: 30px;
+	padding: 0 5px;
+	font-size: 15px;
+	min-width: 250px;
+	.transition-fast;
+
+	&:focus {
+		border-color: @green;
+	}
+
+	&:focus ~ label {
+		top: -20px;
+		font-size: 12px;
 	}
 }

@@ -57,41 +57,34 @@ export default class SignIn extends React.Component {
           {this.messages}
         </div>
 
-        <div>
-          <label htmlFor="username">
-            Username
-          </label>
+        <div className="form-group">
           <input type="text"
+            placeholder="Username"
             value={this.getFormValue('username')}
             onChange={this.getFormChangeHandler('username')}
             required="required"/>
         </div>
 
-        <div>
-          <label htmlFor="password">
-            Password
-          </label>
+        <div className="form-group">
           <input type="password"
+            placeholder="Password"
             value={this.getFormValue('password')}
             onChange={this.getFormChangeHandler('password')}
             required="required"/>
         </div>
 
-        <div>
-          <div>
-            <input type="checkbox"
-              checked={this.getFormValue('remember')}
-              onChange={this.getFormChangeHandler('remember')}/>
-            <span>
-              Remember me
-            </span>
-            <br />
-          </div>
+        <div className="form-group remember">
+          <input type="checkbox"
+            checked={this.getFormValue('remember')}
+            onChange={this.getFormChangeHandler('remember')}/>
+          <label>
+            Remember me
+          </label>
         </div>
 
-        <div id="login-submit">
-          <input type="submit" value="Sign In" onClick={::this.formSubmitHandler} />
-        </div>
+        <button className="btn btn-primary" type="submit" onClick={::this.formSubmitHandler}>
+          Sign In
+        </button>
     </div>
   }
 }
