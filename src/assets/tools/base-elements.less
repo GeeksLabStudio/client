@@ -47,20 +47,20 @@ body * {
 	}
 
 	&.btn-primary {
-		background: @blue;
+		background: @main-color;
 		color: #fff;
 
 		&:hover {
-			background: darken(@blue, 10%);
+			background: darken(@main-color, 10%);
 		}
 	}
 
 	&.btn-danger {
-		background: @red;
+		background: @danger-color;
 		color: #fff;
 
 		&:hover {
-			background: darken(@red, 10%);
+			background: darken(@danger-color, 10%);
 		}
 	}
 
@@ -83,7 +83,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
 	.transition-fast;
 
 	&:focus {
-		border-color: @green;
+		border-color: @main-color;
 	}
 
 	&:focus ~ label {
