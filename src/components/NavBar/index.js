@@ -31,10 +31,6 @@ export default class NavBar extends React.Component {
     })
   }
 
-  get sideBarIcon() {
-    return config.components.sidebar.enable? <span onClick={AppAction.toggleSidebar} className="menu fa fa-bars"></span> : null;
-  }
-
   get _headerLinks() {
     if (config.components.navbar.links) {
       return (
@@ -63,7 +59,6 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div className='navbar clear'>
-        {this.sideBarIcon}
 
         <Link to="/" className="logo">
           <img src={_logoPath} />

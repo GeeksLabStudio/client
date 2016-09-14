@@ -17,7 +17,7 @@ export default class ApplicationLayout extends React.Component {
       <div className="app-body">
         <NavBar/>
 
-        {config.components.sidebar.enable ? <SideBar/> : null}
+        <SideBar/>
 
         <div className="page-content">
           {this.props.children}
