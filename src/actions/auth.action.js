@@ -35,7 +35,7 @@ class AuthAction {
           action: app.actions.auth.logout.success
         })
       })
-      .then(() => {
+      .then(null,() => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.logout.error
         })

@@ -1,7 +1,7 @@
-import AppDispatcher from '../dispatchers/AppDispatcher';
+import AppDispatcher from '../dispatchers/app.dispatcher';
 
 class AppAction {
-	
+
   toggleSidebar() {
     let action = 'TOGGLE_SIDEBAR';
 

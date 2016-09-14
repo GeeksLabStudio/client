@@ -1,4 +1,5 @@
 import request from 'superagent';
+import { browserHistory } from 'react-router'
 
 class AuthService{
   auth = null;
@@ -17,8 +18,35 @@ class AuthService{
     return `${hostname}:${port}/api/auth`
   }
 
-  constructor(){
+  goto(path){
+    if (path)
+      browserHistory.push(path)
+  }
 
+  resolveLocalAuthorization(){
+    let profile = localStorage.getItem('profile');
+
+    if (profile)
+      return {
+        token: localStorage.getItem('token'),
+        profile: JSON.parse(profile)
+      }
+
+
+    return {
+      token: null,
+      profile: null
+    }
+
+  }
+
+  updateLocalAuthorization(auth){
+    if (auth){
+      localStorage.setItem('token', auth.token)
+      localStorage.setItem('profile', JSON.stringify(auth.profile))
+    } else {
+      localStorage.clear()
+    }
   }
 
   requestAuthorization(options){
@@ -50,22 +78,26 @@ class AuthService{
           status: 200,
           message: "You logged in",
           auth: {
-            username,
+            profile: {
+              username
+            },
             token: 'TEST'
           }
         });
 
-      });
+      },2000);
     // -----------------------
     });
   }
 
   removeAuthorization(){
     return new Promise((resolve,reject) => {
-      resolve({
-        message: "You logged out"
-      })
-    })
+      setTimeout(() => {
+        resolve({
+          message: "You logged out"
+        });
+      },2000);
+    });
   }
 }
 

@@ -7,6 +7,7 @@ export default {
   header: false,
   sideBar: true,
   disable: true,
-  register: false,
+  register: true,
+  requestAuth: true,
   folder: 'Profile'
 }

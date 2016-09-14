@@ -1,7 +1,9 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import {pages as pageConfig} from './configs';
+
 import * as pages from './pages';
+
+import AuthStore from './stores/auth.store'
 
 // Application class
 export default class Application extends React.Component {
@@ -9,12 +11,23 @@ export default class Application extends React.Component {
     super(props);
   }
 
+  checkRequirements(nextState, replace){
+    if (!AuthStore.isAuthenticated)
+      replace('/login')
+    else
+      return true
+  }
+
   get routes() {
+    let pageConfig = config.pages;
+
     return Object.keys(pageConfig).map(key => {
       let page = pageConfig[key];
 
-      if (page.register) 
-        return <Route path={page.path} key={page.name} component={pages[page.folder]}/>
+      let onEnterHandler = (page.requestAuth) ? ::this.checkRequirements : null
+
+      if (page.register)
+        return <Route path={page.path} key={page.name} component={pages[page.folder]} onEnter={onEnterHandler} />
     })
   }
 
@@ -24,6 +37,8 @@ export default class Application extends React.Component {
         <Route path='/' component={pages.Layout}>
           <IndexRoute component={pages.Home}/>
           {this.routes}
+
+          <Route path='/*' component={pages.Home} />
         </Route>
       </Router>
     )

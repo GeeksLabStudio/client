@@ -1,5 +1,5 @@
 import React from 'react';
-import AppStore from '../../../stores/AppStore';
+import AppStore from '../../../stores/app.store';
 require('./style.less');
 
 export default class Popup extends React.Component {

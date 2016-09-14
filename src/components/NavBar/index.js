@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import AppAction from '../../actions/AppAction';
 let _logoPath = require('../../assets/images/logo.png');
 
-import AppStore from '../../stores/AppStore';
+import AppStore from '../../stores/app.store';
+import AppAction from '../../actions/app.action';
 
 require('./style.less');
 
