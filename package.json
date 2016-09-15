@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9001",
-    "build": "webpack -p --config webpack.config.prod.js",
+    "build": "webpack --config webpack.config.prod.js",
     "create": "node tools/create/index.js"
   },
   "author": "",

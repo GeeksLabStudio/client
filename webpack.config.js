@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 var assetsPath = path.join(__dirname, 'src/assets')
 
@@ -13,18 +14,17 @@ module.exports = {
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
-        filename: '[name].js',
-        chunkFilename: "[id].js",
+        filename: 'bundle.js',
         publicPath: '/'
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            app : path.join(__dirname, 'config')
+        }),
         new HtmlWebpackPlugin({
             template: 'src/templates/index.html',
             inject: 'body',
             filename: 'index.html'
-        }),
-        new ExtractTextPlugin('app.css', {
-            allChunks: true
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),

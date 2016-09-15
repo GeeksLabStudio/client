@@ -1,12 +1,7 @@
 import Store from './Store';
 import AuthStore from './auth.store';
 
-import {
-  pages
-} from '../config'
-
 import _ from 'lodash';
-
 
 class AppStore extends Store {
   data = {
@@ -18,7 +13,7 @@ class AppStore extends Store {
     super();
 
     this.navigation = {
-      ...pages
+      ...app.config.pages
     };
 
 

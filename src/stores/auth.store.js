@@ -87,7 +87,9 @@ class AuthStore extends Store {
 }
 
 let initAuth = AuthService.resolveLocalAuthorization()
-console.log(initAuth)
+
+app.utils.log.debug('AuthService:resolveLocalAuthorization', initAuth);
+
 const $authStore = new AuthStore(initAuth);
 
 export default $authStore;

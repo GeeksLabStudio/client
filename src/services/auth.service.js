@@ -23,22 +23,6 @@ class AuthService{
       browserHistory.push(path)
   }
 
-  resolveLocalAuthorization(){
-    let profile = localStorage.getItem('profile');
-
-    if (profile)
-      return {
-        token: localStorage.getItem('token'),
-        profile: JSON.parse(profile)
-      }
-
-
-    return {
-      token: null,
-      profile: null
-    }
-
-  }
 
   updateLocalAuthorization(auth){
     if (auth){
@@ -99,6 +83,30 @@ class AuthService{
       },2000);
     });
   }
+
+  /*
+    @desc Method used for resolving auth from local storage
+    Need for init AuthService
+
+    @return {token,profile}
+  */
+  resolveLocalAuthorization(){
+    let profile = localStorage.getItem('profile');
+
+    if (profile)
+      return {
+        token: localStorage.getItem('token'),
+        profile: JSON.parse(profile)
+      }
+
+
+    return {
+      token: null,
+      profile: null
+    }
+
+  }
+
 }
 
 const $auth = new AuthService();
