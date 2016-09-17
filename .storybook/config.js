@@ -1,13 +1,10 @@
 import {configure} from '@kadira/storybook';
-import {debug, layout, pages, components} from '../src/configs';
+import * as config from '../config';
 
 // Globals config
-global.config = {
-  debug,
-  layout,
-  pages,
-  components
-};
+global.app = config;
+
+global.config = app.config;
 
 function loadStories() {
   require('../src/assets/app.less');

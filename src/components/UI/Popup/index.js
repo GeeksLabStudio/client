@@ -5,11 +5,12 @@ require('./style.less');
 export default class Popup extends React.Component {
   static propTypes = {
     title: React.PropTypes.string,
-    style: React.PropTypes.object
+    style: React.PropTypes.object,
+    show: React.PropTypes.bool
   }
 
   state = {
-    show: false
+    show: this.props.show ? this.props.show : false
   }
 
   componentDidMount(){
