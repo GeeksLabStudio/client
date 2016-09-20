@@ -72,6 +72,11 @@ class AppStore extends Store {
       .filter(page => !page.disable)
 
   }
+
+  createNotification(notification){
+    // broadcasting event
+    this.emit('ui:notification', notification)
+  }
 }
 
 const $appStore = new AppStore();

@@ -1,5 +1,61 @@
 @import '~var';
 
-.notification {
+.notifications {
+	position: fixed;
+	top: @notification-position-top;
+	right: @notification-position-right;
+	bottom: @notification-position-bottom;
+	left: @notification-position-left;
+	width: auto;
+	max-width: @notification-width;
 
+	.message {
+		display: block;
+		max-width: 100%;
+		height: @notification-height;
+		padding: @notification-padding;
+		background: @notification-background;
+		box-shadow: @notification-shadow;
+		color: @notification-color;
+		border: @notification-border;
+		// animation: notification-in .5s forwards;
+    word-wrap: break-word;
+    margin: @notification-margin;
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+
+@keyframes notification-in {
+	from {
+		opacity: 0;
+		transform: translate(@notifcation-animation-translate);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+// This part used by ReactCSSTransitionGroup
+
+.notification-enter {
+  opacity: 0.01;
+}
+
+.notification-enter.notification-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.notification-leave {
+  opacity: 1;
+}
+
+.notification-leave.notification-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

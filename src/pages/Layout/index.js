@@ -12,7 +12,7 @@ import {
 require('./style.less');
 
 export default class ApplicationLayout extends React.Component {
-  render() {
+ render() {
     return (
       <div className="app-body">
         <NavBar/>
@@ -23,7 +23,9 @@ export default class ApplicationLayout extends React.Component {
           {this.props.children}
         </div>
 
-        <Popup />
+        <Popup/>
+
+        <Notification/>
       </div>
     )
   }

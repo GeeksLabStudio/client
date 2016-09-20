@@ -8,6 +8,10 @@ module.exports = {
       success: 'AUTH_LOGOUT_SUCCESS',
       error: 'AUTH_LOGOUT_ERROR'
     }
+  },
+
+  ui: {
+    notification: 'NEW_NOTIFICATION'
   }
 
 }

@@ -12,6 +12,8 @@ export default class HomePage extends React.Component {
         <h1> Welcome back </h1>
 
 	      <button onClick={AppAction.togglePopup}>popup</button>
+
+        <button onClick={()=>{AppAction.notify('This is a test notification')}}>notify</button>
 	    </div>
     )
   }
