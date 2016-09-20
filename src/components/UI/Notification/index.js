@@ -1,4 +1,8 @@
 import React from 'react';
+import AppStore from '../../../stores/app.store';
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 require('./style.less');
 
 export default class Notification extends React.Component {
@@ -10,8 +14,25 @@ export default class Notification extends React.Component {
     messages: []
   }
 
-  componentWillReceiveProps(newProps) {
-    this._push(newProps.message);
+  componentDidMount(){
+    this.__notificationHandler = ::this.notificationHandler;
+
+    AppStore.on('ui:notification', this.__notificationHandler);
+  }
+
+  componentWillUnmount(){
+    AppStore.removeListener('ui:notification', this.__notificationHandler);
+  }
+
+
+  // method that controls new incomed notification messages
+  notificationHandler(notification){
+    let {
+      type,
+      message
+    } = notification;
+
+    this._push(message)
   }
 
   _remove() {
@@ -52,7 +73,14 @@ export default class Notification extends React.Component {
   render() {
     return (
       <div className="notifications">
-        {this._messages}
+        <ReactCSSTransitionGroup
+          transitionName="notification"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+
+          {this._messages}
+
+        </ReactCSSTransitionGroup>
       </div>
     )
   }

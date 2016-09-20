@@ -20,6 +20,17 @@ $appDispatcher.register(function(payload) {
     case 'TOGGLE_POPUP':
       AppStore.togglePopup();
       break;
+    case app.actions.ui.notification:
+      let {
+        type,
+        message
+      } = payload.notification;
+
+      AppStore.createNotification({
+        type,
+        message
+      });
+      break;
     default:
       AppStore.unknownAction();
   }
