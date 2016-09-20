@@ -10,7 +10,7 @@ export default class SideBar extends React.Component {
 
   state = {
     show: false,
-    links: AppStore.getAvailablePages()
+    links: AppStore.getAvailablePages(app.ui.ControlPosition.SIDEBAR)
   }
 
   componentDidMount(){
@@ -27,7 +27,7 @@ export default class SideBar extends React.Component {
   }
 
   UIupdate(){
-    let links = AppStore.getAvailablePages();
+    let links = AppStore.getAvailablePages(app.ui.ControlPosition.SIDEBAR);
 
     this.setState({
       links

@@ -57,7 +57,7 @@ class AppStore extends Store {
 
     @return Pages[]
   */
-  getAvailablePages(){
+  getAvailablePages(controlPosition){
     let pages = Object.keys(this.navigation);
 
     return pages.map(key => {
@@ -69,7 +69,8 @@ class AppStore extends Store {
 
         return page
       })
-      .filter(page => !page.disable)
+      .filter(page => !page.disable) // filtering disabled by default pages
+      .filter(page => page.position.indexOf(controlPosition)>=0 ) // filtering by position
 
   }
 

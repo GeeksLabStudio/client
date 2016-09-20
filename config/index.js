@@ -4,8 +4,9 @@ var utils       = require('./utils')
 var ui          = require('./ui')
 var actions     = require('./actions')
 var layout      = require('./layout')
+var roles       = require('./roles')
 
-module.exports = {
+module.exports = global.app = {
   test: true,
 
   config: {
@@ -16,5 +17,6 @@ module.exports = {
 
   ui,
   actions,
-  utils
+  utils,
+  roles
 }

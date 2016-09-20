@@ -10,8 +10,10 @@ require('./style.less');
 export default class NavBar extends React.Component {
   static propTypes = {}
 
+  position = app.ui.ControlPosition.NAVBAR
+
   state = {
-    links: AppStore.getAvailablePages()
+    links: AppStore.getAvailablePages(this.position)
   }
 
   componentDidMount(){
@@ -24,7 +26,7 @@ export default class NavBar extends React.Component {
   }
 
   UIupdate(){
-    let links = AppStore.getAvailablePages();
+    let links = AppStore.getAvailablePages(this.position);
 
     this.setState({
       links
@@ -64,7 +66,7 @@ export default class NavBar extends React.Component {
     return (
       <div className='navbar clear'>
         {this._sidebarIcon}
-        
+
         <Link to="/" className="logo">
           <img src={_logoPath} />
         </Link>

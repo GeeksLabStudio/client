@@ -1,3 +1,6 @@
+var roles = require('./roles');
+var ui = require('./ui');
+
 module.exports = {
   home: {
     name: 'home',
@@ -5,11 +8,15 @@ module.exports = {
     path: '/',
     icon: 'fa-home',
     layout: '1-col',
-    header: false,
-    sideBar: true,
     disable: false,
     register: false,
-    folder: 'Home'
+    folder: 'Home',
+    permissions: [
+        roles.all
+    ],
+    position: [
+        ui.ControlPosition.SIDEBAR
+    ]
   },
 
   login: {
@@ -18,11 +25,16 @@ module.exports = {
     path: '/login',
     icon: 'fa-sign-in',
     layout: '1-col',
-    header: true,
-    sideBar: true,
     disable: false,
     register: true,
-    folder: 'Login'
+    folder: 'Login',
+    permissions: [
+        roles.guest
+    ],
+    position: [
+        ui.ControlPosition.SIDEBAR,
+        ui.ControlPosition.NAVBAR
+    ]
   },
 
   profile: {
@@ -31,11 +43,15 @@ module.exports = {
     path: '/profile',
     icon: 'fa-user',
     layout: '1-col',
-    header: false,
-    sideBar: true,
     disable: true,
     register: true,
     requestAuth: true,
-    folder: 'Profile'
+    folder: 'Profile',
+    permissions: [
+        roles.user
+    ],
+    position: [
+        ui.ControlPosition.SIDEBAR
+    ]
   }
 }
