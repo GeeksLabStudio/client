@@ -63,7 +63,8 @@ class AuthService{
           message: "You logged in",
           auth: {
             profile: {
-              username
+              username,
+              role: app.roles.user
             },
             token: 'TEST'
           }

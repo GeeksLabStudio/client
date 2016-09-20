@@ -27,7 +27,7 @@ export default class LoginPage extends React.Component {
   }
 
   profileUpdateHandler(){
-    AuthService.goto('/')
+    AuthService.goto('/profile')
   }
 
   componentDidMount(){

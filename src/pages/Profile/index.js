@@ -50,14 +50,15 @@ export default class ProfilePage extends React.Component {
   }
 
   render() {
-    console.log('test',this.state.profile)
-    return (
-      <div className={config.pages.profile.class}>
+    return <div className={config.pages.profile.class}>
         <h2> Profile </h2>
 
         <p>
           username: <span style={{color: '#65a992'}}>{this.state.profile.username}</span>
         </p>
+
+        <h3>Profile object:</h3>
+        <pre style={{padding:10, backgroundColor: '#eee'}}>{JSON.stringify(this.state.profile, false, 2)}</pre>
 
 
         <button onClick={AuthAction.logout}>
@@ -65,6 +66,5 @@ export default class ProfilePage extends React.Component {
         </button>
 
       </div>
-    )
   }
 }
