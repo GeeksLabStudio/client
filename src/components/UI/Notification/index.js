@@ -37,8 +37,8 @@ export default class Notification extends React.Component {
 
   _remove() {
     setTimeout(() => {
-      let messages = this.state.messages;
-      messages.splice(0, 1);
+      // pop first
+      let messages = this.state.messages.slice(1);
 
       this.setState({
         messages
@@ -47,9 +47,11 @@ export default class Notification extends React.Component {
   }
 
   _push(message) {
-    let messages = this.state.messages;
-
-    messages.push(message);
+    // push last
+    let messages = [
+      ...this.state.messages,
+      message
+    ];
 
     this.setState({
       messages
