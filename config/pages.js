@@ -9,7 +9,6 @@ module.exports = {
     icon: 'fa-home',
     layout: '1-col',
     disable: false,
-    register: false,
     folder: 'Home',
     permissions: [
         roles.all
@@ -26,7 +25,6 @@ module.exports = {
     icon: 'fa-sign-in',
     layout: '1-col',
     disable: false,
-    register: true,
     folder: 'Login',
     permissions: [
         roles.guest
@@ -44,13 +42,13 @@ module.exports = {
     icon: 'fa-user',
     layout: '1-col',
     disable: true,
-    register: true,
     requestAuth: true,
     folder: 'Profile',
     permissions: [
         roles.user
     ],
     position: [
+        ui.ControlPosition.NAVBAR,
         ui.ControlPosition.SIDEBAR
     ]
   }

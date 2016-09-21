@@ -31,6 +31,11 @@ export default class ProfilePage extends React.Component {
     if (AuthStore.isAuthenticated){
       // if profile updated and you on ProfilePage
       // here we must fetch new profile data
+      let profile = AuthStore.getProfile();
+
+      this.setState({
+        profile
+      })
     }
     else
       AuthService.goto('/') // go to homepage

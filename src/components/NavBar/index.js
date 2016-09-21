@@ -67,12 +67,13 @@ export default class NavBar extends React.Component {
       <div className='navbar clear'>
         {this._sidebarIcon}
 
-        <Link to="/" className="logo">
-          <img src={_logoPath} />
-        </Link>
+
 
         {this._headerLinks}
       </div>
     )
   }
 }
+        // <Link to="/" className="logo">
+        // <img src={_logoPath} />
+        // </Link>

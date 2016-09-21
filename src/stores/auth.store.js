@@ -19,6 +19,8 @@ class AuthStore extends Store {
 
     if (profile)
       this.profile = profile
+    else
+      this.profile = this.guestProfile;
   }
 
   /*
@@ -52,9 +54,29 @@ class AuthStore extends Store {
       this.__setProfile()
   }
 
+  checkPermissions(permissions){
+    let role = this.profile.role;
+
+    if (permissions.indexOf(app.roles.all) >= 0){
+      return true; //if permissions have full access
+    }
+
+    return (permissions.indexOf(role) >= 0) //checking match
+  }
+
   getProfile(){
+    return this.profile
+  }
+
+  /*
+    Getters for types of profile
+  */
+
+  // GUEST PROFILE
+  // used for setting profile after log out, etc...
+  get guestProfile(){
     return {
-      ...this.profile
+      role: app.roles.guest
     }
   }
 
@@ -65,7 +87,10 @@ class AuthStore extends Store {
   */
 
   __setProfile(profile){
-    this.profile = profile;
+    if (profile)
+      this.profile = profile;
+    else
+      this.profile = this.guestProfile;
 
     this.emit('profile:update')
   }

@@ -19,7 +19,7 @@ class AppStore extends Store {
 
     // if profile exist
     // updating navigation
-    if (AuthStore.profile)
+    if (AuthStore.isAuthenticated)
       _.merge(this.navigation,{
         login: {
           disable: true
