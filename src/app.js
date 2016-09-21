@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import * as pages from './pages';
 
 import AuthStore from './stores/auth.store'
+import AppStore from './stores/app.store'
 
 // Application class
 export default class Application extends React.Component {
@@ -28,10 +29,13 @@ export default class Application extends React.Component {
 
     let access = AuthStore.checkPermissions(config.permissions);
 
-    if (access)
+    if (access) {
+
       return true
-    else
+    } else {
+      app.utils.log.error('AppRouter:checkRequirements failed. Reason: not right permission');
       replace('/') //goto root /
+    }
   }
 
   get routes() {
@@ -56,7 +60,7 @@ export default class Application extends React.Component {
 
           {this.routes}
 
-          <Route path='/*' component={pages.NotFound} />
+          <Route path='/*' component={pages.NotFound}/>
         </Route>
       </Router>
     )
