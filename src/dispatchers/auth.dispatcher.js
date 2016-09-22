@@ -1,6 +1,4 @@
-import {
-  Dispatcher
-} from 'flux';
+import Dispatcher from './dispatcher';
 
 import AuthStore from '../stores/auth.store';
 import AppStore from '../stores/app.store';
