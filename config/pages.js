@@ -1,55 +1,21 @@
 var roles = require('./roles');
-var ui = require('./ui');
 
 module.exports = {
   home: {
-    name: 'home',
-    class: 'home-page',
-    path: '/',
-    icon: 'fa-home',
-    layout: '1-col',
-    disable: false,
-    folder: 'Home',
     permissions: [
-        roles.all
-    ],
-    position: [
-        ui.ControlPosition.SIDEBAR
+      roles.all
     ]
   },
 
   login: {
-    name: 'login',
-    class: 'login-page',
-    path: '/login',
-    icon: 'fa-sign-in',
-    layout: '1-col',
-    disable: false,
-    folder: 'Login',
     permissions: [
-        roles.guest
-    ],
-    position: [
-        ui.ControlPosition.SIDEBAR,
-        ui.ControlPosition.NAVBAR
+      roles.guest
     ]
   },
 
   profile: {
-    name: 'profile',
-    class: 'profile-page',
-    path: '/profile',
-    icon: 'fa-user',
-    layout: '1-col',
-    disable: true,
-    requestAuth: true,
-    folder: 'Profile',
     permissions: [
-        roles.user
-    ],
-    position: [
-        ui.ControlPosition.NAVBAR,
-        ui.ControlPosition.SIDEBAR
+      roles.user
     ]
   }
 }

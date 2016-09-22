@@ -49,13 +49,13 @@ export default class SideBar extends React.Component {
         return (
           <Link
             to={_link.path}
-            key={_link.name}
+            key={_link.label}
             activeClassName='active'
             onClick={AppAction.toggleSidebar}
             onlyActiveOnIndex={_link.path == '/'}
           >
             <i className={_link.icon}></i>
-            {_link.name}
+            {_link.label}
           </Link>
         )
     })

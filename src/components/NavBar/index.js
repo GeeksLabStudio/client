@@ -47,12 +47,12 @@ export default class NavBar extends React.Component {
     return this.state.links.map(_link => {
       return <Link
           to={_link.path}
-          key={_link.name}
+          key={_link.label}
           activeClassName='active'
           onlyActiveOnIndex={_link.path == '/'}
         >
         <i className={_link.icon}/>
-        {_link.name}
+        {_link.label}
       </Link>
     })
   }

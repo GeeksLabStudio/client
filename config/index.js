@@ -5,6 +5,7 @@ var ui          = require('./ui')
 var actions     = require('./actions')
 var layout      = require('./layout')
 var roles       = require('./roles')
+var navigation  = require('./navigation')
 
 module.exports = global.app = {
   test: true,
@@ -12,7 +13,8 @@ module.exports = global.app = {
   config: {
     components,
     pages,
-    layout
+    layout,
+    navigation
   },
 
   ui,

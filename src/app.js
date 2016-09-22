@@ -38,29 +38,30 @@ export default class Application extends React.Component {
     }
   }
 
-  get routes() {
-    let pageConfig = config.pages;
-
-    return Object.keys(pageConfig).map(key => {
-      let page = pageConfig[key];
-
-      // let onEnterHandler = (page.requestAuth) ? ::this.checkRequirements : ::this.onEnterDefaultHandler
-
-      let onEnterHandler = ::this.onEnterDefaultHandler
-
-      return <Route path={page.path} key={page.name} config={page} component={pages[page.folder]} onEnter={onEnterHandler} />
-    })
-  }
-
   render() {
     return (
       <Router history={browserHistory}>
         <Route path='/' component={pages.Layout} >
-          <IndexRoute component={pages.Home} config={app.config.pages.home} onEnter={::this.onEnterDefaultHandler}/>
+          <IndexRoute component={pages.Home} 
+            config={app.config.pages.home} 
+            onEnter={::this.onEnterDefaultHandler}
+          />
 
-          {this.routes}
+          <Route path='/profile' 
+            component={pages.Profile}
+            config={app.config.pages.profile}
+            onEnter={::this.onEnterDefaultHandler}
+          />
 
-          <Route path='/*' component={pages.NotFound}/>
+          <Route path='/login' 
+            component={pages.Login}
+            config={app.config.pages.login}
+            onEnter={::this.onEnterDefaultHandler}
+          />
+
+          <Route path='/*' 
+            component={pages.NotFound}
+          />
         </Route>
       </Router>
     )

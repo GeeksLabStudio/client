@@ -12,10 +12,7 @@ class AppStore extends Store {
   constructor(){
     super();
 
-    this.navigation = {
-      ...app.config.pages
-    };
-
+    this.navigation = app.config.navigation;
 
     // if profile exist
     // updating navigation
