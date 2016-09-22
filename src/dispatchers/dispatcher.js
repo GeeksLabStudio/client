@@ -119,5 +119,3 @@ export default class Dispatcher{
     this._isDispatching = false;
   };
 }
-
-  module.exports = Dispatcher;
