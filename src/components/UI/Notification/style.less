@@ -18,7 +18,6 @@
 		box-shadow: @notification-shadow;
 		color: @notification-color;
 		border: @notification-border;
-		// animation: notification-in .5s forwards;
     word-wrap: break-word;
     margin: @notification-margin;
 
@@ -28,20 +27,7 @@
 	}
 }
 
-@keyframes notification-in {
-	from {
-		opacity: 0;
-		transform: translate(@notifcation-animation-translate);
-	}
-
-	to {
-		opacity: 1;
-		transform: translate(0, 0);
-	}
-}
-
-// This part used by ReactCSSTransitionGroup
-
+// ReactCSSTransitionGroup
 .notification-enter {
   opacity: 0.01;
 }

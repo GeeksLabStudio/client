@@ -8,8 +8,8 @@ let props = {
 	submit: action('submit')
 }
 
-storiesOf('Popup', module)
-  .add('default', () => (
+storiesOf('UI', module)
+  .add('Popup', () => (
     <Popup {...props}>
     	<div>Storybook test data</div>
     </Popup>

@@ -1,98 +1,86 @@
-@blue-gray              : #34495e;
-@blue-gray-darken   : #2c3e50;
-@blue                     : #3498db;
-@blue-darken            : #2980b9;
-@green                    : #1abc9c;
-@green-darken         : #16a085;
+@import '~var';
+@import '~tools/mixins';
 
-.breadcrumbs-list{
+.breadcrumbs {
   list-style:none;
-  display: inline-block;
+  display: block;
 
-  li{
-    float:left;
-    a{
+  li {
+    display: inline-block;
+
+    a {
       color:#FFF;
       display:block;
-      background: @blue;
+      background: @breadcrumbs-item-background;
       text-decoration: none;
       position:relative;
-      height: 40px;
-      line-height:40px;
-      padding: 0 10px 0 5px;
+      height: @breadcrumbs-item-height;
+      line-height: @breadcrumbs-item-height;
+      padding: @breadcrumbs-item-padding;
       text-align: center;
-      margin-right: 23px;
-    }
-    &:nth-child(even){
-      a{
-        background-color: @blue-darken;
-
-        &:before{
-          border-color:@blue-darken;
-          border-left-color:transparent;
-         }
-        &:after{
-          border-left-color:@blue-darken;
-        }
-      }
-    }
-    &:first-child{
-      a{
-        padding-left:15px;
-        &:before{
-          border:none;
-         }
-      }
-    }
-    &:last-child{
-      a{
-        padding-right:15px;
-        &:after{
-          border:none;
-         }
-      }
-    }
-
-    a{
+      text-transform: @breadcrumbs-item-text-transform;
+      margin: @breadcrumbs-item-margin;
+      .transition-fast;
+      
+      // triangles
       &:before,
-      &:after{
+      &:after {
         content: "";
         position:absolute;
         top: 0;
-        border:0 solid @blue;
-        border-width:20px 10px;
+        border:0 solid @breadcrumbs-item-background;
+        border-width: 20px 10px;
         width: 0;
         height: 0;
+        .transition-fast;
       }
-      &:before{
+
+      &:before {
         left:-20px;
         border-left-color:transparent;
       }
-      &:after{
+
+      &:after {
         left:100%;
         border-color:transparent;
-        border-left-color:@blue;
+        border-left-color: @breadcrumbs-item-background;
       }
-      &:hover{
-        background-color: @green;
+      
+      // hover state
+      &:hover, &:active {
+        background-color: @breadcrumbs-item-background-hover;
 
-        &:before{
-          border-color:@green;
+        &:before {
+          border-color: @breadcrumbs-item-background-hover;
           border-left-color:transparent;
          }
-        &:after{
-          border-left-color:@green;
+        &:after {
+          border-left-color: @breadcrumbs-item-background-hover;
         }
       }
-      &:active{
-        background-color: @green-darken;
-
-        &:before{
-          border-color:@green-darken;
-          border-left-color:transparent;
+    }
+    
+    // first item
+    &:first-child {
+      a {
+        padding-left: @breadcrumbs-item-first-last-children-padding;
+        &:before {
+          border:none;
          }
-        &:after{
-          border-left-color:@green-darken;
+      }
+    }
+    
+    // last child
+    &:last-child {
+      a {
+        padding-right: @breadcrumbs-item-first-last-children-padding;
+        background: @breadcrumbs-item-background-hover;
+        &:before {
+          border-color: @breadcrumbs-item-background-hover;
+          border-left-color:transparent;
+        }
+        &:after {
+          border-left-color: @breadcrumbs-item-background-hover;
         }
       }
     }
