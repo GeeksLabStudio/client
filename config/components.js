@@ -6,5 +6,16 @@ module.exports = {
 
   sidebar: {
     enable: true
+  },
+
+  ui: {
+  	pagination: {
+  		prev: {
+  			icon: 'fa-angle-left'
+  		},
+  		next: {
+  			icon: 'fa-angle-right'
+  		}
+  	}
   }
 }
