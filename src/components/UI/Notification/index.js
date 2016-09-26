@@ -1,6 +1,5 @@
 import React from 'react';
 import AppStore from '../../../stores/app.store';
-
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 require('./style.less');

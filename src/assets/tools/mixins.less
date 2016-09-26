@@ -33,3 +33,42 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+/* ==========================================================================
+	Animations
+========================================================================== */
+@keyframes popup-in {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -100%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@keyframes popup-out {
+	from {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	to {
+		opacity: 0;
+		transform: translate(-50%, -100%);
+	}
+}
+
+@keyframes tab-in {
+	from {
+		opacity: 0;
+		left: 50%;
+	}
+
+	to {
+		opacity: 1;
+		left: 0;
+	}
+}

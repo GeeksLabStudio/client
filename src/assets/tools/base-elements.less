@@ -55,6 +55,15 @@ body * {
 		}
 	}
 
+	&.btn-secondary {
+		background: @secondary-color;
+		color: #fff;
+
+		&:hover {
+			background: darken(@secondary-color, 10%);
+		}
+	}
+
 	&.btn-danger {
 		background: @danger-color;
 		color: #fff;
@@ -71,15 +80,15 @@ body * {
 	}
 }
 
-// inputs
+// input
 input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
 	outline: none;
 	border: none;
-	border-bottom: 1px solid @border-color-base;
-	height: 30px;
-	padding: 0 5px;
-	font-size: 15px;
-	min-width: 250px;
+	border-bottom: @input-border;
+	height: @input-height;
+	padding: @input-padding;
+	font-size: @input-font-size;
+	min-width: @input-min-width;
 	.transition-fast;
 
 	&:focus {
@@ -89,5 +98,28 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
 	&:focus ~ label {
 		top: -20px;
 		font-size: 12px;
+	}
+}
+
+// select
+.select {
+	display: inline-block;
+
+	select {
+		width: 100%;
+		height: 100%;
+		border: none;
+		outline: none;
+		background: #fff;
+		padding: @select-padding;
+		border-bottom: @select-border;
+		min-width: @select-min-width;
+		font-size: @select-font-size;
+		height: @select-height;
+		.transition-fast;
+
+		&:active, &:focus {
+			border-color: @main-color;
+		}
 	}
 }

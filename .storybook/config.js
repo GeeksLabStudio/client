@@ -13,6 +13,7 @@ function loadStories() {
 	require('../src/components/UI/Popup/story.js');
 	require('../src/components/UI/Breadcrumb/story.js');
 	require('../src/components/UI/Pagination/story.js');
+	require('../src/components/UI/Tabs/story.js');
 	require('../src/components/SignIn/story.js');
   require('../src/components/NavBar/story.js');
   require('../src/components/SideBar/story.js');
