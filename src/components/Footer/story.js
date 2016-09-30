@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import >>>CLASS<<< from './index.js';
+import Footer from './index.js';
 
-storiesOf('>>>CLASS<<<', module)
+storiesOf('Footer', module)
   .add('default', () => (
-    <>>>CLASS<<< />
+    <Footer links={_links} />
   ))

@@ -3,7 +3,7 @@ import AppDispatcher from '../dispatchers/app.dispatcher';
 class AppAction {
 
   toggleSidebar() {
-    let action = 'TOGGLE_SIDEBAR';
+    let action = app.actions.ui.sidebar;
 
     AppDispatcher.dispatch({
       action
@@ -11,7 +11,7 @@ class AppAction {
   }
 
   togglePopup() {
-  	let action = 'TOGGLE_POPUP';
+  	let action = app.actions.ui.popup;
 
   	AppDispatcher.dispatch({
       action

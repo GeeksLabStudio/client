@@ -8,6 +8,7 @@
   background-color: @navbar-background;
   color: @navbar-color;
   text-align: center;
+  .clear;
 
   .logo {
     position: absolute;
@@ -25,7 +26,7 @@
   .menu {
     float: left;
     font-size: @navbar-menu-font-size;
-    line-height: @navbar-height;
+    line-height: inherit;
     cursor: pointer;
     .transition-fast;
 
@@ -37,11 +38,12 @@
   .navbar-links {
     float: right;
     color: inherit;
+    vertical-align: top;
+    line-height: @navbar-height;
 
     a {
       padding: @navbar-links-padding;
       text-decoration: none;
-      line-height: @navbar-height;
       font-size: @navbar-links-font-size;
       text-transform: capitalize;
       .transition-fast;

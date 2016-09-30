@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   NavBar,
-  SideBar
+  SideBar,
+  Footer
 } from '../../components';
 
 import {
@@ -13,14 +14,16 @@ import {
 require('./style.less');
 
 export default class ApplicationLayout extends React.Component {
- render() {
+  render() {
+    let stickyFooter = config.components.footer.sticky;
+
     return (
-      <div className="app-body">
-        <NavBar/>
-
-        <SideBar/>
-
+      <div className={stickyFooter ? 'app-body sticky-footer': 'app-body'}>
         <div className="page-content">
+          <NavBar/>
+
+          <SideBar/>
+
           <Breadcrumb
             routes={this.props.routes}
           />
@@ -28,8 +31,10 @@ export default class ApplicationLayout extends React.Component {
           {this.props.children}
         </div>
 
-        <Popup/>
+        <Footer/>
 
+        <Popup/>
+        
         <Notification/>
       </div>
     )

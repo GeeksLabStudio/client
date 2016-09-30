@@ -42,26 +42,3 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 a:focus { outline: none; text-decoration: none; }
 a img { vertical-align: sub; border: none; } /* remove gab below linked image; IE < 9 Bug */
 a:visited {text-decoration: none; color: inherit;}
-
-.float--left { float:left; }
-.float--right { float:right; }
-.clearboth, .clear { clear:both; }
-
-.clearfix, .cf {
-  zoom: 1;
-  &:before, &:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-  &:after { clear: both; }
-}
-
-.aural {
- width: 1px;
- height: 1px;
- position: absolute;
- top: -1000px;
- overflow: hidden;
-}

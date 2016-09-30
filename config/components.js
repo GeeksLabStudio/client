@@ -4,6 +4,12 @@ module.exports = {
     sticky: false
   },
 
+  footer: {
+    links: true,
+    sticky: true,
+    form: true
+  },
+
   sidebar: {
     enable: true
   },
