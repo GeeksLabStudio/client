@@ -11,7 +11,12 @@ module.exports = {
   },
 
   ui: {
-    notification: 'NEW_NOTIFICATION'
-  }
+    notification: 'NEW_NOTIFICATION',
+    sidebar: 'TOGGLE_SIDEBAR',
+    popup: 'TOGGLE_POPUP'
+  },
 
+  forms: {
+    subscribe: 'SUBSCRIBE'
+  }
 }

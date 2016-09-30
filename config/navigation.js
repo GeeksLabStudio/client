@@ -6,7 +6,8 @@ module.exports = {
     icon: 'fa-home',
     label: 'Home',
     position: [
-      ui.ControlPosition.SIDEBAR
+      ui.ControlPosition.SIDEBAR,
+      ui.ControlPosition.FOOTER
     ]
   },
 
@@ -16,7 +17,8 @@ module.exports = {
     label: 'Sign In',
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR
+      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.FOOTER
     ]
   },
 
@@ -26,7 +28,8 @@ module.exports = {
     label: 'Profile',
     position: [
       ui.ControlPosition.NAVBAR,
-      ui.ControlPosition.SIDEBAR
+      ui.ControlPosition.SIDEBAR,
+      ui.ControlPosition.FOOTER
     ],
     disable: true
   },

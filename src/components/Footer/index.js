@@ -1,16 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router';
-let _logoPath = require('../../assets/images/logo.png');
-
 import AppStore from '../../stores/app.store';
-import AppAction from '../../actions/app.action';
+import FormAction from '../../actions/form.action';
 
 require('./style.less');
 
-export default class NavBar extends React.Component {
+export default class Footer extends React.Component {
   static propTypes = {}
 
-  position = app.ui.ControlPosition.NAVBAR
+  position = app.ui.ControlPosition.FOOTER
 
   state = {
     links: AppStore.getAvailablePages(this.position)
@@ -33,10 +31,10 @@ export default class NavBar extends React.Component {
     })
   }
 
-  get _headerLinks() {
-    if (config.components.navbar.links) {
+  get _footerLinks() {
+    if (config.components.footer.links) {
       return (
-        <div className="navbar-links">
+        <div className="footer-links">
           {this._links}
         </div>
       )
@@ -51,22 +49,34 @@ export default class NavBar extends React.Component {
           activeClassName='active'
           onlyActiveOnIndex={_link.path == '/'}
         >
-        <i className={_link.icon}/>
         {_link.label}
       </Link>
     })
   }
 
-  get _sidebarIcon() {
-    let sideBar = app.config.components.sidebar.enable;
-    return sideBar ? <span onClick={AppAction.toggleSidebar} className="menu fa fa-bars"></span> : null;
+  get _footerForm() {
+    if (config.components.footer.form) {
+      return (
+        <form className="subscribe-form" onSubmit={::this._submit}>
+          <label>Subscribe to newsletters</label>
+          <input type="email" ref="email" name="email" placeholder="Email"/>
+          <button className="btn" type="submit">Submit</button>
+        </form>
+      )
+    }
+  }
+
+  _submit(e) {
+    e.preventDefault();
+    let _email = this.refs.email.value;
+    FormAction.subscribe(_email);
   }
 
   render() {
     return (
-      <div className='navbar'>
-        {this._sidebarIcon}
-        {this._headerLinks}
+      <div className='footer'>
+        {this._footerLinks}
+        {this._footerForm}
       </div>
     )
   }
