@@ -27,10 +27,12 @@ export default class Application extends React.Component {
     let routes = nextState.routes;
     let config = routes[routes.length - 1].config;
 
+    // set document title
+    document.title = config.title;
+
     let access = AuthStore.checkPermissions(config.permissions);
 
     if (access) {
-
       return true
     } else {
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: not right permission');
