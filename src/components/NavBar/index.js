@@ -1,19 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router';
-let _logoPath = require('../../assets/images/logo.png');
-
 import AppStore from '../../stores/app.store';
 import AppAction from '../../actions/app.action';
+import AuthStore from '../../stores/auth.store';
+import AuthAction from '../../actions/auth.action';
 
 require('./style.less');
 
 export default class NavBar extends React.Component {
   static propTypes = {}
 
-  position = app.ui.ControlPosition.NAVBAR
-
-  state = {
-    links: AppStore.getAvailablePages(this.position)
+  position = {
+    navbar: app.ui.ControlPosition.NAVBAR,
+    dropdown: app.ui.ControlPosition.DROPDOWN
   }
 
   componentDidMount(){
@@ -25,35 +24,91 @@ export default class NavBar extends React.Component {
     AppStore.removeListener('ui:update', this.__onUiUpdate)
   }
 
+  state = {
+    links: AppStore.getAvailablePages(this.position.navbar),
+    dropdown: AppStore.getAvailablePages(this.position.dropdown)
+  }
+
+  actions = {
+    logout: AuthAction.logout
+  }
+
   UIupdate(){
-    let links = AppStore.getAvailablePages(this.position);
+    let links = AppStore.getAvailablePages(this.position.navbar);
+    let dropdown = AppStore.getAvailablePages(this.position.dropdown);
 
     this.setState({
-      links
+      links,
+      dropdown
     })
   }
 
   get _headerLinks() {
-    if (config.components.navbar.links) {
-      return (
-        <div className="navbar-links">
-          {this._links}
+    let _html = [];
+    let _links = this.state.links;
+    let _dropdownLinks = this.state.dropdown;
+    let _profile = AuthStore.profile;
+
+    if (config.components.navbar.dropdown && _dropdownLinks.length > 0) {
+      let _userImage = _profile.image ? <img className="image" src={_profile.image} /> : <i className="placeholder fa fa-user"/>;
+
+      _html.push(
+        <div className="dropdown" key="dropdown">
+          {_userImage}
+
+          <i className="arrow fa fa-angle-down"/>
+
+          <div className="links">
+            {this._links(_dropdownLinks)}
+          </div>
         </div>
       )
     }
+
+    if (config.components.navbar.links && _links.length > 0) {
+       _html.push(
+        <div className="navbar-links" key="links">
+          {this._links(_links)}
+        </div>
+      )
+    } 
+
+    if (_profile.role != 'GUEST') {
+      _html.push(
+        <div className="welcome" key="welcome">
+          {`welcome , ${_profile.username}!`}
+        </div>
+      )
+    }
+
+    return _html;
   }
 
-  get _links() {
-    return this.state.links.map(_link => {
-      return <Link
-          to={_link.path}
-          key={_link.label}
-          activeClassName='active'
-          onlyActiveOnIndex={_link.path == '/'}
-        >
-        <i className={_link.icon}/>
-        {_link.label}
-      </Link>
+  _links(links) {
+    return links.map((_link, i) => {
+      if (_link.path) {
+        return (
+          <Link
+            to={_link.path}
+            key={i}
+            activeClassName='active'
+            onlyActiveOnIndex={_link.path == '/'}
+          >
+            <i className={_link.icon}/>
+            {_link.label}
+          </Link>
+        )
+      } else if (_link.action) {
+        return (
+          <span
+            key={i}
+            onClick={this.actions[_link.action]}
+          >
+            <i className={_link.icon}/>
+            {_link.label}
+          </span>
+        )
+      }
     })
   }
 

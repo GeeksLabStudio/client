@@ -23,6 +23,9 @@ class AppStore extends Store {
         },
         profile: {
           disable: false
+        },
+        logout: {
+          disable: false
         }
       });
 
@@ -58,14 +61,8 @@ class AppStore extends Store {
     let pages = Object.keys(this.navigation);
 
     return pages.map(key => {
-        let page = this.navigation[key];
-
-        // if (page.icon)
-        //   page.icon = `fa${page.icon}`;
-        page.icon += ' fa';
-
-        return page
-      })
+      return this.navigation[key]
+    })
       .filter(page => !page.disable) // filtering disabled by default pages
       .filter(page => page.position.indexOf(controlPosition)>=0 ) // filtering by position
 

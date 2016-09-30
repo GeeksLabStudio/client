@@ -64,13 +64,14 @@ class AuthService{
           auth: {
             profile: {
               username,
-              role: app.roles.user
+              role: app.roles.user,
+              image: 'http://www.rush-agency.ru/wp-content/uploads/avatar-1.png'
             },
             token: 'TEST'
           }
         });
 
-      },2000);
+      }, 400);
     // -----------------------
     });
   }
@@ -81,7 +82,7 @@ class AuthService{
         resolve({
           message: "You logged out"
         });
-      },2000);
+      }, 400);
     });
   }
 

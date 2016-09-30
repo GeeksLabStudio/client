@@ -1,8 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
 import * as pages from './pages';
-
 import AuthStore from './stores/auth.store'
 import AppStore from './stores/app.store'
 

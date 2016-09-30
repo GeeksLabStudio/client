@@ -1,7 +1,8 @@
 module.exports = {
   navbar: {
     links: true,
-    sticky: false
+    sticky: false,
+    dropdown: true
   },
 
   footer: {

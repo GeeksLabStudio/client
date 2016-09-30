@@ -1,9 +1,9 @@
 import React from 'react';
-require('./style.less');
-
-import AuthAction from '../../actions/auth.action'
+import AuthAction from '../../actions/auth.action';
 import AuthService from '../../services/auth.service';
 import AuthStore from '../../stores/auth.store';
+
+require('./style.less');
 
 export default class ProfilePage extends React.Component {
   static propTypes = {

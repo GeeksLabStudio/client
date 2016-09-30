@@ -18,6 +18,9 @@ $appDispatcher.register(function(payload) {
         },
         profile: {
           disable: false
+        },
+        logout: {
+          disable: false
         }
       })
       break;
@@ -31,6 +34,9 @@ $appDispatcher.register(function(payload) {
           disable: false
         },
         profile: {
+          disable: true
+        },
+        logout: {
           disable: true
         }
       })
