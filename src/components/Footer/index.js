@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import AppStore from '../../stores/app.store';
-import FormAction from '../../actions/form.action';
+import FormAction from '../../actions/user.action';
 
 require('./style.less');
 

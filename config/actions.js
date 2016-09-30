@@ -16,7 +16,7 @@ module.exports = {
     popup: 'TOGGLE_POPUP'
   },
 
-  forms: {
+  user: {
     subscribe: 'SUBSCRIBE'
   }
 }
