@@ -28,7 +28,7 @@ module.exports = {
     label: 'Profile',
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.DROPDOWN,
+      ui.ControlPosition.NAVBAR,
       ui.ControlPosition.FOOTER
     ],
     disable: true
@@ -39,7 +39,7 @@ module.exports = {
     icon: 'fa fa-sign-out',
     label: 'Logout',
     position: [
-      ui.ControlPosition.DROPDOWN
+      ui.ControlPosition.NAVBAR
     ],
     disable: true
   }

@@ -1,0 +1,86 @@
+@import '~var';
+@import '~tools/mixins';
+
+.dropdown {
+  line-height: @navbar-height;
+  color: inherit;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  
+  // photo
+  .image {
+    line-height: @navbar-height;
+    width: @navbar-dropdown-image-width;
+    height: @navbar-dropdown-image-height;
+    border-radius: @navbar-dropdown-image-border-radius;
+    position: relative;
+    top: -2px;
+    vertical-align: middle;
+  }
+
+  // placeholder
+  .placeholder {
+    font-size: @navbar-dropdown-placeholder-font-size;
+    color: @navbar-dropdown-placeholder-color;
+  }
+  
+  // arrow
+  .arrow {
+    margin: @navbar-dropdown-arrow-margin;
+    color: @navbar-dropdown-arrow-color;
+    font-size: @navbar-dropdown-arrow-font-size;
+    .transition-fast;
+  }
+
+  // links in dropdown
+  .links {
+    top: @navbar-dropdown-content-top;
+    right: @navbar-dropdown-content-right;
+    left: @navbar-dropdown-content-left;
+    bottom: @navbar-dropdown-content-bottom;
+    padding: @navbar-dropdown-content-wrapper-padding;
+    text-align: @navbar-dropdown-content-text-align;
+    box-shadow: @navbar-dropdown-content-wrapper-shadow;
+    position: absolute;
+    z-index: 2; 
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-out;
+    
+    // items
+    a, span {
+      color: @navbar-dropdown-content-color;
+      font-weight: @navbar-dropdown-content-font-weight;
+      background: @navbar-dropdown-content-background;
+      line-height: @navbar-dropdown-content-line-height;
+      padding: @navbar-dropdown-content-padding;
+      text-decoration: @navbar-dropdown-content-text-decoration;
+      display: block;
+      cursor: pointer;
+      .transition-fast;
+
+      &:hover, &.active {
+        color: @navbar-dropdown-content-hover-color;
+        background: @navbar-dropdown-content-hover-background;
+      }
+    }
+
+    i {
+      display: none;
+    }
+  }
+  
+  // dropdown hover state
+  &.active {
+    .links {
+      opacity: 1;
+      height: auto;
+    }
+
+    .arrow {
+    	transform: rotate(180deg);
+    }
+  }
+}

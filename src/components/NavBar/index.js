@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {Dropdown} from '../UI';
 import AppStore from '../../stores/app.store';
 import AppAction from '../../actions/app.action';
 import AuthStore from '../../stores/auth.store';
@@ -11,8 +12,7 @@ export default class NavBar extends React.Component {
   static propTypes = {}
 
   position = {
-    navbar: app.ui.ControlPosition.NAVBAR,
-    dropdown: app.ui.ControlPosition.DROPDOWN
+    navbar: app.ui.ControlPosition.NAVBAR
   }
 
   componentDidMount(){
@@ -25,8 +25,7 @@ export default class NavBar extends React.Component {
   }
 
   state = {
-    links: AppStore.getAvailablePages(this.position.navbar),
-    dropdown: AppStore.getAvailablePages(this.position.dropdown)
+    links: AppStore.getAvailablePages(this.position.navbar)
   }
 
   actions = {
@@ -35,45 +34,41 @@ export default class NavBar extends React.Component {
 
   UIupdate(){
     let links = AppStore.getAvailablePages(this.position.navbar);
-    let dropdown = AppStore.getAvailablePages(this.position.dropdown);
 
     this.setState({
-      links,
-      dropdown
+      links
     })
   }
 
   get _headerLinks() {
     let _html = [];
     let _links = this.state.links;
-    let _dropdownLinks = this.state.dropdown;
+    let _config = config.components.navbar;
     let _profile = AuthStore.profile;
 
-    if (config.components.navbar.dropdown && _dropdownLinks.length > 0) {
-      let _userImage = _profile.image ? <img className="image" src={_profile.image} /> : <i className="placeholder fa fa-user"/>;
-
-      _html.push(
-        <div className="dropdown" key="dropdown">
-          {_userImage}
-
-          <i className="arrow fa fa-angle-down"/>
-
-          <div className="links">
-            {this._links(_dropdownLinks)}
-          </div>
-        </div>
-      )
+    if (!_config.links || _links.length == 0) {
+      return;
     }
 
-    if (config.components.navbar.links && _links.length > 0) {
-       _html.push(
+    // if user is GUEST or dropdown is disabled
+    if (_profile.role == 'GUEST' || !_config.dropdown) {
+      _html.push(
         <div className="navbar-links" key="links">
-          {this._links(_links)}
+          {this._links}
         </div>
       )
-    } 
+    } else { // if user is autificated
+      // user image or placholder
+      let _userImage = _profile.image ? <img className="image" src={_profile.image} /> : <i className="placeholder fa fa-user"/>;
 
-    if (_profile.role != 'GUEST') {
+      // get dropdown
+      _html.push(
+        <Dropdown links={this._links} key="dropdown">
+          {_userImage}
+        </Dropdown>
+      )
+      
+      // welcome message
       _html.push(
         <div className="welcome" key="welcome">
           {`welcome , ${_profile.username}!`}
@@ -84,8 +79,11 @@ export default class NavBar extends React.Component {
     return _html;
   }
 
-  _links(links) {
-    return links.map((_link, i) => {
+  get _links() {
+    let _links = this.state.links;
+
+    return _links.map((_link, i) => {
+      // usual link
       if (_link.path) {
         return (
           <Link
@@ -98,7 +96,10 @@ export default class NavBar extends React.Component {
             {_link.label}
           </Link>
         )
-      } else if (_link.action) {
+      } 
+
+      // link with action
+      else if (_link.action) { 
         return (
           <span
             key={i}
