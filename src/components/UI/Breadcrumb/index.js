@@ -50,11 +50,9 @@ export default class Breadcrumb extends React.Component {
     let depth = routes.length;
 
     return (
-      <div>
-        <ul className="breadcrumbs">
-          {this.breadcrumbs}
-        </ul>
-      </div>
+      <ul className="breadcrumbs">
+        {this.breadcrumbs}
+      </ul>
     )
   }
 }

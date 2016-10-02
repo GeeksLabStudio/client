@@ -44,10 +44,9 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    return <div className={config.pages.login.class}>
-      {this.messages}
-
-      <h2>Sign In</h2>
+    return <div className="login-page">
+      <h1>Sign In</h1>
+      
       <SignIn
         error={this.state.error}
       />

@@ -64,6 +64,9 @@ class AuthService{
           auth: {
             profile: {
               username,
+              name: 'Michael',
+              lastName: 'Jackson JR.',
+              sex: 'male',
               role: app.roles.user,
               image: 'http://www.rush-agency.ru/wp-content/uploads/avatar-1.png'
             },
