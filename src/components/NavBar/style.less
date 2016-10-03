@@ -63,6 +63,11 @@
       &.active , &:hover {
         color: @navbar-links-active-font-color;
       }
+
+      &.active {
+        cursor: default;
+        pointer-events: none;
+      }
     }
   }
   
@@ -70,6 +75,11 @@
   .dropdown {
     float: @navbar-dropdown-float;
     margin: @navbar-dropdown-margin;
+
+    .active {
+      cursor: default;
+      pointer-events: none;
+    }
   }
   
   // welcome message

@@ -41,25 +41,42 @@ export default class Application extends React.Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path='/' component={pages.Layout} >
-          <IndexRoute component={pages.Home} 
+        <Route path='/' component={pages.Layout}>
+          <IndexRoute 
+            component={pages.Home} 
             config={app.config.pages.home} 
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route path='/profile' 
+          <Route 
+            path='/profile' 
             component={pages.Profile}
             config={app.config.pages.profile}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route path='/login' 
+          <Route 
+            path='/login' 
             component={pages.Login}
             config={app.config.pages.login}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route path='/*' 
+          <Route 
+            path='/articles' 
+            component={pages.Blog}
+            config={app.config.pages.blog}
+            onEnter={::this.onEnterDefaultHandler}
+          >
+            <Route 
+              path="/articles/:articleId" 
+              component={pages.Blog}
+              config={app.config.pages.blog}
+              onEnter={::this.onEnterDefaultHandler}/>
+          </Route>
+
+          <Route 
+            path='/*' 
             component={pages.NotFound}
           />
         </Route>

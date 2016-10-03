@@ -52,7 +52,8 @@ export default class SignIn extends React.Component {
   }
 
   render() {
-    return <div className="sign-in">
+    return (
+      <div className="sign-in">
         <div className='error'>
           {this.messages}
         </div>
@@ -85,6 +86,7 @@ export default class SignIn extends React.Component {
         <button className="btn btn-primary" type="submit" onClick={::this.formSubmitHandler}>
           Sign In
         </button>
-    </div>
+      </div>
+    )
   }
 }

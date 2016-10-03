@@ -53,7 +53,7 @@ export default class ProfilePage extends React.Component {
   render() {
     return (
       <div className="profile-page">
-        <h1>Profile</h1>
+        <h1>{config.pages.profile.title}</h1>
 
         <div className="photo">
           <img src={this.state.profile.image} />
