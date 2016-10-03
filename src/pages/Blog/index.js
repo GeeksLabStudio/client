@@ -3,7 +3,15 @@ import {Link} from 'react-router';
 import data from './seed';
 require('./style.less');
 
-export default class BlogPage extends React.Component {
+export class Blog extends React.Component {
+  render(){
+    return <div>
+        {this.props.children}
+      </div>
+  }
+}
+
+export class BlogList extends React.Component {
   state = {
     data
   }
@@ -17,7 +25,7 @@ export default class BlogPage extends React.Component {
   					<h2 className="title">{el.title}</h2>
 	  				<p className="desc">{el.desc}</p>
 	  				<div className="more" to={`articles/${el._id}`}>
-	            <Link to={`articles/${el._id}`}>
+	            <Link to={`/articles/${el._id}`}>
 		            Read more
 		          </Link>
 	          </div>
@@ -37,5 +45,28 @@ export default class BlogPage extends React.Component {
 	      </div>
       </div>
     )
+  }
+}
+
+export class BlogDetails extends React.Component {
+  render() {
+    const { articleId } = this.props.params;
+    
+    let el = data.find(x => {
+      return x._id == articleId
+    })
+
+    return <div className="article">
+      <img src={el.image} className="thumb"/>
+      <div className="info">
+        <h2 className="title">{el.title}</h2>
+        <p className="desc">{el.desc}</p>
+        <div className="more" to={`articles/${el._id}`}>
+          <Link to={`/articles/${el._id}`}>
+            Read more
+          </Link>
+        </div>
+      </div>
+    </div>
   }
 }

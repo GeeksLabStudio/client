@@ -15,10 +15,11 @@ export default class Breadcrumb extends React.Component {
 
   get breadcrumbs(){
     let _b = []
-
+    
     this.props.routes.forEach((item, index) => {
+      console.log(item)
       if (item.path)
-        _b.push(item.path.slice(1))
+        _b.push(item.path.slice(1).replace(/\/?\:\w+\/?/,''))
     })
 
     return _b.map((path,index) => (
@@ -26,7 +27,7 @@ export default class Breadcrumb extends React.Component {
           <Link
             onlyActiveOnIndex={true}
             activeClassName="breadcrumb-active"
-            to={path || ''}>
+            to={'/'+path}>
 
             {this.getBreadcrumbIcon(path,index)}
 

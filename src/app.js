@@ -68,9 +68,14 @@ export default class Application extends React.Component {
             config={app.config.pages.blog}
             onEnter={::this.onEnterDefaultHandler}
           >
+            <IndexRoute 
+              component={pages.BlogList} 
+              config={app.config.pages.blog}
+              onEnter={::this.onEnterDefaultHandler}
+            />
             <Route 
               path="/articles/:articleId" 
-              component={pages.Blog}
+              component={pages.BlogDetails}
               config={app.config.pages.blog}
               onEnter={::this.onEnterDefaultHandler}/>
           </Route>
