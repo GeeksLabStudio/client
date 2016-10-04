@@ -17,8 +17,8 @@ export default class SignIn extends React.Component {
   }
 
   formSubmitHandler(e) {
-    AuthAction.login(this.state.form);
     e.preventDefault();
+    AuthAction.login(this.state.form);
   }
 
   getFormValue(key) {
@@ -38,22 +38,9 @@ export default class SignIn extends React.Component {
     }
   }
 
-  get messages(){
-    if (!this.props.error)
-      return
-
-    let err = JSON.stringify(this.props.error, false, 2);
-
-    return (
-      <pre>
-        {err}
-      </pre>
-    )
-  }
-
   render() {
     return (
-      <div className="sign-in">
+      <form onSubmit={::this.formSubmitHandler} className="sign-in">
         <div className='error'>
           {this.messages}
         </div>
@@ -83,10 +70,10 @@ export default class SignIn extends React.Component {
           </label>
         </div>
 
-        <button className="btn btn-primary" type="submit" onClick={::this.formSubmitHandler}>
+        <button className="btn btn-primary" type="submit">
           Sign In
         </button>
-      </div>
+      </form>
     )
   }
 }

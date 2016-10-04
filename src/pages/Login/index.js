@@ -5,40 +5,16 @@ import AuthService from '../../services/auth.service';
 require('./style.less');
 
 export default class LoginPage extends React.Component {
-  static propTypes = {
-
-  }
-
-  state = {
-    error: null
-  }
-
-  handleError(error) {
-    let {
-      message
-    } = error;
-
-    this.setState({
-      error: {
-        message
-      }
-    });
-  }
-
   profileUpdateHandler(){
     AuthService.goto('/profile')
   }
 
   componentDidMount(){
-    this.__errorHandler = ::this.handleError;
     this.__profileUpdateHandler = ::this.profileUpdateHandler;
-
-    AuthStore.on('auth:error', this.__errorHandler)
     AuthStore.on('profile:update', this.__profileUpdateHandler)
   }
 
   componentWillUnmount(){
-    AuthStore.removeListener('auth:error', this.__errorHandler)
     AuthStore.removeListener('profile:update', this.__profileUpdateHandler)
   }
 
@@ -46,10 +22,7 @@ export default class LoginPage extends React.Component {
     return <div className="login-page">
       <h1>{config.pages.login.title}</h1>
       
-      <SignIn
-        error={this.state.error}
-      />
+      <SignIn/>
     </div>
   }
-
 }
