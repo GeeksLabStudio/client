@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9000",
     "build": "webpack --config webpack.config.prod.js",
+    "static": "node static.js",
     "create": "node tools/create/index.js"
   },
   "author": "",
