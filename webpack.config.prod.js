@@ -15,6 +15,9 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      app : path.join(__dirname, 'config')
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
