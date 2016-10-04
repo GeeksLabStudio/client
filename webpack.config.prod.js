@@ -8,11 +8,10 @@ module.exports = {
   entry: {
     app: './src/index',
     vendor: ['react', 'react-dom', 'lodash']
-  }
-  ,
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'bundle.js',
     publicPath: '/'
   },
   plugins: [
@@ -39,6 +38,12 @@ module.exports = {
     }),
      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.app.js")
   ],
+  resolve: {
+    modulesDirectories: [
+      "node_modules",
+      "assets"
+    ]
+  },
   module: {
     loaders: [{
         test: /\.js?$/,
