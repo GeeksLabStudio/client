@@ -1,9 +1,8 @@
 import React from 'react';
-require('./style.less');
-
 import SignIn from '../../components/SignIn';
 import AuthStore from '../../stores/auth.store';
 import AuthService from '../../services/auth.service';
+require('./style.less');
 
 export default class LoginPage extends React.Component {
   static propTypes = {
@@ -45,7 +44,7 @@ export default class LoginPage extends React.Component {
 
   render() {
     return <div className="login-page">
-      <h1>Sign In</h1>
+      <h1>{config.pages.login.title}</h1>
       
       <SignIn
         error={this.state.error}

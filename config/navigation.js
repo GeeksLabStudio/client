@@ -34,6 +34,17 @@ module.exports = {
     disable: true
   },
 
+  blog: {
+    path: '/articles',
+    icon: 'fa fa-rss',
+    label: 'Blog',
+    position: [
+      ui.ControlPosition.SIDEBAR,
+      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.FOOTER
+    ]
+  },
+
   logout: {
     action: 'logout',
     icon: 'fa fa-sign-out',

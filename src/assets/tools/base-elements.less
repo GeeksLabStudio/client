@@ -42,6 +42,10 @@ body * {
 	text-transform: uppercase;
 	.transition-base;
 
+	&.full-width {
+		width: 100%;
+	}
+
 	&:hover {
 		background: darken(#fff, 10%);
 	}
@@ -98,6 +102,22 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
 	&:focus ~ label {
 		top: -20px;
 		font-size: 12px;
+	}
+}
+
+// textarea
+textarea {
+	resize: none;
+	outline: none;
+	min-width: @input-min-width;
+	min-height: @input-min-width / 2;
+	padding: @input-padding;
+	font-size: @input-font-size;
+	border: 1px solid @border-color-base;
+	.transition-fast;
+
+	&:focus, &:active {
+		border-color: @main-color;
 	}
 }
 

@@ -20,5 +20,12 @@ module.exports = {
     permissions: [
       roles.user
     ]
+  },
+
+  blog: {
+    title: 'Blog',
+    permissions: [
+      roles.all
+    ]
   }
 }

@@ -8,7 +8,6 @@ global.config = app.config;
 
 function loadStories() {
   require('../src/assets/app.less');
-	// >>>INCLUDE<<<
 	require('../src/components/UI/Notification/story.js');
 	require('../src/components/UI/Popup/story.js');
 	require('../src/components/UI/Breadcrumb/story.js');
@@ -17,6 +16,7 @@ function loadStories() {
 	require('../src/components/SignIn/story.js');
   require('../src/components/NavBar/story.js');
   require('../src/components/SideBar/story.js');
+  require('../src/components/ContactForm/story.js');
 }
 
 configure(loadStories, module);
