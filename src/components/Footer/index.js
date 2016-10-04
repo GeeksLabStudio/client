@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import AppStore from '../../stores/app.store';
 import FormAction from '../../actions/user.action';
-
 require('./style.less');
 
 export default class Footer extends React.Component {

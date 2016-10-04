@@ -4,7 +4,7 @@ export Login from './Login';
 export Profile from './Profile';
 export NotFound from './NotFound';
 export {
-  Blog, 
+  BlogPage, 
   BlogList, 
   BlogDetails 
 } from './Blog';

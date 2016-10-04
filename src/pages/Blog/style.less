@@ -30,6 +30,18 @@
 				overflow-y: hidden;
 				position: relative;
 			}
+
+			.indicators {
+				margin: @blog-indicators-margin;
+
+				span {
+					font-size: @blog-indicators-item-title-font-size;
+					font-weight: @blog-indicators-item-title-font-weight;
+					margin: @blog-indicators-item-margin;
+					color: @blog-indicators-item-color;
+					display: inline-block;
+				}
+			}
 			
 			// title
 			.title {
@@ -55,6 +67,88 @@
 					font-weight: @blog-article-more-font-weight;
 					color: @blog-article-more-color;
 				}
+			}
+		}
+	}
+}
+
+.blog-datail-page {
+	&:extend(.blog-page);
+	.layout(@blog-detail-layout);
+
+	// indicators
+	.indicators {
+		&:extend(.blog-page .articles .article .indicators);
+
+		span {
+			&:extend(.blog-page .articles .article .indicators span);
+		}
+	}
+
+	// form
+	.comment-form {
+		border-top: @blog-detail-form-border;
+		padding: @blog-detail-form-padding;
+		margin: @blog-detail-form-margin;
+		
+		// links for not loggined users
+		.login-link {
+			color: @blog-detail-form-login-link-color;
+			font-size: @blog-detail-form-login-link-font-size;
+			font-weight: @blog-detail-form-login-link-font-weight;
+			display: block;
+		}
+		
+		// form
+		form {
+			textarea {
+				width: @blog-detail-form-button-width;
+				margin: @blog-detail-form-message-margin;
+				display: block;
+			}
+
+			button {
+				width: @blog-detail-form-button-width;
+				margin: @blog-detail-form-button-margin;
+				display: block;
+			}
+		}
+	}
+	
+	// comments block
+	.comments {
+		margin: @blog-detail-comments-margin;
+		padding: @blog-detail-comments-padding;
+		border-top: @blog-detail-comments-border;
+		
+		// comment
+		.comment {
+			margin: @blog-detail-comment-margin;
+			padding: @blog-detail-comment-padding;
+			
+			// author
+			.author {
+				color: @blog-detail-comment-author-color;
+				font-size: @blog-detail-comment-author-font-size;
+				font-weight: @blog-detail-comment-author-font-weight;
+				margin: @blog-detail-comment-author-margin;
+			}
+			
+			// date
+			.date {
+				color: @blog-detail-comment-date-color;
+				font-size: @blog-detail-comment-date-font-size;
+				font-weight: @blog-detail-comment-date-font-weight;
+				margin: @blog-detail-comment-date-margin;
+			}
+			
+			// message
+			.text {
+				color: @blog-detail-comment-text-color;
+				font-size: @blog-detail-comment-text-font-size;
+				font-weight: @blog-detail-comment-text-font-weight;
+				margin: @blog-detail-comment-text-margin;
+				padding: @blog-detail-comment-text-padding;
 			}
 		}
 	}
