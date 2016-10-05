@@ -1,5 +1,6 @@
 import React from 'react';
 import AppStore from '../../../stores/app.store';
+import AuthStore from '../../../stores/auth.store';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 require('./style.less');
@@ -17,12 +18,13 @@ export default class Notification extends React.Component {
     this.__notificationHandler = ::this.notificationHandler;
 
     AppStore.on('ui:notification', this.__notificationHandler);
+    AuthStore.on('auth:error', this.__notificationHandler);
   }
 
   componentWillUnmount(){
+    AuthStore.removeListener('auth:error', this.__notificationHandler);
     AppStore.removeListener('ui:notification', this.__notificationHandler);
   }
-
 
   // method that controls new incomed notification messages
   notificationHandler(notification){
@@ -42,7 +44,7 @@ export default class Notification extends React.Component {
       this.setState({
         messages
       })
-    }, 2500);
+    }, 3500);
   }
 
   _push(message) {
