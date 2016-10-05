@@ -28,6 +28,9 @@ export class BlogList extends React.Component {
             <h2 className="title">{el.title}</h2>
             <div className="indicators">
               <span>
+                <i className="fa fa-calendar"/> {el.date}
+              </span>
+              <span>
                 <i className="fa fa-comment"/> {el.comments.length}
               </span>
               <span>

@@ -27,6 +27,7 @@ module.exports = [
       }
     ],
     likes: 25,
+    date: '01/01/2016',
     html: '<img class="banner" src="https://www.unifone.com.au/media/cms_asset/iphone-7-banner.jpg"/>'+
           '<div>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took</div>'
   },
@@ -48,6 +49,7 @@ module.exports = [
       }
     ],
     likes: 11,
+    date: '01/01/2016',
     html: '<img class="banner" src="https://www.unifone.com.au/media/cms_asset/iphone-7-banner.jpg"/>'+
           '<h2>Trump lox</h2>'+
           "<div>More than 20 people interviewed described Mr Trump's behaviour toward women as crass and inappropriate.Mr Trump's campaign dismissed the allegations.Spokeswoman Hope Hicks said they were outlandish, unsubstantiated and totally false.Mr Trump has faced several allegations over the past week questioning his fitness to be president of the US.On Sunday, the New York Times published evidence which alleged that Mr Trump may not have paid federal income tax for 20 years.</div>"

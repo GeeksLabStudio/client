@@ -10,7 +10,7 @@ $appDispatcher.register(function(payload) {
 
   switch(payload.action){
     case app.actions.auth.login.success:
-      AuthStore.registerAuthentication(payload.data.auth)
+      AuthStore.registerAuthentication(payload.data)
       AppStore.updateNavigation({
         login: {
           disable: true

@@ -1,4 +1,4 @@
 module.exports = {
-  server: 'localhost:4000',
+  server: 'http://localhost:4000',
   login: '/auth/login'
 }

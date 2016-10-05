@@ -21,7 +21,7 @@ class AuthService{
 
   requestAuthorization(options){
     let {
-      username,
+      email,
       password
     } = options;
 
@@ -29,7 +29,7 @@ class AuthService{
       request
         .post(config.api.server + config.api.login)
         .send({
-          username,
+          email,
           password
         })
         .end((err,res) => {
@@ -43,11 +43,9 @@ class AuthService{
 
   removeAuthorization(){
     return new Promise((resolve,reject) => {
-      setTimeout(() => {
-        resolve({
-          message: "You logged out"
-        });
-      }, 400);
+      resolve({
+        message: "You logged out"
+      });
     });
   }
 
@@ -65,7 +63,6 @@ class AuthService{
         token: localStorage.getItem('token'),
         profile: JSON.parse(profile)
       }
-
 
     return {
       token: null,

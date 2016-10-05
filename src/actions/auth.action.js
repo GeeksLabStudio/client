@@ -5,12 +5,12 @@ class AuthAction {
 
   login(options) {
     let {
-      username,
+      email,
       password
     } = options;
 
     AuthService.requestAuthorization({
-      username,
+      email,
       password
     })
       .then(data => {

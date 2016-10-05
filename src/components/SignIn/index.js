@@ -10,7 +10,7 @@ export default class SignIn extends React.Component {
 
   state = {
     form: {
-      username: '',
+      email: '',
       password: '',
       remember: true
     }
@@ -47,9 +47,9 @@ export default class SignIn extends React.Component {
 
         <div className="form-group">
           <input type="text"
-            placeholder="Username"
-            value={this.getFormValue('username')}
-            onChange={this.getFormChangeHandler('username')}
+            placeholder="email"
+            value={this.getFormValue('email')}
+            onChange={this.getFormChangeHandler('email')}
             required="required"/>
         </div>
 
