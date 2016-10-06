@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthAction from '../../actions/auth.action'
+import AuthAction from '../../actions/auth.action';
 require('./style.less');
 
 export default class SignIn extends React.Component {
@@ -12,16 +12,16 @@ export default class SignIn extends React.Component {
 
   formSubmitHandler(e) {
     e.preventDefault();
-    AuthAction.login(this.state.form);
+    AuthAction.register(this.state.form);
   }
 
   getFormValue(key) {
-    return this.state.form[key]
+    return this.state.form[key];
   }
 
   getFormChangeHandler(key) {
     return (e) => {
-      let form = {...this.state.form}
+      let form = {...this.state.form};
       let value = e.target.value;
 
       form[key] = value;
@@ -34,7 +34,7 @@ export default class SignIn extends React.Component {
 
   render() {
     return (
-      <form onSubmit={::this.formSubmitHandler} className="sign-in">
+      <form onSubmit={::this.formSubmitHandler} className="sign-up">
         <div className="form-group">
           <input 
             type="email"
@@ -54,7 +54,7 @@ export default class SignIn extends React.Component {
         </div>
 
         <button className="btn btn-primary" type="submit">
-          Sign In
+          Register
         </button>
       </form>
     )

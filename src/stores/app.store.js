@@ -21,6 +21,9 @@ class AppStore extends Store {
         login: {
           disable: true
         },
+        login: {
+          disable: true
+        },
         profile: {
           disable: false
         },
@@ -28,7 +31,6 @@ class AppStore extends Store {
           disable: false
         }
       });
-
   }
 
   toggleSidebar() {

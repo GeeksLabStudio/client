@@ -68,9 +68,29 @@ class AuthService{
       token: null,
       profile: null
     }
-
   }
 
+  requestRegistration(options){
+    let {
+      email,
+      password
+    } = options;
+
+    return new Promise((resolve,reject) => {
+      request
+        .post(config.api.server + config.api.register)
+        .send({
+          email,
+          password
+        })
+        .end((err,res) => {
+          if (err || !res.ok)
+            reject(err)
+          else
+            resolve(res.body)
+        })
+    })
+  }
 }
 
 const $auth = new AuthService();

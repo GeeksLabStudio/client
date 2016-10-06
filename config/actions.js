@@ -7,6 +7,10 @@ module.exports = {
     logout: {
       success: 'AUTH_LOGOUT_SUCCESS',
       error: 'AUTH_LOGOUT_ERROR'
+    },
+    register: {
+      success: 'AUTH_REGISTER_SUCCESS',
+      error: 'AUTH_REGISTER_ERROR'
     }
   },
 

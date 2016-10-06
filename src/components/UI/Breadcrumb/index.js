@@ -17,7 +17,6 @@ export default class Breadcrumb extends React.Component {
     let _b = []
     
     this.props.routes.forEach((item, index) => {
-      console.log(item)
       if (item.path)
         _b.push(item.path.slice(1).replace(/\/?\:\w+\/?/,''))
     })

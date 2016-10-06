@@ -15,6 +15,9 @@ $appDispatcher.register(function(payload) {
         login: {
           disable: true
         },
+        register: {
+          disable: true
+        },
         profile: {
           disable: false
         },
@@ -30,6 +33,9 @@ $appDispatcher.register(function(payload) {
       AuthStore.removeAuthentication()
       AppStore.updateNavigation({
         login: {
+          disable: false
+        },
+        register: {
           disable: false
         },
         profile: {

@@ -25,7 +25,6 @@ class AuthAction {
           error
         })
       })
-
   }
 
   logout(){
@@ -38,6 +37,30 @@ class AuthAction {
       .then(null,() => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.logout.error
+        })
+      })
+  }
+
+  register(options){
+    let {
+      email,
+      password
+    } = options;
+
+    AuthService.requestRegistration({
+      email,
+      password
+    })
+      .then(data => {
+        AuthDispatcher.dispatch({
+          action: app.actions.auth.login.success,
+          data
+        })
+      })
+      .then(null, error => {
+        AuthDispatcher.dispatch({
+          action: app.actions.auth.login.error,
+          error
         })
       })
   }

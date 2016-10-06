@@ -14,7 +14,18 @@ module.exports = {
   login: {
     path: '/login',
     icon: 'fa fa-sign-in',
-    label: 'Sign In',
+    label: 'Login',
+    position: [
+      ui.ControlPosition.SIDEBAR,
+      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.FOOTER
+    ]
+  },
+
+  register: {
+    path: '/register',
+    icon: 'fa fa-user-plus',
+    label: 'Register',
     position: [
       ui.ControlPosition.SIDEBAR,
       ui.ControlPosition.NAVBAR,

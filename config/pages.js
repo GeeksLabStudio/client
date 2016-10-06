@@ -15,6 +15,13 @@ module.exports = {
     ]
   },
 
+  register: {
+    title: 'Register',
+    permissions: [
+      roles.guest
+    ]
+  },
+
   profile: {
     title: 'Profile',
     permissions: [

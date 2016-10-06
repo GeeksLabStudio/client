@@ -63,6 +63,13 @@ export default class Application extends React.Component {
           />
 
           <Route 
+            path='/register' 
+            component={pages.Register}
+            config={app.config.pages.register}
+            onEnter={::this.onEnterDefaultHandler}
+          />
+
+          <Route 
             path='/articles' 
             component={pages.Blog}
             config={app.config.pages.blog}

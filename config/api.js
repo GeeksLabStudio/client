@@ -1,4 +1,5 @@
 module.exports = {
   server: 'http://localhost:4000',
-  login: '/auth/login'
+  login: '/auth/login',
+  register: '/auth/register'
 }
