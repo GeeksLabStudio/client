@@ -2,14 +2,11 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import * as pages from './pages';
 import AuthStore from './stores/auth.store';
-import AppStore from './stores/app.store';
 import AppAction from './actions/app.action';
 
-// Application class
 export default class Application extends React.Component {
 
   checkRequirements(nextState, replace){
-
     app.utils.log.debug('AppRouter:checkRequirements', nextState)
 
     if (!AuthStore.isAuthenticated){
@@ -21,13 +18,11 @@ export default class Application extends React.Component {
   }
 
   onEnterDefaultHandler(nextState, replace){
-
     app.utils.log.debug('AppRouter:onEnterDefaultHandler', nextState)
 
     let routes = nextState.routes;
     let config = routes[routes.length - 1].config;
 
-    // set document title
     document.title = config.title;
 
     let access = AuthStore.checkPermissions(config.permissions);
@@ -37,14 +32,14 @@ export default class Application extends React.Component {
     } else {
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: not right permission');
       AppAction.notify('You don\'t have permissions to enter this page');
-      replace('/') //goto root /
+      replace('/')
     }
   }
 
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path='/' component={pages.Layout}>
+        <Route path={app.config.pages.home.path} component={pages.Layout}>
           <IndexRoute 
             component={pages.Home} 
             config={app.config.pages.home} 
@@ -52,28 +47,28 @@ export default class Application extends React.Component {
           />
 
           <Route 
-            path='/profile' 
+            path={app.config.pages.profile.path}
             component={pages.Profile}
             config={app.config.pages.profile}
             onEnter={::this.onEnterDefaultHandler}
           />
 
           <Route 
-            path='/login' 
+            path={app.config.pages.login.path}
             component={pages.Login}
             config={app.config.pages.login}
             onEnter={::this.onEnterDefaultHandler}
           />
 
           <Route 
-            path='/register' 
+            path={app.config.pages.register.path}
             component={pages.Register}
             config={app.config.pages.register}
             onEnter={::this.onEnterDefaultHandler}
           />
 
           <Route 
-            path='/articles' 
+            path={app.config.pages.blog.path}
             component={pages.Blog}
             config={app.config.pages.blog}
             onEnter={::this.onEnterDefaultHandler}
@@ -84,9 +79,9 @@ export default class Application extends React.Component {
               onEnter={::this.onEnterDefaultHandler}
             />
             <Route 
-              path="/articles/:articleId" 
+              path={app.config.pages.blog.children.path} 
               component={pages.BlogDetails}
-              config={app.config.pages.blog}
+              config={app.config.pages.blog.children}
               onEnter={::this.onEnterDefaultHandler}/>
           </Route>
 

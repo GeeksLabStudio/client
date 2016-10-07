@@ -39,7 +39,13 @@ module.exports = {
     title: 'Blog',
     permissions: [
       roles.all
-    ]
+    ],
+    children: {
+      path: '/articles/:articleId',
+      permissions: [
+        roles.all
+      ],
+    }
   },
 
   admin: {
