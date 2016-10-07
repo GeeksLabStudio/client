@@ -1,4 +1,5 @@
 var ui = require('./ui');
+var roles = require('./roles');
 
 module.exports = {
   home: {
@@ -8,6 +9,9 @@ module.exports = {
     position: [
       ui.ControlPosition.SIDEBAR,
       ui.ControlPosition.FOOTER
+    ],
+    permissions: [
+      roles.all
     ]
   },
 
@@ -19,6 +23,9 @@ module.exports = {
       ui.ControlPosition.SIDEBAR,
       ui.ControlPosition.NAVBAR,
       ui.ControlPosition.FOOTER
+    ],
+    permissions: [
+      roles.guest
     ]
   },
 
@@ -30,6 +37,9 @@ module.exports = {
       ui.ControlPosition.SIDEBAR,
       ui.ControlPosition.NAVBAR,
       ui.ControlPosition.FOOTER
+    ],
+    permissions: [
+      roles.guest
     ]
   },
 
@@ -42,7 +52,10 @@ module.exports = {
       ui.ControlPosition.NAVBAR,
       ui.ControlPosition.FOOTER
     ],
-    disable: true
+    // disable: true,
+    permissions: [
+      roles.user
+    ]
   },
 
   blog: {
@@ -53,6 +66,9 @@ module.exports = {
       ui.ControlPosition.SIDEBAR,
       ui.ControlPosition.NAVBAR,
       ui.ControlPosition.FOOTER
+    ],
+    permissions: [
+      roles.all
     ]
   },
 
@@ -63,6 +79,9 @@ module.exports = {
     position: [
       ui.ControlPosition.NAVBAR
     ],
-    disable: true
+    // disable: true,
+    permissions: [
+      roles.user
+    ]
   }
 }

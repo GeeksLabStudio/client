@@ -13,24 +13,6 @@ class AppStore extends Store {
     super();
 
     this.navigation = app.config.navigation;
-
-    // if profile exist
-    // updating navigation
-    if (AuthStore.isAuthenticated)
-      _.merge(this.navigation,{
-        login: {
-          disable: true
-        },
-        login: {
-          disable: true
-        },
-        profile: {
-          disable: false
-        },
-        logout: {
-          disable: false
-        }
-      });
   }
 
   toggleSidebar() {
@@ -46,7 +28,7 @@ class AppStore extends Store {
   }
 
   updateNavigation(navigation){
-    _.merge(this.navigation, navigation)
+    // _.merge(this.navigation, navigation)
 
     // this will trigers components they own methods
     // and update there state
@@ -60,13 +42,14 @@ class AppStore extends Store {
     @return Pages[]
   */
   getAvailablePages(controlPosition){
-    let pages = Object.keys(this.navigation);
+    let links = Object.keys(this.navigation);
 
-    return pages.map(key => {
+    return links.map(key => {
       return this.navigation[key]
     })
-      .filter(page => !page.disable) // filtering disabled by default pages
-      .filter(page => page.position.indexOf(controlPosition)>=0 ) // filtering by position
+      .filter(link => !link.disable) // filtering disabled by default pages
+      .filter(link => link.position.indexOf(controlPosition)>=0 ) // filtering by position
+      .filter(link => AuthStore.checkPermissions(link.permissions)) // filtering by permission
 
   }
 

@@ -18,7 +18,7 @@ module.exports = global.app = {
     navigation,
     api
   },
-  
+
   ui,
   actions,
   utils,

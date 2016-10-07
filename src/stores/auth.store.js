@@ -4,23 +4,38 @@ import AuthService from '../services/auth.service'
 class AuthStore extends Store {
 
   __token = null;
-  profile = null
+  profile = {}
 
   constructor(options){
     super();
 
     let {
-      token,
-      profile
+      token
     } = options;
 
-    if (token)
-      this.__setToken(token)
+    if (token){
+      app.utils.log.debug(`token detected in storage: [${token}]`);
+      this.__setToken(token);
 
-    if (profile)
-      this.profile = profile
-    else
-      this.profile = this.guestProfile;
+      AuthService.requestProfile({
+          token
+        })
+      .then(data => {
+        app.utils.log.debug('Profile have been successfully resolved')
+
+        this.updateProfile(data.profile)
+      })
+      .then(null, error => {
+        app.utils.log.error('Profile resolving failed.', error)
+
+        //remove token from localstorage
+        AuthService.removeLocalAuthorization();
+
+        //set profile to Guest
+        this.updateProfile()
+      })
+    } else
+      this.updateProfile();
   }
 
   /*
@@ -50,8 +65,7 @@ class AuthStore extends Store {
   }
 
   updateProfile(profile){
-    if (profile)
-      this.__setProfile()
+    this.__setProfile(profile)
   }
 
   checkPermissions(permissions){

@@ -11,40 +11,14 @@ $appDispatcher.register(function(payload) {
   switch(payload.action){
     case app.actions.auth.login.success:
       AuthStore.registerAuthentication(payload.data)
-      AppStore.updateNavigation({
-        login: {
-          disable: true
-        },
-        register: {
-          disable: true
-        },
-        profile: {
-          disable: false
-        },
-        logout: {
-          disable: false
-        }
-      })
+      AppStore.updateNavigation();
       break;
     case app.actions.auth.login.error:
       AuthStore.handleError(payload.error)
       break;
     case app.actions.auth.logout.success:
       AuthStore.removeAuthentication()
-      AppStore.updateNavigation({
-        login: {
-          disable: false
-        },
-        register: {
-          disable: false
-        },
-        profile: {
-          disable: true
-        },
-        logout: {
-          disable: true
-        }
-      })
+      AppStore.updateNavigation();
       break;
     case app.actions.auth.logout.error:
       AuthStore.handleError(payload.error)
