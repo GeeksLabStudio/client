@@ -2,6 +2,7 @@ var roles = require('./roles');
 
 module.exports = {
   home: {
+    path: '/',
     title: 'Home',
     permissions: [
       roles.all
@@ -9,6 +10,7 @@ module.exports = {
   },
 
   login: {
+    path: '/login',
     title: 'Login',
     permissions: [
       roles.guest
@@ -16,6 +18,7 @@ module.exports = {
   },
 
   register: {
+    path: '/register',
     title: 'Register',
     permissions: [
       roles.guest
@@ -23,16 +26,27 @@ module.exports = {
   },
 
   profile: {
+    path: '/profile',
     title: 'Profile',
     permissions: [
-      roles.user
+      roles.user,
+      roles.admin
     ]
   },
 
   blog: {
+    path: '/articles',
     title: 'Blog',
     permissions: [
       roles.all
     ]
-  }
+  },
+
+  admin: {
+    path: '/admin',
+    title: 'Admin',
+    permissions: [
+      roles.admin
+    ]
+  },
 }

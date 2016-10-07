@@ -1,5 +1,6 @@
 module.exports = {
   all: 'ALL',
   guest: 'GUEST',
-  user: 'USER'
+  user: 'USER',
+  admin: 'ADMIN'
 }

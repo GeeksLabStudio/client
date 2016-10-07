@@ -1,8 +1,9 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import * as pages from './pages';
-import AuthStore from './stores/auth.store'
-import AppStore from './stores/app.store'
+import AuthStore from './stores/auth.store';
+import AppStore from './stores/app.store';
+import AppAction from './actions/app.action';
 
 // Application class
 export default class Application extends React.Component {
@@ -13,6 +14,7 @@ export default class Application extends React.Component {
 
     if (!AuthStore.isAuthenticated){
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: is not authenticated');
+      AppAction.notify('You are not authenticated');
       replace('/login');
     } else
       return true
@@ -34,6 +36,7 @@ export default class Application extends React.Component {
       return true
     } else {
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: not right permission');
+      AppAction.notify('You don\'t have permissions to enter this page');
       replace('/') //goto root /
     }
   }
