@@ -8,13 +8,10 @@ import {
 import {
   Popup,
   Notification,
-  Breadcrumb,
-  Loading
+  Breadcrumb
 } from '../../components/UI';
 
-import _ from 'lodash';
 import AuthStore from '../../stores/auth.store';
-
 require('./style.less');
 
 export default class ApplicationLayout extends React.Component {
@@ -34,30 +31,28 @@ export default class ApplicationLayout extends React.Component {
   }
 
   render() {
-    return !_.isEmpty(this.state.profile) ? this.content : <Loading />
-  }
-
-  get content(){
     let stickyFooter = config.components.footer.sticky;
 
-    return <div className={stickyFooter ? 'app-body sticky-footer': 'app-body'}>
-      <div className="page-content">
-        <NavBar/>
+    return (
+      <div className={stickyFooter ? 'app-body sticky-footer': 'app-body'}>
+        <div className="page-content">
+          <NavBar/>
 
-        <SideBar/>
+          <SideBar/>
 
-        <Breadcrumb
-          routes={this.props.routes}
-        />
+          <Breadcrumb
+            routes={this.props.routes}
+          />
 
-        {this.props.children}
+          {this.props.children}
+        </div>
+
+        <Footer/>
+
+        <Popup/>
+
+        <Notification/>
       </div>
-
-      <Footer/>
-
-      <Popup/>
-
-      <Notification/>
-    </div>
+    )
   }
 }
