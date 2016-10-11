@@ -4,4 +4,5 @@ export SignIn from './SignIn';
 export SignUp from './SignIn';
 export Footer from './Footer';
 export ContactForm from './ContactForm';
+export ProfileProvider from './ProfileProvider';
 export * as UI from './UI';

@@ -11,24 +11,9 @@ import {
   Breadcrumb
 } from '../../components/UI';
 
-import AuthStore from '../../stores/auth.store';
 require('./style.less');
 
 export default class ApplicationLayout extends React.Component {
-
-  state = {
-    profile : AuthStore.profile
-  }
-
-  componentWillMount(){
-    AuthStore.on('profile:update', () => {
-      let profile = AuthStore.profile;
-
-      this.setState({
-        profile
-      });
-    })
-  }
 
   render() {
     let stickyFooter = config.components.footer.sticky;

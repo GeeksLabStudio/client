@@ -16,12 +16,11 @@ export default class NavBar extends React.Component {
   }
 
   componentDidMount(){
-    this.__onUiUpdate = ::this.UIupdate
-    AppStore.on('ui:update', this.__onUiUpdate);
+    AppStore.on('ui:update', this.UIupdateHandler);
   }
 
   componentWillUnmount(){
-    AppStore.removeListener('ui:update', this.__onUiUpdate)
+    AppStore.removeListener('ui:update', this.UIupdateHandler)
   }
 
   state = {
@@ -32,7 +31,7 @@ export default class NavBar extends React.Component {
     logout: AuthAction.logout
   }
 
-  UIupdate(){
+  UIupdateHandler = () => {
     let links = AppStore.getAvailablePages(this.position.navbar);
 
     this.setState({
@@ -67,7 +66,7 @@ export default class NavBar extends React.Component {
           {_userImage}
         </Dropdown>
       )
-      
+
       // welcome message
       _html.push(
         <div className="welcome" key="welcome">
@@ -96,10 +95,10 @@ export default class NavBar extends React.Component {
             {_link.label}
           </Link>
         )
-      } 
+      }
 
       // link with action
-      else if (_link.action) { 
+      else if (_link.action) {
         return (
           <span
             key={i}

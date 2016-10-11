@@ -14,12 +14,11 @@ export default class Popup extends React.Component {
   }
 
   componentDidMount(){
-    this.__popupToggleHandler = ::this.popupToggleHandler;
-    AppStore.on('popup:toggle', this.__popupToggleHandler);
+    AppStore.on('popup:toggle', this.popupToggleHandler);
   }
 
   componentWillUnmount(){
-    AppStore.removeListener('popup:toggle', this.__popupToggleHandler);
+    AppStore.removeListener('popup:toggle', this.popupToggleHandler);
   }
 
   close() {
@@ -31,7 +30,7 @@ export default class Popup extends React.Component {
     }, 500)
   }
 
-  popupToggleHandler() {
+  popupToggleHandler = () => {
     let show = this.state.show;
     show = !show;
 

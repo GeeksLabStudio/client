@@ -4,6 +4,10 @@ import * as pages from './pages';
 import AuthStore from './stores/auth.store';
 import AppAction from './actions/app.action';
 
+import {
+  ProfileProvider
+} from './components';
+
 export default class Application extends React.Component {
 
   checkRequirements(nextState, replace){
@@ -37,60 +41,60 @@ export default class Application extends React.Component {
   }
 
   render() {
-    return (
+    return <ProfileProvider>
       <Router history={browserHistory}>
         <Route path={app.config.pages.home.path} component={pages.Layout}>
-          <IndexRoute 
-            component={pages.Home} 
-            config={app.config.pages.home} 
+          <IndexRoute
+            component={pages.Home}
+            config={app.config.pages.home}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route 
+          <Route
             path={app.config.pages.profile.path}
             component={pages.Profile}
             config={app.config.pages.profile}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route 
+          <Route
             path={app.config.pages.login.path}
             component={pages.Login}
             config={app.config.pages.login}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route 
+          <Route
             path={app.config.pages.register.path}
             component={pages.Register}
             config={app.config.pages.register}
             onEnter={::this.onEnterDefaultHandler}
           />
 
-          <Route 
+          <Route
             path={app.config.pages.blog.path}
             component={pages.Blog}
             config={app.config.pages.blog}
             onEnter={::this.onEnterDefaultHandler}
           >
-            <IndexRoute 
-              component={pages.BlogList} 
+            <IndexRoute
+              component={pages.BlogList}
               config={app.config.pages.blog}
               onEnter={::this.onEnterDefaultHandler}
             />
-            <Route 
-              path={app.config.pages.blog.children.path} 
+            <Route
+              path={app.config.pages.blog.children.path}
               component={pages.BlogDetails}
               config={app.config.pages.blog.children}
               onEnter={::this.onEnterDefaultHandler}/>
           </Route>
 
-          <Route 
-            path='/*' 
+          <Route
+            path='/*'
             component={pages.NotFound}
           />
         </Route>
       </Router>
-    )
+    </ProfileProvider>
   }
 }

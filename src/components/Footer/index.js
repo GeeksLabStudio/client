@@ -14,15 +14,14 @@ export default class Footer extends React.Component {
   }
 
   componentDidMount(){
-    this.__onUiUpdate = ::this.UIupdate
-    AppStore.on('ui:update', this.__onUiUpdate);
+    AppStore.on('ui:update', this.UIupdateHandler);
   }
 
   componentWillUnmount(){
-    AppStore.removeListener('ui:update', this.__onUiUpdate)
+    AppStore.removeListener('ui:update', this.UIupdateHandler)
   }
 
-  UIupdate(){
+  UIupdateHandler = () => {
     let links = AppStore.getAvailablePages(this.position);
 
     this.setState({

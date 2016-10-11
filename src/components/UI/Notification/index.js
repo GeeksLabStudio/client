@@ -15,19 +15,17 @@ export default class Notification extends React.Component {
   }
 
   componentDidMount(){
-    this.__notificationHandler = ::this.notificationHandler;
-
-    AppStore.on('ui:notification', this.__notificationHandler);
-    AuthStore.on('auth:error', this.__notificationHandler);
+    AppStore.on('ui:notification', this.notificationHandler);
+    AuthStore.on('auth:error', this.notificationHandler);
   }
 
   componentWillUnmount(){
-    AuthStore.removeListener('auth:error', this.__notificationHandler);
-    AppStore.removeListener('ui:notification', this.__notificationHandler);
+    AuthStore.removeListener('auth:error', this.notificationHandler);
+    AppStore.removeListener('ui:notification', this.notificationHandler);
   }
 
   // method that controls new incomed notification messages
-  notificationHandler(notification){
+  notificationHandler = notification => {
     let {
       type,
       message

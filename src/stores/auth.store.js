@@ -21,7 +21,7 @@ class AuthStore extends Store {
           token
         })
       .then(data => {
-        app.utils.log.debug('Profile have been successfully resolved')
+        app.utils.log.debug('Profile have been successfully resolved', data)
 
         this.updateProfile(data.profile)
       })

@@ -75,12 +75,12 @@ class AuthService{
     return new Promise((resolve,reject) => {
       request
         .get(app.config.api.server + app.config.api.profile)
-        .set('authorization', token)
+        .set('Authorization', token)
         .end((err,res) => {
           if (err || !res.ok)
             reject(err)
           else
-            resolve(res.body.user)
+            resolve(res.body.data)
         })
     })
   }
