@@ -7,25 +7,39 @@ export default class ProfileProvider extends React.Component {
   static propTypes = {
   };
 
-  state = {
-    profile: AuthStore.profile
+  constructor(props){
+    super(props);
+
+    let isResolved = this.isResolved;
+
+    this.state = {
+      isResolved
+    };
+  }
+
+  get isResolved(){
+    let profile = AuthStore.profile;
+    let resolved = !_.isEmpty(profile);
+
+    app.utils.log.debug('ProfileProvider:isResolved', resolved)
+
+    return resolved
   }
 
   componentDidMount(props){
     AuthStore.on('profile:update', this.handleProfileUpdate)
   }
 
+
   handleProfileUpdate = () => {
-    let profile = AuthStore.profile
+    let isResolved = this.isResolved;
 
     this.setState({
-      profile
-    })
+      isResolved
+    });
   }
 
-  render() {
-    let profile = this.state.profile;
-
-    return _.isEmpty(profile) ? null : this.props.children
-  }
+  render = () => (
+    this.state.isResolved ? this.props.children : null
+  )
 }
