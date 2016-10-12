@@ -8,7 +8,8 @@ import {
 import {
   Popup,
   Notification,
-  Breadcrumb
+  Breadcrumb,
+  Loader
 } from '../../components/UI';
 
 require('./style.less');
@@ -22,6 +23,8 @@ export default class ApplicationLayout extends React.Component {
       <div className={stickyFooter ? 'app-body sticky-footer': 'app-body'}>
         <div className="page-content">
           <NavBar/>
+
+          <Loader/>
 
           <SideBar/>
 

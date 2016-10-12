@@ -1,5 +1,6 @@
 import React from 'react';
 import AppStore from '../../../stores/app.store';
+
 require('./style.less');
 
 export default class Popup extends React.Component {
@@ -40,18 +41,21 @@ export default class Popup extends React.Component {
   }
 
   render() {
-    let className = this.state.show ? 'popup-container active' : 'popup-container';
-    return (
-      <div className={className} id="popup">
-        <div className="popup" style={this.props.style}>
-          <div className="title">{this.props.title}</div>
-          <div className="body">{this.props.children}</div>
-          <div className="actions">
-            <button className="btn btn-primary submit" key={0} onClick={this.props.submit}>submit</button>
-            <button className="btn cancel" key={1} onClick={::this.close}>cancel</button>
+    if (this.state.show) {
+      return (
+        <div className="popup-container" id="popup">
+          <div className="popup" style={this.props.style}>
+            <div className="title">{this.props.title}</div>
+            <div className="body">{this.props.children}</div>
+            <div className="actions">
+              <button className="btn btn-primary submit" key={0} onClick={this.props.submit}>submit</button>
+              <button className="btn cancel" key={1} onClick={::this.close}>cancel</button>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return null;
+    }
   }
 }
