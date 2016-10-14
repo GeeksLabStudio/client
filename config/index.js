@@ -7,10 +7,9 @@ var layout      = require('./layout');
 var roles       = require('./roles');
 var navigation  = require('./navigation');
 var api         = require('./api');
+var locale      = require('./locale');
 
 module.exports = global.app = {
-  test: true,
-
   config: {
     components,
     pages,
@@ -22,5 +21,6 @@ module.exports = global.app = {
   ui,
   actions,
   utils,
-  roles
+  roles,
+  locale
 }

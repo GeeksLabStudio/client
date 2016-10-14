@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {Dropdown} from '../UI';
+import LangSwitcher from './LangSwitcher';
 import AppStore from '../../stores/app.store';
 import AppAction from '../../actions/app.action';
 import AuthStore from '../../stores/auth.store';
@@ -70,7 +71,7 @@ export default class NavBar extends React.Component {
       // welcome message
       _html.push(
         <div className="welcome" key="welcome">
-          {`welcome , ${_profile.username}!`}
+          {`${app.locale.components.navbar.welcome} , ${_profile.username}!`}
         </div>
       )
     }
@@ -117,10 +118,15 @@ export default class NavBar extends React.Component {
     return sideBar ? <span onClick={AppAction.toggleSidebar} className="menu fa fa-bars"></span> : null;
   }
 
+  get _langSwitcher(){
+    return app.config.components.langSwitcher.enable ? <LangSwitcher/> : null;
+  }
+
   render() {
     return (
       <div className='navbar'>
         {this._sidebarIcon}
+        {this._langSwitcher}
         {this._headerLinks}
       </div>
     )

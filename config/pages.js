@@ -1,9 +1,10 @@
 var roles = require('./roles');
+var locale  = require('./locale');
 
 module.exports = {
   home: {
     path: '/',
-    title: 'Home',
+    title: locale.pages.home.title,
     permissions: [
       roles.all
     ]
@@ -11,7 +12,7 @@ module.exports = {
 
   login: {
     path: '/login',
-    title: 'Login',
+    title: locale.pages.login.title,
     permissions: [
       roles.guest
     ]
@@ -19,7 +20,7 @@ module.exports = {
 
   register: {
     path: '/register',
-    title: 'Register',
+    title: locale.pages.register.title,
     permissions: [
       roles.guest
     ]
@@ -27,7 +28,7 @@ module.exports = {
 
   profile: {
     path: '/profile',
-    title: 'Profile',
+    title: locale.pages.profile.title,
     permissions: [
       roles.user,
       roles.admin
@@ -36,7 +37,7 @@ module.exports = {
 
   blog: {
     path: '/articles',
-    title: 'Blog',
+    title: locale.pages.blog.title,
     permissions: [
       roles.all
     ],
@@ -50,7 +51,7 @@ module.exports = {
 
   admin: {
     path: '/admin',
-    title: 'Admin',
+    title: locale.pages.admin.title,
     permissions: [
       roles.admin
     ]

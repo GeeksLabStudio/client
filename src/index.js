@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Application from './app';
+import LangService from './services/locale.service';
 
 /*
   Log config to console

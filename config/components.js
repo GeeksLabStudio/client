@@ -15,6 +15,10 @@ module.exports = {
     enable: true
   },
 
+  langSwitcher: {
+    enable: true
+  },
+
   ui: {
   	pagination: {
   		prev: {

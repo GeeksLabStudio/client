@@ -38,7 +38,7 @@ export default class SignIn extends React.Component {
         <div className="form-group">
           <input 
             type="email"
-            placeholder="Email"
+            placeholder={app.locale.forms.inputs.email}
             value={this.getFormValue('email')}
             onChange={this.getFormChangeHandler('email')}
             required="required"/>
@@ -47,14 +47,14 @@ export default class SignIn extends React.Component {
         <div className="form-group">
           <input 
             type="password"
-            placeholder="Password"
+            placeholder={app.locale.forms.inputs.password}
             value={this.getFormValue('password')}
             onChange={this.getFormChangeHandler('password')}
             required="required"/>
         </div>
 
         <button className="btn btn-primary" type="submit">
-          Register
+          {app.locale.buttons.register}
         </button>
       </form>
     )

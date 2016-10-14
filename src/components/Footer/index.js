@@ -56,9 +56,9 @@ export default class Footer extends React.Component {
     if (config.components.footer.form) {
       return (
         <form className="subscribe-form" onSubmit={::this._submit}>
-          <label>Subscribe to newsletters</label>
-          <input type="email" ref="email" name="email" placeholder="Email"/>
-          <button className="btn" type="submit">Submit</button>
+          <label>{app.locale.components.footer.form.label}</label>
+          <input type="email" ref="email" name="email" placeholder={app.locale.forms.inputs.email}/>
+          <button className="btn" type="submit">{app.locale.buttons.submit}</button>
         </form>
       )
     }
