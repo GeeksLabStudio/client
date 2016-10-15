@@ -12,10 +12,11 @@
   .footer-links {
   	float: @footer-links-float;
   	color: @footer-links-color;
-		
-		// items
-  	a {
-  		padding: @footer-links-item-padding;
+    
+    // items
+    a {
+      padding: @footer-links-item-padding;
+      .transition-fast;
 
   		&:first-child {
   			padding-left: 0;
@@ -24,6 +25,10 @@
   		&:last-child {
   			padding-right: 0;
   		}
+
+      &:hover {
+        color: @footer-links-hover-color;
+      }
   	}
   }
 	
@@ -49,5 +54,13 @@
   	input {
   		width: @footer-subscribe-form-input-width;
   	}
+  }
+
+  copyright {
+    font-size: @footer-copyright-font-size;
+    margin: @footer-copyright-margin;
+    clear: both;
+    display: block;
+    text-align: center;
   }
 }

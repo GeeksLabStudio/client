@@ -37,7 +37,8 @@ var components = {
 		form: {
 			label: 'Подписаться на рассылку!',
 			button: buttons.submit
-		}
+		},
+		copyright: '© GLS 2016. All rights reserved'
 	},
 	navigation: {
 		home: {
