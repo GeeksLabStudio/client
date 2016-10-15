@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import AppStore from '../../stores/app.store';
 import FormAction from '../../actions/user.action';
+import SocialNetworks from '../SocialNetworks'
 require('./style.less');
 
 export default class Footer extends React.Component {
@@ -64,6 +65,14 @@ export default class Footer extends React.Component {
     }
   }
 
+  get _socialLinks(){
+    if (config.components.footer.socialNetworks) {
+      return (
+        <SocialNetworks links={config.components.socialNetworks}/>
+      )
+    }
+  }
+
   _submit(e) {
     e.preventDefault();
     let _email = this.refs.email.value;
@@ -75,6 +84,7 @@ export default class Footer extends React.Component {
       <div className='footer'>
         {this._footerLinks}
         {this._footerForm}
+        {this._socialLinks}
       </div>
     )
   }
