@@ -1,4 +1,4 @@
-Client Side Boilerplate
+Client Side Starter Kit
 =====================
 
 <img src="/src/assets/images/logo.png" height="85"/>
