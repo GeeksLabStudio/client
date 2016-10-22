@@ -81,14 +81,14 @@ export default class Footer extends React.Component {
 
   render() {
     return (
-      <div className='footer'>
+      <footer className='footer'>
         {this._footerLinks}
         {this._footerForm}
         {this._socialLinks}
         <copyright>
           {app.locale.components.footer.copyright}
         </copyright>
-      </div>
+      </footer>
     )
   }
 }

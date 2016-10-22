@@ -43,7 +43,7 @@ export default class Popup extends React.Component {
   render() {
     if (this.state.show) {
       return (
-        <div className="popup-container" id="popup">
+        <dialog className="popup-container" id="popup">
           <div className="popup" style={this.props.style}>
             <div className="title">{this.props.title}</div>
             <div className="body">{this.props.children}</div>
@@ -52,7 +52,7 @@ export default class Popup extends React.Component {
               <button className="btn cancel" key={1} onClick={::this.close}>cancel</button>
             </div>
           </div>
-        </div>
+        </dialog>
       )
     } else {
       return null;
