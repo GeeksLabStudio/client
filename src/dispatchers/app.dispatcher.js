@@ -17,6 +17,9 @@ $appDispatcher.register(function(payload) {
     case app.actions.ui.popup:
       AppStore.togglePopup();
       break;
+    case app.actions.ui.loader:
+      AppStore.toggleLoader(payload.option);
+      break;
     case app.actions.ui.notification:
       let {
         type,

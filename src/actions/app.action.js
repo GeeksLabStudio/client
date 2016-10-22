@@ -18,6 +18,15 @@ class AppAction {
     })
   }
 
+  toggleLoader(option) {
+    let action = app.actions.ui.loader;
+
+    AppDispatcher.dispatch({
+      action,
+      option
+    })
+  }
+
   notify(message,type = 'default'){
     let action = app.actions.ui.notification;
 

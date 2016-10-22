@@ -18,28 +18,6 @@ class AuthService{
     }
   }
 
-  requestAuthorization(options){
-    let {
-      email,
-      password
-    } = options;
-
-    return new Promise((resolve,reject) => {
-      request
-        .post(app.config.api.server + app.config.api.login)
-        .send({
-          email,
-          password
-        })
-        .end((err,res) => {
-          if (err || !res.ok)
-            reject(err)
-          else
-            resolve(res.body)
-        })
-    })
-  }
-
   removeAuthorization(){
     return new Promise((resolve,reject) => {
       this.removeLocalAuthorization();
@@ -65,46 +43,6 @@ class AuthService{
 
   removeLocalAuthorization(){
     return localStorage.removeItem(TOKEN_KEY_NAME)
-  }
-
-  requestProfile(options){
-    let {
-      token
-    } = options;
-
-    return new Promise((resolve,reject) => {
-      request
-        .get(app.config.api.server + app.config.api.profile)
-        .set('Authorization', token)
-        .end((err,res) => {
-          if (err || !res.ok)
-            reject(err)
-          else
-            resolve(res.body.data)
-        })
-    })
-  }
-
-  requestRegistration(options){
-    let {
-      email,
-      password
-    } = options;
-
-    return new Promise((resolve,reject) => {
-      request
-        .post(app.config.api.server + app.config.api.register)
-        .send({
-          email,
-          password
-        })
-        .end((err,res) => {
-          if (err || !res.ok)
-            reject(err)
-          else
-            resolve(res.body)
-        })
-    })
   }
 }
 
