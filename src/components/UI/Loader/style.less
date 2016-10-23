@@ -4,6 +4,8 @@
 	width: @loader-width;
 	height: @loader-height;
 	background: @loader-background;
+	margin-bottom: -@loader-height;
+	top: -@loader-height;
 	position: relative;
 	overflow: hidden;
 
@@ -19,4 +21,8 @@
 		display: block;
 		position: absolute;
 	}
+}
+
+.loading-bar ~ main {
+	opacity: 0.4;
 }

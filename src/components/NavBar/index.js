@@ -124,11 +124,11 @@ export default class NavBar extends React.Component {
 
   render() {
     return (
-      <div className='navbar'>
+      <header className='navbar'>
         {this._sidebarIcon}
         {this._langSwitcher}
         {this._headerLinks}
-      </div>
+      </header>
     )
   }
 }

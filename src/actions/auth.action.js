@@ -1,18 +1,11 @@
 import AuthDispatcher from '../dispatchers/auth.dispatcher';
 import AuthService from '../services/auth.service';
+import $http from '../services/http.service';
 
 class AuthAction {
 
   login(options) {
-    let {
-      email,
-      password
-    } = options;
-
-    AuthService.requestAuthorization({
-      email,
-      password
-    })
+    AuthService.requestAuthorization(options)
       .then(data => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.login.success,
@@ -42,15 +35,7 @@ class AuthAction {
   }
 
   register(options){
-    let {
-      email,
-      password
-    } = options;
-
-    AuthService.requestRegistration({
-      email,
-      password
-    })
+    AuthService.requestRegistration(options)
       .then(data => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.login.success,

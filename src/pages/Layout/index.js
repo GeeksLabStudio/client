@@ -28,11 +28,10 @@ export default class ApplicationLayout extends React.Component {
 
           <SideBar/>
 
-          <Breadcrumb
-            routes={this.props.routes}
-          />
-
-          {this.props.children}
+          <main>
+            <Breadcrumb routes={this.props.routes} />
+            {this.props.children}
+          </main>
         </div>
 
         <Footer/>

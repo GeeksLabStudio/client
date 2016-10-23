@@ -7,6 +7,7 @@ class AppStore extends Store {
   data = {
     sidebar: false,
     popup: false,
+    loader: false
   }
 
   constructor(){
@@ -25,6 +26,12 @@ class AppStore extends Store {
     this.data.popup = !this.data.popup;
 
     this.emit('popup:toggle');
+  }
+
+  toggleLoader(option) {
+    this.data.loader = !this.data.loader;
+
+    this.emit('loader:toggle', option);
   }
 
   updateNavigation(navigation){

@@ -16,13 +16,18 @@ export default class Loader extends React.Component {
     AppStore.removeListener('loader:toggle', this.loaderToggleHandler);
   }
 
-  loaderToggleHandler = () => {
-    let show = this.state.show;
-    show = !show;
-
-    this.setState({
-      show
-    })
+  loaderToggleHandler = (show) => {
+    if (show) {
+      this.setState({
+        show
+      })
+    } else {
+      setTimeout(()=>{
+        this.setState({
+          show
+        })
+      }, 300)
+    }
   }
 
   render() {

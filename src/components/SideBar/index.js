@@ -42,7 +42,6 @@ export default class SideBar extends React.Component {
 
   get _links() {
     return this.state.links.map(_link => {
-
         return (
           <Link
             to={_link.path}
@@ -62,13 +61,15 @@ export default class SideBar extends React.Component {
     let _className = this.state.show || this.props.show ? 'side-bar active' : 'side-bar';
 
     return (
-      <div className={_className}>
+      <aside className={_className}>
         <div className="top-bar">
           <span onClick={AppAction.toggleSidebar} className="menu fa fa-bars"></span>
         </div>
 
-        {this._links}
-      </div>
+        <nav>
+          {this._links}
+        </nav>
+      </aside>
     )
   }
 }

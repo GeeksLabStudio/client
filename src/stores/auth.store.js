@@ -1,5 +1,8 @@
 import Store from './Store';
-import AuthService from '../services/auth.service'
+import AuthService from '../services/auth.service';
+import $http from '../services/http.service';
+
+// Main class for authorization token and profile
 
 class AuthStore extends Store {
 
@@ -17,23 +20,22 @@ class AuthStore extends Store {
       app.utils.log.debug(`token detected in storage: [${token}]`);
       this.__setToken(token);
 
-      AuthService.requestProfile({
-          token
+      AuthService.requestProfile()
+        .then(res => {
+          let data = res.data;
+          app.utils.log.debug('Profile have been successfully resolved', data)
+
+          this.updateProfile(data.profile)
         })
-      .then(data => {
-        app.utils.log.debug('Profile have been successfully resolved', data)
+        .then(null, error => {
+          app.utils.log.error('Profile resolving failed.', error)
 
-        this.updateProfile(data.profile)
-      })
-      .then(null, error => {
-        app.utils.log.error('Profile resolving failed.', error)
+          //remove token from localstorage
+          AuthService.removeLocalAuthorization();
 
-        //remove token from localstorage
-        AuthService.removeLocalAuthorization();
-
-        //set profile to Guest
-        this.updateProfile()
-      })
+          //set profile to Guest
+          this.updateProfile()
+        })
     } else
       this.updateProfile();
   }
