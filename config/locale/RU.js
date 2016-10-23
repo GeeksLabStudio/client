@@ -12,7 +12,10 @@ var pages = {
 		title: 'Профиль'
 	},
 	blog: {
-		title: 'Блог'
+		title: 'Блог',
+		notFound: 'Статьи не найдены',
+		readMore: 'См. подробности',
+		pleaseLogin: 'Зарегистрируйтесь чтобы оставлять комментарии'
 	},
 	admin: {
 		title: 'Админ панель'
@@ -23,6 +26,9 @@ var forms = {
 	inputs: {
 		email: 'Email',
 		password: 'Пароль'
+	},
+	textarea: {
+		leaveComment: 'Оставить комментарий'
 	}
 }
 

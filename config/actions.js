@@ -23,5 +23,16 @@ module.exports = {
 
   user: {
     subscribe: 'SUBSCRIBE'
+  },
+
+  blog: {
+    fetchList: {
+      success: 'FETCH_LIST_SUCCESS',
+      error: 'FETCH_LIST_ERROR'
+    },
+    fetchItem: {
+      success: 'FETCH_ITEM_SUCCESS',
+      error: 'FETCH_ITEM_ERROR'
+    },
   }
 }

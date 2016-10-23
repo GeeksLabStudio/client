@@ -33,23 +33,23 @@ class AuthService{
 
   requestAuthorization(options){
     return $http.send(
-        app.config.api.login,
-        'POST',
+        app.config.api.login.path,
+        app.config.api.login.method,
         options
       )
   }
 
   requestRegistration(options){
     return $http.send(
-        app.config.api.register,
-        'POST',
+        app.config.api.register.path,
+        app.config.api.register.method,
         options
       )
   }
 
   requestProfile(){
     return $http.send(
-        app.config.api.profile
+        app.config.api.profile.path
       )
   }
 

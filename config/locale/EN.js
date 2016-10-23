@@ -12,7 +12,10 @@ var pages = {
 		title: 'Profile'
 	},
 	blog: {
-		title: 'Blog'
+		title: 'Blog',
+		notFound: 'No articles found',
+		readMore: 'Read more',
+		pleaseLogin: 'Please login to leave your comment'
 	},
 	admin: {
 		title: 'Admin'
@@ -23,6 +26,9 @@ var forms = {
 	inputs: {
 		email: 'Email',
 		password: 'Password'
+	},
+	textarea: {
+		leaveComment: 'Leave a comment'
 	}
 }
 

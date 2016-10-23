@@ -1,7 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router';
+import _ from 'lodash';
 import AuthStore from '../../stores/auth.store';
-import data from './seed';
+import BlogStore from '../../stores/blog.store';
+import {Pagination} from '../../components/UI';
+import BlogAction from '../../actions/blog.action';
+
 require('./style.less');
 
 export class BlogPage extends React.Component {
@@ -16,7 +20,25 @@ export class BlogPage extends React.Component {
 
 export class BlogList extends React.Component {
   state = {
-    data
+    data: []
+  }
+
+  componentWillMount(){
+    BlogAction.fetchList();
+  }
+
+  componentDidMount(){
+    BlogStore.on('blogList:update', ::this.blogListUpdateHandler);
+  }
+
+  componentWillUnmount(){
+    BlogStore.removeListener('blogList:update', ::this.blogListUpdateHandler)
+  }
+
+  blogListUpdateHandler(data){
+    this.setState({
+      data
+    })
   }
 
   get _articles() {
@@ -31,7 +53,7 @@ export class BlogList extends React.Component {
                 <i className="fa fa-calendar"/> {el.date}
               </span>
               <span>
-                <i className="fa fa-comment"/> {el.comments.length}
+                <i className="fa fa-comment"/> {el.comments}
               </span>
               <span>
                 <i className="fa fa-heart"/> {el.likes}
@@ -40,7 +62,7 @@ export class BlogList extends React.Component {
             <p className="desc">{el.short_desc}</p>
             <div className="more" to={`articles/${el._id}`}>
               <Link to={`/articles/${el._id}`}>
-                Read more
+                {app.locale.pages.blog.readMore}
               </Link>
             </div>
           </div>
@@ -49,13 +71,27 @@ export class BlogList extends React.Component {
     })
   }
 
+  get _html() {
+    let perPage = app.config.pages.blog.itemsPerPage;
+
+    if (this.state.data.length > 0) {
+      return (
+        <Pagination perPage={perPage}>
+          {this._articles}
+        </Pagination>
+      )
+    } else{
+      return <h2>{app.locale.pages.blog.notFound}</h2>
+    }
+  }
+
   render() {
     return (
       <div className="blog-page">
         <h1>{config.pages.blog.title}</h1>
 
         <div className="articles">
-          {this._articles}
+          {this._html}
         </div>
       </div>
     )
@@ -64,19 +100,30 @@ export class BlogList extends React.Component {
 
 export class BlogDetails extends React.Component {
   state = {
-    data: this._article
+    data: {}
+  }
+
+  componentWillMount(){
+    let _id = this.props.params.articleId;
+    BlogAction.fetchItem(_id);
+  }
+
+  componentDidMount(){
+    BlogStore.on('blogItem:update', ::this.blogItemUpdateHandler);
+  }
+
+  componentWillUnmount(){
+    BlogStore.removeListener('blogItem:update', ::this.blogItemUpdateHandler)
+  }
+
+  blogItemUpdateHandler(data){
+    this.setState({
+      data
+    })
   }
 
   _articleHtml(__html) {
     return {__html};
-  }
-
-  get _article() {
-    let articleId = this.props.params.articleId;
-    
-    return data.find(x => {
-      return x._id == articleId
-    })
   }
 
   get _comments() {
@@ -85,7 +132,7 @@ export class BlogDetails extends React.Component {
         <div className="comment" key={i}>
           <span className="author">{el.author}</span>
           <span className="date">({el.date})</span>:
-          <div className="text">{el.text}</div>
+          <div className="text">{el.message}</div>
         </div>
       )
     })
@@ -96,13 +143,13 @@ export class BlogDetails extends React.Component {
     
     if (_profile.role == 'GUEST') {
       return (
-        <Link to="/login" className="login-link">Please login to leave your comment</Link>
+        <Link to="/login" className="login-link">{app.locale.pages.blog.pleaseLogin}</Link>
       )
     } else {
       return (
         <form onSubmit={::this._formSubmit}>
-          <textarea type="text" ref="message" placeholder="Leave a comment"/>
-          <button className="btn btn-primary" type="submit">Send</button>
+          <textarea type="text" ref="message" placeholder={app.locale.forms.textarea.leaveComment}/>
+          <button className="btn btn-primary" type="submit">{app.locale.buttons.submit}</button>
         </form>
       )
     }
@@ -110,11 +157,9 @@ export class BlogDetails extends React.Component {
 
   _formSubmit(e) {
     e.preventDefault();
-
-    console.log(this.refs);
   }
 
-  render() {
+  get _html(){
     let _article = this.state.data;
 
     return (
@@ -126,7 +171,7 @@ export class BlogDetails extends React.Component {
             <i className="fa fa-comment"/> {_article.comments.length}
           </span>
           <span>
-            <i className="fa fa-heart"/> {_article.likes}
+            <i className="fa fa-heart"/> {_article.likes.length}
           </span>
         </div>
 
@@ -141,5 +186,14 @@ export class BlogDetails extends React.Component {
         </div>
       </div>
     )
+  }
+
+  render() {
+    let _article = this.state.data;
+
+    if (!_.isEmpty(_article))
+      return this._html;
+    else 
+      return null;
   }
 }
