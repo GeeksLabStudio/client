@@ -36,8 +36,10 @@ class AuthStore extends Store {
           //set profile to Guest
           this.updateProfile()
         })
-    } else
+    } else {
+      // if no token found - setting profile as  guest
       this.updateProfile();
+    }
   }
 
   /*
@@ -61,8 +63,8 @@ class AuthStore extends Store {
   }
 
   removeAuthentication() {
-    this.__setToken(null);
-    this.__setProfile(null);
+    this.__setToken(null)
+    this.__setProfile(null)
     AuthService.updateLocalAuthorization(null)
   }
 

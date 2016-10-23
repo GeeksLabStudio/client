@@ -15,12 +15,8 @@ class AuthService{
       browserHistory.push(path)
   }
 
-  updateLocalAuthorization(auth){
-    if (auth){
-      localStorage.setItem(TOKEN_KEY_NAME, auth.token)
-    }
-  }
 
+  // currently not used
   removeAuthorization(){
     return new Promise((resolve,reject) => {
       this.removeLocalAuthorization();
@@ -30,6 +26,9 @@ class AuthService{
       });
     })
   }
+
+
+  // Methods for requesting api.auth
 
   requestAuthorization(options){
     return $http.send(
@@ -53,11 +52,20 @@ class AuthService{
       )
   }
 
+
+  // Methods for managing stored auth token
+
+  updateLocalAuthorization(auth){
+    if (auth){
+      localStorage.setItem(TOKEN_KEY_NAME, auth.token)
+    }
+  }
+
   /*
     @desc Method used for resolving auth from local storage
     Need for init AuthService
 
-    @return {token,profile}
+    @return {auth.token}
   */
   resolveLocalAuthorization(){
     let token = localStorage.getItem(TOKEN_KEY_NAME)

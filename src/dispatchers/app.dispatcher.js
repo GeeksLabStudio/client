@@ -3,7 +3,7 @@ import AppStore from '../stores/app.store';
 
 const $appDispatcher = new Dispatcher();
 
-$appDispatcher.register(function(payload) {
+AppStore.dispatchToken = $appDispatcher.register(payload => {
   let {
     action
   } = payload;
