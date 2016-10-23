@@ -52,12 +52,11 @@ class AppStore extends Store {
     let links = Object.keys(this.navigation);
 
     return links.map(key => {
-      return this.navigation[key]
-    })
+        return this.navigation[key]
+      })
       .filter(link => !link.disable) // filtering disabled by default pages
       .filter(link => link.position.indexOf(controlPosition)>=0 ) // filtering by position
       .filter(link => AuthStore.checkPermissions(link.permissions)) // filtering by permission
-
   }
 
   createNotification(notification){

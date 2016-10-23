@@ -2,9 +2,9 @@ import Dispatcher from './dispatcher';
 import AuthStore from '../stores/auth.store';
 import AppStore from '../stores/app.store';
 
-const $appDispatcher = new Dispatcher();
+const $authDispatcher = new Dispatcher();
 
-$appDispatcher.register(function(payload) {
+AuthStore.dispatchToken = $authDispatcher.register(payload => {
 
   app.utils.log.debug('auth:dispatcher', payload)
 
@@ -28,4 +28,4 @@ $appDispatcher.register(function(payload) {
   }
 })
 
-export default $appDispatcher;
+export default $authDispatcher;
