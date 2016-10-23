@@ -2,6 +2,8 @@ import Store from './Store';
 import AuthService from '../services/auth.service';
 import $http from '../services/http.service';
 
+// Main class for authorization token and profile
+
 class AuthStore extends Store {
 
   __token = null;
@@ -18,7 +20,7 @@ class AuthStore extends Store {
       app.utils.log.debug(`token detected in storage: [${token}]`);
       this.__setToken(token);
 
-      $http.send(app.config.api.profile)
+      AuthService.requestProfile()
         .then(res => {
           let data = res.data;
           app.utils.log.debug('Profile have been successfully resolved', data)

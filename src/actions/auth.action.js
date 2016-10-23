@@ -5,11 +5,7 @@ import $http from '../services/http.service';
 class AuthAction {
 
   login(options) {
-    $http.send(
-      app.config.api.login,
-      'POST',
-      options
-    )
+    AuthService.requestAuthorization(options)
       .then(data => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.login.success,
@@ -39,11 +35,7 @@ class AuthAction {
   }
 
   register(options){
-    $http.send(
-      app.config.api.register,
-      'POST',
-      options
-    )
+    AuthService.requestRegistration(options)
       .then(data => {
         AuthDispatcher.dispatch({
           action: app.actions.auth.login.success,

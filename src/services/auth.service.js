@@ -1,16 +1,19 @@
 import request from 'superagent';
 import { browserHistory } from 'react-router'
+import $http from './http.service';
 
 const TOKEN_KEY_NAME = '_t'
+
+// Helping utils for Auth Store
 
 class AuthService{
   auth = null;
 
+  // this must be moved xD
   goto(path){
     if (path)
       browserHistory.push(path)
   }
-
 
   updateLocalAuthorization(auth){
     if (auth){
@@ -21,10 +24,33 @@ class AuthService{
   removeAuthorization(){
     return new Promise((resolve,reject) => {
       this.removeLocalAuthorization();
+
       resolve({
         message: "You logged out"
       });
-    });
+    })
+  }
+
+  requestAuthorization(options){
+    return $http.send(
+        app.config.api.login,
+        'POST',
+        options
+      )
+  }
+
+  requestRegistration(options){
+    return $http.send(
+        app.config.api.register,
+        'POST',
+        options
+      )
+  }
+
+  requestProfile(){
+    return $http.send(
+        app.config.api.profile
+      )
   }
 
   /*
