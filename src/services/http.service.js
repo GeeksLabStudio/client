@@ -5,7 +5,7 @@ class HttpService {
 	state = {
 		openRequests: 0
 	}
- 	
+
 	// get request instance
 	_request(method, url, data, query, headers, token){
 		return new superagent
@@ -22,9 +22,9 @@ class HttpService {
 	 	if (option) {
 	 		this.state.openRequests += 1;
 			AppAction.toggleLoader(true);
-	 	} 
+	 	}
 	 	// turn off
-	 	else { 
+	 	else {
 	 		this.state.openRequests -= 1;
 	 		// if all requests are resolved - turn off the loader
 	 		if (this.state.openRequests == 0)
@@ -34,10 +34,10 @@ class HttpService {
 
 	// main method to send requests
 	send(
-		path, 
-		method = 'GET', 
-		data = {}, 
-		query = {}, 
+		path,
+		method = 'GET',
+		data = {},
+		query = {},
 		headers = {}
 	){
 		// get full URL
@@ -56,9 +56,9 @@ class HttpService {
 					this._loader(false);
 
 		      if (err || !res.ok)
-		        reject(err)
+		        reject(res ? res.body.error : err)
 		      else
-		        resolve(res.body)
+		        resolve(res.body.data)
 		    })
     })
 	}

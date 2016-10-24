@@ -21,8 +21,7 @@ class AuthStore extends Store {
       this.__setToken(token);
 
       AuthService.requestProfile()
-        .then(res => {
-          let data = res.data;
+        .then(data => {
           app.utils.log.debug('Profile have been successfully resolved', data)
 
           this.updateProfile(data.profile)
@@ -122,7 +121,7 @@ class AuthStore extends Store {
   */
 
   handleError(error){
-    console.log('Error', error.message)
+    app.utils.log.error(error.message)
 
     this.emit('auth:error', error)
   }

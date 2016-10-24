@@ -13,17 +13,17 @@ class BlogStore extends Store {
   }
 
   updateBlogList(data) {
-    this.data.list = data.data;
-    this.emit('blogList:update', data.data);
+    this.data.list = data;
+    this.emit('blogList:update', data);
   }
 
   updateBlogItem(data) {
-    this.data.detail = data.data;
-    this.emit('blogItem:update', data.data);
+    this.data.detail = data;
+    this.emit('blogItem:update', data);
   }
 
   handleError(error){
-    console.log('Error', error.message)
+    app.utils.log.error(error)
     AppAction.notify(error.message);
   }
 }
