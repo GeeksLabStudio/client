@@ -2,7 +2,8 @@ import React from 'react';
 import {
   NavBar,
   SideBar,
-  Footer
+  Footer,
+  MegaMenu
 } from '../../components';
 
 import {
@@ -25,6 +26,8 @@ export default class ApplicationLayout extends React.Component {
           <NavBar/>
 
           <Loader/>
+
+          <MegaMenu/>
 
           <SideBar/>
 

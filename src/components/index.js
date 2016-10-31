@@ -6,4 +6,5 @@ export Footer from './Footer';
 export ContactForm from './ContactForm';
 export ProfileProvider from './ProfileProvider';
 export SocialNetworks from './SocialNetworks';
+export MegaMenu from './MegaMenu'
 export * as UI from './UI';

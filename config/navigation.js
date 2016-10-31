@@ -86,5 +86,74 @@ module.exports = {
       roles.user,
       roles.admin
     ]
-  }
+  },
+
+  // test links for megamenu
+  category1: {
+    label: 'Category 1',
+    submenu: [
+      {
+        path: '/subcategory1',
+        label: 'Subcategory 1',
+      },
+      {
+        path: '/subcategory2',
+        label: 'Subcategory 2',
+      },
+      {
+        path: '/subcategory3',
+        label: 'Subcategory 3',
+      },
+      {
+        path: '/subcategory4',
+        label: 'Subcategory 4',
+        submenu: [
+          {
+            path: '/super-submenu1',
+            label: 'Super-submenu 1',
+          },
+        ]
+      }
+    ],
+    position: [
+      ui.ControlPosition.MEGAMENU
+    ],
+    permissions: [
+      roles.all
+    ]
+  },
+  category2: {
+    path: '/category2',
+    label: 'Category 2',
+    submenu: [
+      {
+        path: '/subcategory1',
+        label: 'Subcategory 1',
+      },
+      {
+        path: '/subcategory2',
+        label: 'Subcategory 2',
+      },
+      {
+        path: '/subcategory3',
+        label: 'Subcategory 3',
+      },
+      {
+        path: '/subcategory4',
+        label: 'Subcategory 4',
+        submenu: [
+          {
+            path: '/super-submenu1',
+            label: 'Super-submenu 1',
+          },
+        ]
+      }
+    ],
+    position: [
+      ui.ControlPosition.MEGAMENU
+    ],
+    permissions: [
+      roles.all
+    ]
+  },
 }

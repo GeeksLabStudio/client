@@ -4,5 +4,6 @@ module.exports = {
     SIDEBAR: 'sidebar',
     DROPDOWN: 'dropdown',
     FOOTER: 'footer',
+    MEGAMENU: 'megamenu',
   }
 }
