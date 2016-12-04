@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.1.2",
+    "http-proxy": "^1.16.1",
     "invariant": "^2.2.1",
     "lodash": "^4.13.1",
     "loglevel": "^1.4.1",

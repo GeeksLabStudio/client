@@ -1,5 +1,5 @@
 module.exports = {
-  server: 'http://localhost:4000',
+  server: 'http://localhost:3000',
   login: {
   	path: '/auth/login',
   	method: 'POST'
@@ -10,13 +10,5 @@ module.exports = {
   },
   profile: {
   	path: '/auth/'
-  },
-  blog: {
-  	list: {
-  		path: '/articles/'
-  	},
-    item: {
-      path: '/articles/'
-    }
   }
 }

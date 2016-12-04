@@ -72,23 +72,6 @@ export default class Application extends React.Component {
           />
 
           <Route
-            path={app.config.pages.blog.path}
-            component={pages.Blog}
-            config={app.config.pages.blog}
-          >
-            <IndexRoute
-              component={pages.BlogList}
-              config={app.config.pages.blog}
-              onEnter={::this.onEnterDefaultHandler}
-            />
-            <Route
-              path={app.config.pages.blog.children.path}
-              component={pages.BlogDetails}
-              config={app.config.pages.blog.children}
-              onEnter={::this.onEnterDefaultHandler}/>
-          </Route>
-
-          <Route
             path='/*'
             component={pages.NotFound}
           />

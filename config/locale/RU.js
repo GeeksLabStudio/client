@@ -11,15 +11,9 @@ var pages = {
 	profile: {
 		title: 'Профиль'
 	},
-	blog: {
-		title: 'Блог',
-		notFound: 'Статьи не найдены',
-		readMore: 'См. подробности',
-		pleaseLogin: 'Зарегистрируйтесь чтобы оставлять комментарии'
-	},
 	admin: {
 		title: 'Админ панель'
-	},
+	}
 }
 
 var forms = {
@@ -58,9 +52,6 @@ var components = {
 		},
 		profile: {
 			label: 'Профиль'
-		},
-		blog: {
-			label: 'Блог'
 		},
 		admin: {
 			label: 'Админ панель'

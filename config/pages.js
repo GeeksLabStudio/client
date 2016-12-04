@@ -35,22 +35,6 @@ module.exports = {
     ]
   },
 
-  blog: {
-    path: '/articles',
-    title: locale.pages.blog.title,
-    itemsPerPage: 5,
-    permissions: [
-      roles.all
-    ],
-    children: {
-      path: '/articles/:articleId',
-      title: locale.pages.blog.title,
-      permissions: [
-        roles.all
-      ],
-    }
-  },
-
   admin: {
     path: '/admin',
     title: locale.pages.admin.title,

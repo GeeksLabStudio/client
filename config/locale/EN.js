@@ -11,15 +11,9 @@ var pages = {
 	profile: {
 		title: 'Profile'
 	},
-	blog: {
-		title: 'Blog',
-		notFound: 'No articles found',
-		readMore: 'Read more',
-		pleaseLogin: 'Please login to leave your comment'
-	},
 	admin: {
 		title: 'Admin'
-	},
+	}
 }
 
 var forms = {
@@ -58,9 +52,6 @@ var components = {
 		},
 		profile: {
 			label: 'Profile'
-		},
-		blog: {
-			label: 'Blog'
 		},
 		admin: {
 			label: 'Admin'

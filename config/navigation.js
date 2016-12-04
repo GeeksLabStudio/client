@@ -51,18 +51,6 @@ module.exports = {
     permissions: pages.profile.permissions
   },
 
-  blog: {
-    path: pages.blog.path,
-    icon: 'fa fa-rss',
-    label: locale.components.navigation.blog.label,
-    position: [
-      ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR,
-      ui.ControlPosition.FOOTER
-    ],
-    permissions: pages.blog.permissions
-  },
-
   admin: {
     path: pages.admin.path,
     icon: 'fa fa-cogs',
@@ -93,18 +81,6 @@ module.exports = {
     label: 'Category 1',
     submenu: [
       {
-        path: '/subcategory1',
-        label: 'Subcategory 1',
-      },
-      {
-        path: '/subcategory2',
-        label: 'Subcategory 2',
-      },
-      {
-        path: '/subcategory3',
-        label: 'Subcategory 3',
-      },
-      {
         path: '/subcategory4',
         label: 'Subcategory 4',
         submenu: [
@@ -121,39 +97,5 @@ module.exports = {
     permissions: [
       roles.all
     ]
-  },
-  category2: {
-    path: '/category2',
-    label: 'Category 2',
-    submenu: [
-      {
-        path: '/subcategory1',
-        label: 'Subcategory 1',
-      },
-      {
-        path: '/subcategory2',
-        label: 'Subcategory 2',
-      },
-      {
-        path: '/subcategory3',
-        label: 'Subcategory 3',
-      },
-      {
-        path: '/subcategory4',
-        label: 'Subcategory 4',
-        submenu: [
-          {
-            path: '/super-submenu1',
-            label: 'Super-submenu 1',
-          },
-        ]
-      }
-    ],
-    position: [
-      ui.ControlPosition.MEGAMENU
-    ],
-    permissions: [
-      roles.all
-    ]
-  },
+  }
 }
