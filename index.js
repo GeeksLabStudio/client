@@ -13,6 +13,27 @@ const port      = process.env.PORT || 3000;
 const app       = express();
 const compiler  = webpack(config);
 
+var proxy = httpProxy.createProxyServer({
+  target: {
+    host: webServer,
+    port: apiPort
+  }
+});
+
+app.all('/auth/*', function (req, res) {
+  proxy.web(req, res);
+});
+
+app.all('/api/*', function (req, res) {
+  proxy.web(req, res);
+});
+
+if (process.env.NODE_ENV == 'production') {
+  app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  });
+}
+
 app.use(historyApiFallback({
   verbose: false
 }));
@@ -35,26 +56,7 @@ app.use(webpackMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-var proxy = httpProxy.createProxyServer({
-  target: {
-    host: webServer,
-    port: apiPort
-  }
-});
-
-app.all('/auth/*', function (req, res) {
-  proxy.web(req, res);
-});
-
-app.all('/api/*', function (req, res) {
-  proxy.web(req, res);
-});
-
-app.get('/', function response(req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
-app.listen(port, function onStart(err) {
+app.listen(port, webServer, function (err) {
   if (err)
     console.error(err);
   else
