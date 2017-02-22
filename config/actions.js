@@ -18,7 +18,8 @@ module.exports = {
     notification: 'NEW_NOTIFICATION',
     sidebar: 'TOGGLE_SIDEBAR',
     popup: 'TOGGLE_POPUP',
-    loader: 'TOGGLE_LOADER'
+    loader: 'TOGGLE_LOADER',
+    setTitle: 'SET_TITLE'
   },
 
   user: {

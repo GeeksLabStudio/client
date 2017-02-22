@@ -1,7 +1,7 @@
 var EN = require('./EN');
 var RU = require('./RU');
 
-var defaultLang = 'EN';
+var defaultLang = 'RU';
 
 var packs = {
 	EN, RU

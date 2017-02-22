@@ -2,7 +2,6 @@ import React from 'react';
 import SignUp from '../../components/SignUp';
 import AuthStore from '../../stores/auth.store';
 import AuthService from '../../services/auth.service';
-require('./style.less');
 
 export default class LoginPage extends React.Component {
   profileUpdateHandler(){
@@ -19,7 +18,7 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    return <div className="register-page">
+    return <div className="page register">
       <h1>{config.pages.register.title}</h1>
       
       <SignUp/>

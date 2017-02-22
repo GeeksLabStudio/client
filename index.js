@@ -20,10 +20,6 @@ var proxy = httpProxy.createProxyServer({
   }
 });
 
-app.all('/auth/*', function (req, res) {
-  proxy.web(req, res);
-});
-
 app.all('/api/*', function (req, res) {
   proxy.web(req, res);
 });

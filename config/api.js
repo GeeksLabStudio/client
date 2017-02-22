@@ -1,14 +1,14 @@
 module.exports = {
   server: 'http://localhost:3000',
   login: {
-  	path: '/auth/login',
+  	path: '/api/auth/login',
   	method: 'POST'
   },
   register: {
-  	path: '/auth/register',
+  	path: '/api/auth/register',
   	method: 'POST'
   },
   profile: {
-  	path: '/auth/'
+  	path: '/api/profile/'
   }
 }

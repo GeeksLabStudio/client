@@ -10,6 +10,15 @@ class AppAction {
     })
   }
 
+  setTitle(option){
+    let action = app.actions.ui.setTitle;
+
+    AppDispatcher.dispatch({
+      action,
+      option
+    })
+  }
+
   togglePopup() {
   	let action = app.actions.ui.popup;
 

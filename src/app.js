@@ -13,27 +13,31 @@ export default class Application extends React.Component {
   checkRequirements(nextState, replace){
     app.utils.log.debug('AppRouter:checkRequirements', nextState)
 
+    // user is authenticated
     if (!AuthStore.isAuthenticated){
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: is not authenticated');
       AppAction.notify('You are not authenticated');
       replace('/login');
-    } else
+    } 
+
+    else
       return true
   }
 
   onEnterDefaultHandler(nextState, replace){
     app.utils.log.debug('AppRouter:onEnterDefaultHandler', nextState)
-
+    // get config
     let routes = nextState.routes;
     let config = routes[routes.length - 1].config;
-
-    document.title = config.title;
-
+    // get access
     let access = AuthStore.checkPermissions(config.permissions);
+    // set title
+    AppAction.setTitle(config.title);
 
-    if (access) {
+    // has access
+    if (access)
       return true
-    } else {
+    else {
       app.utils.log.error('AppRouter:checkRequirements failed. Reason: not right permission');
       AppAction.notify('You don\'t have permissions to enter this page');
       replace('/')

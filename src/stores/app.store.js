@@ -34,20 +34,15 @@ class AppStore extends Store {
     this.emit('loader:toggle', option);
   }
 
-  updateNavigation(navigation){
-    // _.merge(this.navigation, navigation)
+  setTitle(title){
+    document.title = title;
+    this.emit('title:update', title);
+  }
 
-    // this will trigers components they own methods
-    // and update there state
+  updateNavigation(navigation){
     this.emit('ui:update');
   }
 
-  /*
-    @desc Method for geting navigation available for user
-    for Sidebar,Navbar components
-
-    @return Pages[]
-  */
   getAvailablePages(controlPosition){
     let links = Object.keys(this.navigation);
 
@@ -60,7 +55,6 @@ class AppStore extends Store {
   }
 
   createNotification(notification){
-    // broadcasting event
     this.emit('ui:notification', notification)
   }
 }

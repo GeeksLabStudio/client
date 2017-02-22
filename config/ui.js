@@ -1,9 +1,8 @@
 module.exports = {
   ControlPosition: {
-    NAVBAR: 'navbar',
+    HEADER: 'header',
     SIDEBAR: 'sidebar',
     DROPDOWN: 'dropdown',
-    FOOTER: 'footer',
-    MEGAMENU: 'megamenu',
+    FOOTER: 'footer'
   }
 }

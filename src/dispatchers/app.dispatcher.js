@@ -20,6 +20,9 @@ AppStore.dispatchToken = $appDispatcher.register(payload => {
     case app.actions.ui.loader:
       AppStore.toggleLoader(payload.option);
       break;
+    case app.actions.ui.setTitle:
+      AppStore.setTitle(payload.option);
+      break;
     case app.actions.ui.notification:
       let {
         type,

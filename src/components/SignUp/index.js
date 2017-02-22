@@ -1,6 +1,5 @@
 import React from 'react';
 import AuthAction from '../../actions/auth.action';
-require('./style.less');
 
 export default class SignIn extends React.Component {
   state = {

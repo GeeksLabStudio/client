@@ -6,7 +6,6 @@ var locale  = require('./locale');
 module.exports = {
   home: {
     path: pages.home.path,
-    icon: 'fa fa-home',
     label: locale.components.navigation.home.label,
     position: [
       ui.ControlPosition.SIDEBAR,
@@ -17,11 +16,10 @@ module.exports = {
 
   login: {
     path: pages.login.path,
-    icon: 'fa fa-sign-in',
     label: locale.components.navigation.login.label,
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.HEADER,
       ui.ControlPosition.FOOTER
     ],
     permissions: pages.login.permissions
@@ -29,11 +27,10 @@ module.exports = {
 
   register: {
     path: pages.register.path,
-    icon: 'fa fa-user-plus',
     label: locale.components.navigation.register.label,
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.HEADER,
       ui.ControlPosition.FOOTER
     ],
     permissions: pages.register.permissions
@@ -41,11 +38,10 @@ module.exports = {
 
   profile: {
     path: pages.profile.path,
-    icon: 'fa fa-user',
     label: locale.components.navigation.profile.label,
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.HEADER,
       ui.ControlPosition.FOOTER
     ],
     permissions: pages.profile.permissions
@@ -53,11 +49,10 @@ module.exports = {
 
   admin: {
     path: pages.admin.path,
-    icon: 'fa fa-cogs',
     label: locale.components.navigation.admin.label,
     position: [
       ui.ControlPosition.SIDEBAR,
-      ui.ControlPosition.NAVBAR,
+      ui.ControlPosition.HEADER,
       ui.ControlPosition.FOOTER
     ],
     permissions: pages.admin.permissions
@@ -65,37 +60,13 @@ module.exports = {
 
   logout: {
     action: 'logout',
-    icon: 'fa fa-sign-out',
     label: locale.components.navigation.logout.label,
     position: [
-      ui.ControlPosition.NAVBAR
+      ui.ControlPosition.HEADER
     ],
     permissions: [
       roles.user,
       roles.admin
-    ]
-  },
-
-  // test links for megamenu
-  category1: {
-    label: 'Category 1',
-    submenu: [
-      {
-        path: '/subcategory4',
-        label: 'Subcategory 4',
-        submenu: [
-          {
-            path: '/super-submenu1',
-            label: 'Super-submenu 1',
-          },
-        ]
-      }
-    ],
-    position: [
-      ui.ControlPosition.MEGAMENU
-    ],
-    permissions: [
-      roles.all
     ]
   }
 }
