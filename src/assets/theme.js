@@ -9,9 +9,9 @@ export default {
     primary1Color: grey,
     primary2Color: grey,
     primary3Color: grey,
-    textColor: green,
+    textColor: white,
     secondaryTextColor: 'rgba(255,255,255,0.7)',
-    alternateTextColor: '#fff',
+    alternateTextColor: green,
     canvasColor: dakrGrey,
     borderColor: 'rgba(255,255,255,0.3)',
     disabledColor: 'rgba(255,255,255,0.3)',
@@ -26,5 +26,22 @@ export default {
 
   listItem: {
     leftIconColor: green
+  },
+
+  textField: {
+    textColor: dakrGrey,
+    floatingLabelColor: dakrGrey,
+    focusColor: green,
+    borderColor: dakrGrey,
+  },
+
+  button: {
+    height: 40,
+    minWidth: 120
+  },
+
+  raisedButton: {
+    color: '#fff',
+    textColor: green
   },
 };

@@ -5,8 +5,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import theme from './assets/theme';
+// css
+require('./assets/style.less');
 
-require('./assets/reset.less');
 /*
   Log config to console
 */

@@ -13,11 +13,10 @@ import home from 'material-ui/svg-icons/action/home';
 import register from 'material-ui/svg-icons/social/person-add';
 import login from 'material-ui/svg-icons/action/input';
 import PenIcon from 'material-ui/svg-icons/content/create';
-
-const listIncons = {home,register,login,profile}
-
 // css
-require('./style.less')
+require('./style.less');
+
+const listIncons = {home, register, login, profile}
 
 export default class Sidebar extends React.Component { 
   componentDidMount(){
@@ -82,7 +81,7 @@ export default class Sidebar extends React.Component {
   }
 
   get _userInfo(){
-    if (AuthStore.isAuthenticated && AuthStore.profile) {
+    if (AuthStore.profile.role != app.roles.guest) {
       let name = AuthStore.profile.name ? AuthStore.profile.name : '';
       let lastName = AuthStore.profile.lastName ? AuthStore.profile.lastName : '';
       let fullName = name || lastName ? `${name} ${lastName}` : 'User';
@@ -90,7 +89,7 @@ export default class Sidebar extends React.Component {
       // avatar or placeholder
       let avatar = AuthStore.profile.image 
         ? <Avatar size={85} src={AuthStore.profile.image}/> 
-        : <profile style={{width: 70, height: 'auto'}}/>;
+        : React.createElement(listIncons['profile'], {style: {width: 70, height: 'auto'}});
 
       return (
         <div className="user-info">

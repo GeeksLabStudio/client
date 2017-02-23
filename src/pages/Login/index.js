@@ -1,7 +1,12 @@
 import React from 'react';
+// components
 import SignIn from '../../components/SignIn';
+// stores
 import AuthStore from '../../stores/auth.store';
+// services
 import AuthService from '../../services/auth.service';
+// css
+require('./style.less');
 
 export default class LoginPage extends React.Component {
   profileUpdateHandler(){
@@ -18,10 +23,10 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    return <div className="page login">
-      <h1>{config.pages.login.title}</h1>
-      
-      <SignIn/>
-    </div>
+    return (
+      <div className="page login">
+        <SignIn/>
+      </div>
+    )
   }
 }
