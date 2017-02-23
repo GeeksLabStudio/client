@@ -5,7 +5,7 @@ import AuthService from '../../services/auth.service';
 
 export default class LoginPage extends React.Component {
   profileUpdateHandler(){
-    AuthService.goto('/profile')
+    AuthService.goto('/')
   }
 
   componentDidMount(){

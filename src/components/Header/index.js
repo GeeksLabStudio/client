@@ -1,27 +1,25 @@
 import React from 'react';
 import {Link, browserHistory} from 'react-router';
-
+// stores
 import AppStore from '../../stores/app.store';
+// actions
 import AppAction from '../../actions/app.action';
-import AuthStore from '../../stores/auth.store';
 import AuthAction from '../../actions/auth.action';
-
 // material-ui
 import AppBar from 'material-ui/AppBar';
+import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
-import AccountIcon from 'material-ui/svg-icons/action/account-circle';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 
 export default class Header extends React.Component {
 	componentDidMount(){
     AppStore.on('ui:update', this.UIupdateHandler);
-    AppStore.on('title:update', this.titleUpdateHandler);
   }
 
   componentWillUnmount(){
     AppStore.removeListener('ui:update', this.UIupdateHandler);
-    AppStore.removeListener('title:update', this.titleUpdateHandler);
   }
 
 
@@ -31,12 +29,6 @@ export default class Header extends React.Component {
 
   actions = {
     logout: AuthAction.logout
-  }
-
-  titleUpdateHandler = title => {
-  	this.setState({
-  		title: title
-  	})
   }
 
   UIupdateHandler = () => {
@@ -64,14 +56,15 @@ export default class Header extends React.Component {
 	render() {
     return (
       <AppBar
-		    title={this.state.title ? this.state.title : document.title}
+		    title={app.ui.appTitle}
+        style={{zIndex: 1310}}
 		    onLeftIconButtonTouchTap={AppAction.toggleSidebar}
 		    onTitleTouchTap={this._redirectTo('/')}
 		    iconElementRight={
-		    	<IconMenu iconButtonElement={<IconButton><AccountIcon/></IconButton>}>
-		    		{this._links}
-		    	</IconMenu>
-		    }
+          <IconMenu iconButtonElement={<IconButton><MoreVertIcon/></IconButton>}>
+            {this._links}
+          </IconMenu>
+        }
 		  />
     )
   }

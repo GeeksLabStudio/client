@@ -24,7 +24,7 @@ class AuthStore extends Store {
         .then(data => {
           app.utils.log.debug('Profile have been successfully resolved', data)
 
-          this.updateProfile(data.profile)
+          this.updateProfile({...data.profile, ...{_id: data._id}})
         })
         .then(null, error => {
           app.utils.log.error('Profile resolving failed.', error)
@@ -53,11 +53,12 @@ class AuthStore extends Store {
   registerAuthentication(auth){
     let {
       token,
-      profile
+      profile,
+      _id
     } = auth;
 
     this.__setToken(token)
-    this.__setProfile(profile)
+    this.__setProfile({...profile, ...{_id}})
     AuthService.updateLocalAuthorization(auth)
   }
 
