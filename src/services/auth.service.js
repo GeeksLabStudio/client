@@ -15,7 +15,6 @@ class AuthService{
       browserHistory.push(path)
   }
 
-
   // currently not used
   removeAuthorization(){
     return new Promise((resolve,reject) => {
@@ -27,9 +26,7 @@ class AuthService{
     })
   }
 
-
   // Methods for requesting api.auth
-
   requestAuthorization(options){
     return $http.send(
         app.config.api.login.path,
@@ -52,9 +49,7 @@ class AuthService{
       )
   }
 
-
   // Methods for managing stored auth token
-
   updateLocalAuthorization(auth){
     if (auth){
       localStorage.setItem(TOKEN_KEY_NAME, auth.token)

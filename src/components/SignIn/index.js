@@ -48,7 +48,7 @@ export default class SignIn extends React.Component {
           value={this.getFormValue('email')}
           onChange={this.getFormChangeHandler('email')}
           required="required"
-          style={{width: '100%'}}
+          style={{width: '100%', marginTop: -10}}
         />
 
         <TextField
@@ -57,7 +57,7 @@ export default class SignIn extends React.Component {
           value={this.getFormValue('password')}
           onChange={this.getFormChangeHandler('password')}
           required="required"
-          style={{width: '100%'}}
+          style={{width: '100%', marginTop: -10}}
         />
 
         <RaisedButton label={app.locale.buttons.signIn} type="submit" primary={true} style={{width: '100%', marginTop: 30}}/>

@@ -63,6 +63,12 @@ var components = {
 	navbar: {
 		welcome: 'welcome',
 		langSwitcher: 'Locale'
+	},
+	userLanding: {
+		tabs: {
+			info: 'Info',
+			data: 'Data',
+		}
 	}
 }
 

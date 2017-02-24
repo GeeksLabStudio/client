@@ -1,7 +1,13 @@
 import React from 'react';
+// actions
 import AuthAction from '../../actions/auth.action';
+// material-ui
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+// css
+require('./style.less');
 
-export default class SignIn extends React.Component {
+export default class SignUn extends React.Component {
   state = {
     form: {
       email: '',
@@ -34,27 +40,27 @@ export default class SignIn extends React.Component {
   render() {
     return (
       <form onSubmit={::this.formSubmitHandler} className="sign-up">
-        <div className="form-group">
-          <input 
-            type="email"
-            placeholder={app.locale.forms.inputs.email}
-            value={this.getFormValue('email')}
-            onChange={this.getFormChangeHandler('email')}
-            required="required"/>
-        </div>
+        <h2>{config.pages.register.title}</h2>
+        
+        <TextField
+          type="email"
+          floatingLabelText={app.locale.forms.inputs.email}
+          value={this.getFormValue('email')}
+          onChange={this.getFormChangeHandler('email')}
+          required="required"
+          style={{width: '100%', marginTop: -10}}
+        />
 
-        <div className="form-group">
-          <input 
-            type="password"
-            placeholder={app.locale.forms.inputs.password}
-            value={this.getFormValue('password')}
-            onChange={this.getFormChangeHandler('password')}
-            required="required"/>
-        </div>
+        <TextField
+          type="password"
+          floatingLabelText={app.locale.forms.inputs.password}
+          value={this.getFormValue('password')}
+          onChange={this.getFormChangeHandler('password')}
+          required="required"
+          style={{width: '100%', marginTop: -10}}
+        />
 
-        <button className="btn btn-primary" type="submit">
-          {app.locale.buttons.register}
-        </button>
+        <RaisedButton label={app.locale.buttons.register} type="submit" primary={true} style={{width: '100%', marginTop: 30}}/>
       </form>
     )
   }

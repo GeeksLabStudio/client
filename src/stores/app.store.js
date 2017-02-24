@@ -54,8 +54,8 @@ class AppStore extends Store {
       .filter(link => AuthStore.checkPermissions(link.permissions)) // filtering by permission
   }
 
-  createNotification(notification){
-    this.emit('ui:notification', notification)
+  createNotification(notification, event = 'ui:notification'){
+    this.emit(event, notification)
   }
 }
 

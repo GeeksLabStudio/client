@@ -2,7 +2,9 @@ import React from 'react';
 // components
 import {
   Header,
-  Sidebar
+  Sidebar,
+  Notification,
+  Loader
 } from '../../components'
 
 export default class ApplicationLayout extends React.Component {
@@ -10,12 +12,15 @@ export default class ApplicationLayout extends React.Component {
     return (
       <div className="app-body">
         <Header/>
+        <Loader/>
 
         <main>
           {this.props.children}
         </main>
 
         <Sidebar/>
+
+        <Notification/>
       </div>
     )
   }

@@ -59,13 +59,15 @@ class AuthStore extends Store {
 
     this.__setToken(token)
     this.__setProfile({...profile, ...{_id}})
-    AuthService.updateLocalAuthorization(auth)
+    AuthService.updateLocalAuthorization(auth);
+    this.emit('auth:update');
   }
 
   removeAuthentication() {
     this.__setToken(null)
     this.__setProfile(null)
-    AuthService.updateLocalAuthorization(null)
+    AuthService.updateLocalAuthorization(null);
+    this.emit('auth:update');
   }
 
   updateProfile(profile){

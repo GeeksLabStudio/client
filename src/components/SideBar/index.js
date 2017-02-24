@@ -22,16 +22,19 @@ export default class Sidebar extends React.Component {
   componentDidMount(){
     AppStore.on('ui:update', this.UIupdateHandler);
     AppStore.on('sidebar:toggle', this.sidebarToggleHandler);
+    AuthStore.on('auth:update', this._userAuthUpdateHandler);
   }
 
   componentWillUnmount(){
     AppStore.removeListener('ui:update', this.UIupdateHandler);
     AppStore.removeListener('sidebar:toggle', this.sidebarToggleHandler);
+    AuthStore.removeListener('auth:update', this._userAuthUpdateHandler);
   }
 
   state = {
     show: false,
-    links: AppStore.getAvailablePages(app.ui.ControlPosition.SIDEBAR)
+    links: AppStore.getAvailablePages(app.ui.ControlPosition.SIDEBAR),
+    authenticated: AuthStore.isAuthenticated
   }
 
   UIupdateHandler = () => {
@@ -39,6 +42,12 @@ export default class Sidebar extends React.Component {
 
     this.setState({
       links
+    })
+  }
+
+  _userAuthUpdateHandler = () => {
+    this.setState({
+      authenticated: AuthStore.isAuthenticated
     })
   }
 
@@ -81,7 +90,7 @@ export default class Sidebar extends React.Component {
   }
 
   get _userInfo(){
-    if (AuthStore.profile.role != app.roles.guest) {
+    if (this.state.authenticated) {
       let name = AuthStore.profile.name ? AuthStore.profile.name : '';
       let lastName = AuthStore.profile.lastName ? AuthStore.profile.lastName : '';
       let fullName = name || lastName ? `${name} ${lastName}` : 'User';

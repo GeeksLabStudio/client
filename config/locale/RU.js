@@ -63,6 +63,12 @@ var components = {
 	navbar: {
 		welcome: 'приветствуем',
 		langSwitcher: 'Язык'
+	},
+	userLanding: {
+		tabs: {
+			info: 'Инфо',
+			data: 'Данные',
+		}
 	}
 }
 

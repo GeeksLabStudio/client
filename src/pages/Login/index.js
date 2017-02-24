@@ -1,6 +1,6 @@
 import React from 'react';
 // components
-import SignIn from '../../components/SignIn';
+import {SignIn} from '../../components';
 // stores
 import AuthStore from '../../stores/auth.store';
 // services
@@ -25,7 +25,9 @@ export default class LoginPage extends React.Component {
   render() {
     return (
       <div className="page login">
-        <SignIn/>
+        <div className="container">
+          <SignIn/>
+        </div>    
       </div>
     )
   }

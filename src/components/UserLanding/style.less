@@ -1,0 +1,63 @@
+@import '~styles/vars';
+
+.user-landing {
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto 0;
+	padding: 100px 20px 20px;
+
+	.container {
+		margin-bottom: 30px;
+		padding: 0;
+
+		&.info {
+			padding: 20px;
+		}
+	}
+
+	.avatar {
+		margin: -20px auto -60px;
+		display: block;
+		text-align: center;
+		transform: translateY(-50%);
+
+		img {
+			box-shadow: @base-shadow;
+			border-radius: 50%;
+			width: 120px;
+			height: 120px;
+		}
+
+		svg {
+			width: 150px !important;
+			height: auto !important;
+			fill: @base-color !important;
+		}
+	}
+
+	.full-name {
+		font-weight: 600;
+		margin-top: 10px;
+		text-align: center;
+		padding: 0 10px;
+	}
+
+	.username {
+		margin: 10px 0;
+		text-align: center;
+		font-weight: 600;
+		padding: 0 10px;
+	}
+
+	.date {
+		font-size: 12px;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: @mobiles)  {
+	.user-landing {
+		padding: 80px 0 0 0;
+	}
+}
